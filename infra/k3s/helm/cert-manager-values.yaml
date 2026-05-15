@@ -1,0 +1,27 @@
+# cert-manager values — Let's Encrypt + Cloudflare DNS-01.
+# The ClusterIssuer itself lives in helm/cert-manager-cluster-issuer.yaml
+# (applied by ArgoCD separately).
+
+crds:
+  enabled: true
+  keep: true
+
+replicaCount: 2
+
+prometheus:
+  enabled: true
+  servicemonitor:
+    enabled: true
+
+resources:
+  requests: { cpu: 50m, memory: 64Mi }
+  limits:   { cpu: 300m, memory: 256Mi }
+
+extraArgs:
+  - --leader-elect=true
+  - --max-concurrent-challenges=20
+
+# DNS-01 requires the resolver to query authoritative servers, not cluster DNS.
+extraEnv:
+  - name: GOFLAGS
+    value: -mod=mod

@@ -1,0 +1,136 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: "22"
+  PNPM_VERSION: "9.15.0"
+  GO_VERSION: "1.23"
+  PYTHON_VERSION: "3.12"
+
+jobs:
+  # ─────────────────────────────────────────────────────────────────
+  js:
+    name: JS/TS (lint · type-check · test · build)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: "${{ env.PNPM_VERSION }}" }
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "${{ env.NODE_VERSION }}"
+          cache: "pnpm"
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm format:check
+      - run: pnpm lint
+      - run: pnpm type-check
+      - run: pnpm test --if-present
+      - run: pnpm build
+
+  # ─────────────────────────────────────────────────────────────────
+  i18n:
+    name: i18n key drift
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "${{ env.NODE_VERSION }}" }
+      - run: node packages/i18n/scripts/check-missing-keys.mjs
+
+  # ─────────────────────────────────────────────────────────────────
+  go:
+    name: Go (lint · build · test)
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service: [shared, gateway, identity, billing, notifier, audit, eld]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "${{ env.GO_VERSION }}"
+          cache-dependency-path: services/${{ matrix.service }}/go.sum
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v6
+        with:
+          version: v1.62
+          working-directory: services/${{ matrix.service }}
+          args: --timeout=5m
+      - name: build
+        working-directory: services/${{ matrix.service }}
+        run: |
+          if [ -d ./cmd ]; then
+            go build -o /tmp/${{ matrix.service }}-bin ./cmd
+          fi
+      - name: test
+        working-directory: services/${{ matrix.service }}
+        run: go test -race -coverprofile=cover.out ./...
+
+  # ─────────────────────────────────────────────────────────────────
+  python:
+    name: Python ai-gateway (ruff · mypy · pytest)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+      - uses: actions/setup-python@v5
+        with: { python-version: "${{ env.PYTHON_VERSION }}" }
+      - name: install
+        working-directory: ai/ai-gateway
+        run: uv sync --all-extras
+      - name: ruff
+        working-directory: ai/ai-gateway
+        run: uv run ruff check .
+      - name: mypy
+        working-directory: ai/ai-gateway
+        run: uv run mypy src
+      - name: pytest
+        working-directory: ai/ai-gateway
+        env:
+          ANTHROPIC_API_KEY: sk-ant-test
+        run: uv run pytest -x
+
+  # ─────────────────────────────────────────────────────────────────
+  proto:
+    name: Protobuf (buf lint · breaking)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: bufbuild/buf-setup-action@v1
+      - run: buf lint
+        working-directory: packages/proto
+      - if: github.event_name == 'pull_request'
+        run: buf breaking --against ".git#branch=origin/main"
+        working-directory: packages/proto
+
+  # ─────────────────────────────────────────────────────────────────
+  ci-result:
+    name: ci-result
+    if: always()
+    needs: [js, i18n, go, python, proto]
+    runs-on: ubuntu-latest
+    steps:
+      - name: aggregate
+        run: |
+          set -e
+          for job in js i18n go python proto; do
+            result="${{ join(needs.*.result, ',') }}"
+            echo "Results: $result"
+          done
+          if [[ "${{ contains(needs.*.result, 'failure') }}" == "true" ]]; then
+            echo "::error::one or more required CI jobs failed"
+            exit 1
+          fi

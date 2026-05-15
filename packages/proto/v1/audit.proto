@@ -1,0 +1,45 @@
+// Audit service: immutable, append-only event log.
+syntax = "proto3";
+
+package vettguard.v1;
+
+import "v1/common.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/vettguard/vettguard/packages/proto/gen/go/v1;protov1";
+
+service Audit {
+  rpc Append (AppendEventRequest) returns (AppendEventResponse);
+  rpc Query  (QueryEventsRequest) returns (QueryEventsResponse);
+}
+
+message AuditEvent {
+  string id          = 1;
+  string tenant_id   = 2;
+  string actor_id    = 3;     // user id OR service id
+  string actor_type  = 4;     // "user" | "service" | "system"
+  string action      = 5;     // "user.login", "billing.subscription.created", ...
+  string target_type = 6;
+  string target_id   = 7;
+  bytes  payload     = 8;     // JSON, PII redacted upstream
+  string ip          = 9;
+  string user_agent  = 10;
+  string request_id  = 11;
+  google.protobuf.Timestamp occurred_at = 12;
+}
+
+message AppendEventRequest  { AuditEvent event = 1; }
+message AppendEventResponse { string event_id = 1; }
+
+message QueryEventsRequest {
+  string tenant_id  = 1;
+  string actor_id   = 2;
+  string action     = 3;
+  google.protobuf.Timestamp since = 4;
+  google.protobuf.Timestamp until = 5;
+  PageRequest page = 10;
+}
+message QueryEventsResponse {
+  repeated AuditEvent events = 1;
+  PageResponse page = 2;
+}

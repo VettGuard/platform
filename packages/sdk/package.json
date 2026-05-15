@@ -1,0 +1,24 @@
+{
+  "name": "@vettguard/sdk",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Typed TS client SDK for the VettGuard API gateway. Consumed by apps + extension.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings=0",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@bufbuild/protobuf": "^2.2.0",
+    "@connectrpc/connect": "^2.0.0",
+    "@connectrpc/connect-web": "^2.0.0"
+  },
+  "devDependencies": {
+    "@vettguard/config": "workspace:*",
+    "@vettguard/proto": "workspace:*",
+    "typescript": "^5.7.0"
+  }
+}

@@ -1,0 +1,66 @@
+# golangci-lint config for VettGuard Go services.
+# Run: `golangci-lint run ./...`
+run:
+  timeout: 5m
+  go: "1.23"
+  tests: true
+  build-tags:
+    - integration
+
+linters:
+  enable:
+    - errcheck
+    - govet
+    - ineffassign
+    - staticcheck
+    - unused
+    - gosimple
+    - bodyclose
+    - contextcheck
+    - errorlint
+    - exhaustive
+    - exportloopref
+    - gocritic
+    - gofumpt
+    - gosec
+    - misspell
+    - nilerr
+    - nilnil
+    - noctx
+    - nolintlint
+    - prealloc
+    - revive
+    - sqlclosecheck
+    - stylecheck
+    - tparallel
+    - unconvert
+    - unparam
+    - wastedassign
+    - whitespace
+
+linters-settings:
+  errcheck:
+    check-type-assertions: true
+    check-blank: true
+  gosec:
+    excludes:
+      - G104 # already covered by errcheck
+  govet:
+    enable-all: true
+  revive:
+    rules:
+      - name: exported
+        arguments: ["disableStutteringCheck"]
+
+issues:
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - gosec
+        - errcheck
+        - unparam
+    - path: cmd/migrate
+      linters:
+        - gosec
+  max-issues-per-linter: 0
+  max-same-issues: 0

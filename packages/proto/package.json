@@ -1,0 +1,25 @@
+{
+  "name": "@vettguard/proto",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "VettGuard protobuf/Connect-RPC contracts and generated TS stubs",
+  "exports": {
+    ".": "./gen/ts/index.ts",
+    "./v1/*": "./gen/ts/v1/*.ts"
+  },
+  "scripts": {
+    "generate": "buf generate",
+    "lint": "buf lint",
+    "breaking": "buf breaking --against '.git#branch=main'",
+    "format": "buf format -w",
+    "clean": "rm -rf gen"
+  },
+  "dependencies": {
+    "@bufbuild/protobuf": "^2.2.0",
+    "@connectrpc/connect": "^2.0.0"
+  },
+  "devDependencies": {
+    "@bufbuild/buf": "^1.47.0"
+  }
+}

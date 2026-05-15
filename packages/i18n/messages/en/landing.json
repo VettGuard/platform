@@ -1,0 +1,85 @@
+{
+  "_status": "canonical",
+  "hero": {
+    "eyebrow": "AI-native trucking back-office",
+    "title": "Stop losing money to detention. Stop trusting bad brokers.",
+    "subtitle": "VettGuard runs detention claims and broker vetting on autopilot. One click, every load board. You approve — Claude does the rest.",
+    "ctaPrimary": "Start free trial",
+    "ctaSecondary": "See how it works"
+  },
+  "metrics": {
+    "title": "What dispatchers recover with VettGuard",
+    "items": {
+      "recovered": {
+        "value": "$1.2M+",
+        "label": "Detention recovered, 2026 YTD"
+      },
+      "vetted": {
+        "value": "47,000+",
+        "label": "Brokers continuously scored"
+      },
+      "saved": {
+        "value": "9 hrs/wk",
+        "label": "Manual paperwork avoided per dispatcher"
+      }
+    }
+  },
+  "features": {
+    "title": "Built for one-click dispatching",
+    "items": {
+      "extension": {
+        "title": "Lives inside DAT, Truckstop, 123Loadboard",
+        "body": "Vet a broker, file a detention claim, generate a rate-con response — without leaving the load board you already use."
+      },
+      "detention": {
+        "title": "Detention recovery on autopilot",
+        "body": "Motive and Samsara ELD data proves dwell time. Claude drafts the claim packet. You click send. We take 18% only when you get paid."
+      },
+      "vetting": {
+        "title": "Continuous broker monitoring",
+        "body": "FMCSA authority, bond, complaint history, payment patterns — re-scored monthly. Watchlist alerts the moment a broker turns risky."
+      },
+      "security": {
+        "title": "Bank-grade security",
+        "body": "End-to-end encryption, row-level tenant isolation, full audit log. Your carrier data never leaks."
+      }
+    }
+  },
+  "pricing": {
+    "title": "Honest pricing",
+    "subtitle": "Pay for the outcome. Cancel anytime.",
+    "plans": {
+      "vetting": {
+        "name": "Broker Vetting",
+        "price": "$199",
+        "cadence": "/ month",
+        "description": "Unlimited broker checks + continuous monitoring + watchlist alerts.",
+        "cta": "Start 14-day trial"
+      },
+      "detention": {
+        "name": "Detention Recovery",
+        "price": "18%",
+        "cadence": "success fee",
+        "description": "We only get paid when we recover detention for you. No subscription, no setup fee.",
+        "cta": "See how it works"
+      }
+    }
+  },
+  "faq": {
+    "title": "Common questions",
+    "items": {
+      "eld": {
+        "q": "Which ELDs do you support?",
+        "a": "Motive and Samsara at launch — together about 70% of US carriers. Geotab, Verizon Connect, KeepTruckin Lite, and others on the roadmap."
+      },
+      "loadboards": {
+        "q": "Which load boards does the Chrome extension cover?",
+        "a": "DAT, Truckstop, and 123Loadboard at launch. We are adding Sylectus, Direct Freight, RXO, Uber Freight, and others every month."
+      },
+      "fees": {
+        "q": "How do you collect the 18% detention fee?",
+        "a": "When the broker pays you, we send a single Stripe invoice for 18% of the recovered amount. You pay only after you get paid."
+      }
+    }
+  }
+}

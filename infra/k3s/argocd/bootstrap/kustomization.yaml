@@ -1,0 +1,36 @@
+# Bootstrap ArgoCD itself. After this is applied, ArgoCD takes over and
+# installs every other workload via the App-of-apps pattern (see apps/root.yaml).
+#
+# Apply once per cluster:
+#   kubectl apply -k infra/k3s/argocd/bootstrap
+#   kubectl -n argocd wait --for=condition=Available deployment/argocd-server --timeout=5m
+#   kubectl apply -f infra/k3s/argocd/apps/root.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: argocd
+
+resources:
+  - https://raw.githubusercontent.com/argoproj/argo-cd/v2.13.2/manifests/ha/install.yaml
+
+patches:
+  - target: { kind: ConfigMap, name: argocd-cmd-params-cm }
+    patch: |-
+      - op: add
+        path: /data
+        value:
+          server.insecure: "true"        # TLS terminated at Traefik
+          server.disable.auth: "false"
+          application.namespaces: "*"
+
+  - target: { kind: ConfigMap, name: argocd-cm }
+    patch: |-
+      - op: add
+        path: /data
+        value:
+          url: "https://argocd.vettguard.com"
+          timeout.reconciliation: "60s"
+          resource.exclusions: |
+            - apiGroups: ["cilium.io"]
+              kinds: ["CiliumIdentity"]
+              clusters: ["*"]

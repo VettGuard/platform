@@ -1,0 +1,70 @@
+# OpenTelemetry Collector — DaemonSet collecting traces/metrics/logs from
+# every node and forwarding to Tempo/Loki/Mimir (Prom).
+
+mode: daemonset
+fullnameOverride: otel-collector
+
+image:
+  repository: otel/opentelemetry-collector-contrib
+  tag: "0.115.0"
+
+resources:
+  requests: { cpu: 50m, memory: 128Mi }
+  limits:   { cpu: 500m, memory: 512Mi }
+
+# Expose OTLP receivers on host network for service-side SDKs.
+hostNetwork: true
+
+config:
+  receivers:
+    otlp:
+      protocols:
+        grpc: { endpoint: 0.0.0.0:4317 }
+        http: { endpoint: 0.0.0.0:4318 }
+    hostmetrics:
+      collection_interval: 30s
+      scrapers:
+        cpu: {}
+        memory: {}
+        disk: {}
+        network: {}
+
+  processors:
+    batch:
+      timeout: 5s
+      send_batch_size: 512
+    memory_limiter:
+      check_interval: 1s
+      limit_mib: 384
+    resource:
+      attributes:
+        - key: service.environment
+          value: ${env:OTEL_ENVIRONMENT}
+          action: upsert
+        - key: k8s.cluster.name
+          value: vettguard
+          action: upsert
+
+  exporters:
+    otlp/tempo:
+      endpoint: tempo.observability.svc:4317
+      tls: { insecure: true }
+    prometheusremotewrite:
+      endpoint: http://kps-prometheus.observability.svc:9090/api/v1/write
+    loki:
+      endpoint: http://loki-gateway.observability.svc/loki/api/v1/push
+
+  service:
+    pipelines:
+      traces:
+        receivers: [otlp]
+        processors: [memory_limiter, resource, batch]
+        exporters: [otlp/tempo]
+      metrics:
+        receivers: [otlp, hostmetrics]
+        processors: [memory_limiter, resource, batch]
+        exporters: [prometheusremotewrite]
+      logs:
+        receivers: [otlp]
+        processors: [memory_limiter, resource, batch]
+        exporters: [loki]

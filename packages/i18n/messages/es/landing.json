@@ -1,0 +1,85 @@
+{
+  "_status": "ai-draft",
+  "hero": {
+    "eyebrow": "Back-office de transporte con IA nativa",
+    "title": "Deja de perder dinero por detention. Deja de confiar en malos brokers.",
+    "subtitle": "VettGuard gestiona reclamaciones de detention y verificación de brokers en piloto automático. Un clic, cualquier load board. Tú apruebas — Claude hace el resto.",
+    "ctaPrimary": "Prueba gratis",
+    "ctaSecondary": "Cómo funciona"
+  },
+  "metrics": {
+    "title": "Lo que los dispatchers recuperan con VettGuard",
+    "items": {
+      "recovered": {
+        "value": "$1.2M+",
+        "label": "Detention recuperado en 2026"
+      },
+      "vetted": {
+        "value": "47,000+",
+        "label": "Brokers monitoreados continuamente"
+      },
+      "saved": {
+        "value": "9 h/sem",
+        "label": "Horas de papeleo evitadas por dispatcher"
+      }
+    }
+  },
+  "features": {
+    "title": "Hecho para dispatching de un solo clic",
+    "items": {
+      "extension": {
+        "title": "Vive dentro de DAT, Truckstop, 123Loadboard",
+        "body": "Verifica un broker, presenta un reclamo de detention, genera respuesta de rate-con — sin salir del load board que ya usas."
+      },
+      "detention": {
+        "title": "Recuperación de detention en piloto automático",
+        "body": "Los datos de ELD Motive y Samsara prueban el tiempo de espera. Claude redacta el paquete. Tú envías. Cobramos 18% solo cuando te pagan."
+      },
+      "vetting": {
+        "title": "Monitoreo continuo de brokers",
+        "body": "Autoridad FMCSA, bond, historial de quejas, patrones de pago — reevaluado cada mes. Alertas watchlist cuando un broker se vuelve riesgoso."
+      },
+      "security": {
+        "title": "Seguridad bancaria",
+        "body": "Cifrado de extremo a extremo, aislamiento por tenant a nivel de fila, auditoría completa. Tus datos de carrier no se filtran."
+      }
+    }
+  },
+  "pricing": {
+    "title": "Precios honestos",
+    "subtitle": "Paga por el resultado. Cancela cuando quieras.",
+    "plans": {
+      "vetting": {
+        "name": "Broker Vetting",
+        "price": "$199",
+        "cadence": "/ mes",
+        "description": "Verificaciones ilimitadas + monitoreo continuo + alertas watchlist.",
+        "cta": "Prueba de 14 días"
+      },
+      "detention": {
+        "name": "Detention Recovery",
+        "price": "18%",
+        "cadence": "tarifa de éxito",
+        "description": "Solo cobramos cuando recuperamos detention para ti. Sin suscripción, sin setup fee.",
+        "cta": "Cómo funciona"
+      }
+    }
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "items": {
+      "eld": {
+        "q": "¿Qué ELDs soportan?",
+        "a": "Motive y Samsara al lanzamiento — juntos cubren ~70% de carriers en EE.UU. Geotab, Verizon Connect, KeepTruckin Lite en el roadmap."
+      },
+      "loadboards": {
+        "q": "¿Qué load boards cubre la extensión?",
+        "a": "DAT, Truckstop y 123Loadboard al lanzamiento. Cada mes añadimos Sylectus, Direct Freight, RXO, Uber Freight y otros."
+      },
+      "fees": {
+        "q": "¿Cómo cobran el 18% de detention?",
+        "a": "Cuando el broker te paga, enviamos una sola factura Stripe por el 18% del monto recuperado. Pagas solo después de recibir el pago."
+      }
+    }
+  }
+}

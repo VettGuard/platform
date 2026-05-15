@@ -1,0 +1,30 @@
+// Notifier service: transactional email + SMS + in-app + webhooks.
+syntax = "proto3";
+
+package vettguard.v1;
+
+import "v1/common.proto";
+
+option go_package = "github.com/vettguard/vettguard/packages/proto/gen/go/v1;protov1";
+
+service Notifier {
+  rpc SendEmail (SendEmailRequest) returns (SendEmailResponse);
+  rpc SendSMS   (SendSMSRequest)   returns (SendSMSResponse);
+}
+
+message SendEmailRequest {
+  string tenant_id  = 1;
+  string to_address = 2;
+  string template   = 3;  // "auth.verify" | "auth.reset" | "billing.invoice" | ...
+  map<string, string> vars = 4;
+  string idempotency_key   = 5;
+}
+message SendEmailResponse { string message_id = 1; bool deduped = 2; }
+
+message SendSMSRequest {
+  string tenant_id      = 1;
+  string to_phone_e164  = 2;
+  string body           = 3;
+  string idempotency_key = 4;
+}
+message SendSMSResponse { string message_id = 1; bool deduped = 2; }

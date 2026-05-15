@@ -1,0 +1,85 @@
+{
+  "_status": "human-reviewed",
+  "hero": {
+    "eyebrow": "AI-native trucking back-office",
+    "title": "Detention'dan pul boy bermang. Yomon broker'larga ishonmang.",
+    "subtitle": "VettGuard detention claim va broker vetting'ni autopilot'da yuritadi. Bir click — har bir load board'da. Siz tasdiqlasangiz — qolganini Claude qiladi.",
+    "ctaPrimary": "Bepul sinab ko'ring",
+    "ctaSecondary": "Qanday ishlaydi"
+  },
+  "metrics": {
+    "title": "Dispatcher'lar VettGuard bilan qaytarib olgan summalar",
+    "items": {
+      "recovered": {
+        "value": "$1.2M+",
+        "label": "2026'da qaytarilgan detention"
+      },
+      "vetted": {
+        "value": "47,000+",
+        "label": "Doimiy kuzatuvdagi broker'lar"
+      },
+      "saved": {
+        "value": "9 soat/hafta",
+        "label": "Har dispatcher'ga tejalgan qog'oz ish"
+      }
+    }
+  },
+  "features": {
+    "title": "One-click dispatching uchun yaratildi",
+    "items": {
+      "extension": {
+        "title": "DAT, Truckstop, 123Loadboard ichida ishlaydi",
+        "body": "Broker'ni tekshirish, detention claim yuborish, rate con javobi yozish — sevimli load board'ingizdan chiqmasdan."
+      },
+      "detention": {
+        "title": "Detention recovery autopilot'da",
+        "body": "Motive va Samsara ELD ma'lumotlari dwell vaqtini isbotlaydi. Claude claim package'ni yozadi. Siz tugmani bosasiz. Biz 18% olamiz — faqat to'lov kelganda."
+      },
+      "vetting": {
+        "title": "Broker'larni doimiy kuzatish",
+        "body": "FMCSA authority, bond, shikoyat tarixi, to'lov patternlari — har oy qayta baholanadi. Broker xavfli bo'lib qolsa, watchlist sizni darrov xabardor qiladi."
+      },
+      "security": {
+        "title": "Bank darajasidagi xavfsizlik",
+        "body": "Uchma-uch shifrlash, row-level tenant izolyatsiya, to'liq audit log. Sizning carrier ma'lumotlaringiz hech qachon sizib chiqmaydi."
+      }
+    }
+  },
+  "pricing": {
+    "title": "Halol narx",
+    "subtitle": "Natija uchun to'lang. Istalgan vaqtda bekor qiling.",
+    "plans": {
+      "vetting": {
+        "name": "Broker Vetting",
+        "price": "$199",
+        "cadence": "/ oy",
+        "description": "Cheksiz broker tekshirish + doimiy kuzatish + watchlist xabarlari.",
+        "cta": "14 kun bepul"
+      },
+      "detention": {
+        "name": "Detention Recovery",
+        "price": "18%",
+        "cadence": "success fee",
+        "description": "Biz faqat sizga pul qaytarilganda haqimizni olamiz. Subscription yo'q, setup fee yo'q.",
+        "cta": "Qanday ishlaydi"
+      }
+    }
+  },
+  "faq": {
+    "title": "Tez-tez beriladigan savollar",
+    "items": {
+      "eld": {
+        "q": "Qaysi ELD'larni qo'llab-quvvatlaysiz?",
+        "a": "Boshlanishda Motive va Samsara — birgalikda AQSh carrier'larining ~70%. Geotab, Verizon Connect, KeepTruckin Lite va boshqalari roadmap'da."
+      },
+      "loadboards": {
+        "q": "Chrome extension qaysi load board'larni qamrab oladi?",
+        "a": "Boshlanishda DAT, Truckstop va 123Loadboard. Har oy Sylectus, Direct Freight, RXO, Uber Freight va boshqalarini qo'shamiz."
+      },
+      "fees": {
+        "q": "18% detention fee qanday yig'iladi?",
+        "a": "Broker sizga to'laganidan keyin biz Stripe orqali yagona invoice yuboramiz — qaytarilgan summaning 18%. Siz faqat pul olgandan keyin to'laysiz."
+      }
+    }
+  }
+}

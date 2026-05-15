@@ -1,0 +1,46 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule: { interval: "weekly", day: "monday" }
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule: { interval: "weekly", day: "monday" }
+    open-pull-requests-limit: 10
+    groups:
+      next: { patterns: ["next", "next-*", "@next/*"] }
+      react: { patterns: ["react", "react-dom", "@types/react*"] }
+      types: { patterns: ["@types/*"] }
+      tailwind: { patterns: ["tailwindcss", "@tailwindcss/*"] }
+
+  - package-ecosystem: "gomod"
+    directory: "/services/shared"
+    schedule: { interval: "weekly", day: "monday" }
+  - package-ecosystem: "gomod"
+    directory: "/services/gateway"
+    schedule: { interval: "weekly", day: "monday" }
+  - package-ecosystem: "gomod"
+    directory: "/services/identity"
+    schedule: { interval: "weekly", day: "monday" }
+  - package-ecosystem: "gomod"
+    directory: "/services/billing"
+    schedule: { interval: "weekly", day: "monday" }
+  - package-ecosystem: "gomod"
+    directory: "/services/notifier"
+    schedule: { interval: "weekly", day: "monday" }
+  - package-ecosystem: "gomod"
+    directory: "/services/audit"
+    schedule: { interval: "weekly", day: "monday" }
+  - package-ecosystem: "gomod"
+    directory: "/services/eld"
+    schedule: { interval: "weekly", day: "monday" }
+
+  - package-ecosystem: "pip"
+    directory: "/ai/ai-gateway"
+    schedule: { interval: "weekly", day: "monday" }
+
+  - package-ecosystem: "docker"
+    directory: "/services/gateway"
+    schedule: { interval: "weekly", day: "monday" }

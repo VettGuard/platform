@@ -1,0 +1,85 @@
+// Identity service: tenants, users, sessions, OAuth, 2FA.
+syntax = "proto3";
+
+package vettguard.v1;
+
+import "v1/common.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/vettguard/vettguard/packages/proto/gen/go/v1;protov1";
+
+service Identity {
+  rpc CreateTenant     (CreateTenantRequest)     returns (CreateTenantResponse);
+  rpc GetTenant        (GetTenantRequest)        returns (GetTenantResponse);
+
+  rpc SignUpWithEmail  (SignUpRequest)           returns (SignUpResponse);
+  rpc LoginWithEmail   (LoginRequest)            returns (LoginResponse);
+  rpc StartOAuth       (StartOAuthRequest)       returns (StartOAuthResponse);
+  rpc CompleteOAuth    (CompleteOAuthRequest)    returns (CompleteOAuthResponse);
+
+  rpc VerifySession    (VerifySessionRequest)    returns (VerifySessionResponse);
+  rpc RefreshSession   (RefreshSessionRequest)   returns (RefreshSessionResponse);
+  rpc RevokeSession    (RevokeSessionRequest)    returns (RevokeSessionResponse);
+
+  rpc EnableTOTP       (EnableTOTPRequest)       returns (EnableTOTPResponse);
+  rpc VerifyTOTP       (VerifyTOTPRequest)       returns (VerifyTOTPResponse);
+}
+
+message Tenant {
+  string id          = 1;
+  string name        = 2;
+  string slug        = 3;
+  string country     = 4;
+  string mc_number   = 5;
+  string dot_number  = 6;
+  google.protobuf.Timestamp created_at = 7;
+}
+
+message User {
+  string id        = 1;
+  string email     = 2;
+  string full_name = 3;
+  bool   verified  = 4;
+  bool   mfa_on    = 5;
+}
+
+message CreateTenantRequest  { string name = 1; string country = 2; }
+message CreateTenantResponse { Tenant tenant = 1; }
+
+message GetTenantRequest     { string tenant_id = 1; }
+message GetTenantResponse    { Tenant tenant = 1; }
+
+message SignUpRequest {
+  string tenant_name = 1;
+  string email       = 2;
+  string password    = 3;
+  string full_name   = 4;
+}
+message SignUpResponse {
+  Tenant tenant = 1;
+  User   user   = 2;
+}
+
+message LoginRequest  { string email = 1; string password = 2; string totp_code = 3; }
+message LoginResponse { string access_token = 1; string refresh_token = 2; User user = 3; }
+
+message StartOAuthRequest  { string provider = 1; string redirect_uri = 2; }   // google | microsoft
+message StartOAuthResponse { string authorize_url = 1; string state = 2; }
+
+message CompleteOAuthRequest  { string provider = 1; string code = 2; string state = 3; }
+message CompleteOAuthResponse { string access_token = 1; string refresh_token = 2; User user = 3; bool created = 4; }
+
+message VerifySessionRequest  { string access_token = 1; }
+message VerifySessionResponse { TenantContext context = 1; Role role = 2; }
+
+message RefreshSessionRequest  { string refresh_token = 1; }
+message RefreshSessionResponse { string access_token = 1; string refresh_token = 2; }
+
+message RevokeSessionRequest  { string session_id = 1; }
+message RevokeSessionResponse { bool ok = 1; }
+
+message EnableTOTPRequest  { string user_id = 1; }
+message EnableTOTPResponse { string secret = 1; string qr_uri = 2; repeated string recovery_codes = 3; }
+
+message VerifyTOTPRequest  { string user_id = 1; string code = 2; }
+message VerifyTOTPResponse { bool ok = 1; }

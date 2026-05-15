@@ -1,0 +1,85 @@
+{
+  "_status": "ai-draft",
+  "hero": {
+    "eyebrow": "Yapay zekâ destekli trucking back-office",
+    "title": "Detention'dan para kaybetmeyi bırak. Kötü broker'lara güvenmeyi bırak.",
+    "subtitle": "VettGuard detention talepleri ve broker doğrulamayı otomatik pilotta yürütür. Tek tık, her load board. Sen onaylarsın — gerisini Claude yapar.",
+    "ctaPrimary": "Ücretsiz dene",
+    "ctaSecondary": "Nasıl çalışır"
+  },
+  "metrics": {
+    "title": "Dispatcher'ların VettGuard ile geri kazandığı",
+    "items": {
+      "recovered": {
+        "value": "$1.2M+",
+        "label": "2026'da geri alınan detention"
+      },
+      "vetted": {
+        "value": "47,000+",
+        "label": "Sürekli izlenen broker"
+      },
+      "saved": {
+        "value": "9 saat/hafta",
+        "label": "Dispatcher başına kazanılan zaman"
+      }
+    }
+  },
+  "features": {
+    "title": "Tek tık dispatching için tasarlandı",
+    "items": {
+      "extension": {
+        "title": "DAT, Truckstop, 123Loadboard içinde yaşar",
+        "body": "Broker doğrula, detention talebi gönder, rate-con yanıtı oluştur — kullandığın load board'dan çıkmadan."
+      },
+      "detention": {
+        "title": "Detention recovery otomatik pilotta",
+        "body": "Motive ve Samsara ELD verileri bekleme süresini ispatlar. Claude evrak paketini hazırlar. Sen gönder dersin. Sadece ödeme alındığında %18 alırız."
+      },
+      "vetting": {
+        "title": "Sürekli broker izleme",
+        "body": "FMCSA yetkisi, bond, şikâyet geçmişi, ödeme örüntüleri — her ay yeniden puanlanır. Broker riskli hale gelince watchlist seni uyarır."
+      },
+      "security": {
+        "title": "Banka seviyesinde güvenlik",
+        "body": "Uçtan uca şifreleme, satır seviyesinde tenant izolasyonu, tam denetim kaydı. Carrier verilerin asla sızmaz."
+      }
+    }
+  },
+  "pricing": {
+    "title": "Dürüst fiyatlandırma",
+    "subtitle": "Sonuca öde. İstediğinde iptal et.",
+    "plans": {
+      "vetting": {
+        "name": "Broker Vetting",
+        "price": "$199",
+        "cadence": "/ ay",
+        "description": "Sınırsız broker kontrolü + sürekli izleme + watchlist uyarıları.",
+        "cta": "14 gün ücretsiz"
+      },
+      "detention": {
+        "name": "Detention Recovery",
+        "price": "%18",
+        "cadence": "başarı ücreti",
+        "description": "Sadece senin için detention geri kazandığımızda ödeme alırız. Abonelik yok, kurulum ücreti yok.",
+        "cta": "Nasıl çalışır"
+      }
+    }
+  },
+  "faq": {
+    "title": "Sık sorulan sorular",
+    "items": {
+      "eld": {
+        "q": "Hangi ELD'leri destekliyorsunuz?",
+        "a": "Lansmanda Motive ve Samsara — birlikte ABD carrier'larının ~%70'i. Geotab, Verizon Connect, KeepTruckin Lite yol haritasında."
+      },
+      "loadboards": {
+        "q": "Chrome eklentisi hangi load board'ları kapsar?",
+        "a": "Lansmanda DAT, Truckstop, 123Loadboard. Her ay Sylectus, Direct Freight, RXO, Uber Freight ve diğerleri ekleniyor."
+      },
+      "fees": {
+        "q": "%18 detention ücretini nasıl tahsil ediyorsunuz?",
+        "a": "Broker sana ödedikten sonra Stripe üzerinden tek fatura keseriz — geri alınan tutarın %18'i. Ödeme aldıktan sonra ödersin."
+      }
+    }
+  }
+}

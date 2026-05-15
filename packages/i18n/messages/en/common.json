@@ -1,0 +1,40 @@
+{
+  "_status": "canonical",
+  "brand": {
+    "name": "VettGuard",
+    "tagline": "AI-native detention recovery and broker vetting"
+  },
+  "nav": {
+    "home": "Home",
+    "features": "Features",
+    "pricing": "Pricing",
+    "about": "About",
+    "signIn": "Sign in",
+    "getStarted": "Get started",
+    "dashboard": "Dashboard",
+    "signOut": "Sign out"
+  },
+  "actions": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "loading": "Loading…"
+  },
+  "states": {
+    "empty": "Nothing here yet.",
+    "error": "Something went wrong. Please try again.",
+    "comingSoon": "Coming soon"
+  },
+  "footer": {
+    "copyright": "© {year} VettGuard. All rights reserved.",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "security": "Security",
+    "status": "Status"
+  }
+}

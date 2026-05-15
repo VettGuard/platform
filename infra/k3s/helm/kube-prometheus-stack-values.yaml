@@ -1,0 +1,95 @@
+# Slim kube-prometheus-stack for small clusters.
+# Grafana is the user-facing pane; Prometheus + Alertmanager are operational.
+
+fullnameOverride: kps
+
+defaultRules:
+  create: true
+  rules:
+    kubeApiserver: true
+    kubeProxy: false   # k3s doesn't run kube-proxy
+    kubeScheduler: false
+    kubeControllerManager: false
+
+prometheus:
+  prometheusSpec:
+    retention: 15d
+    retentionSize: 20GB
+    resources:
+      requests: { cpu: 250m, memory: 512Mi }
+      limits:   { cpu: 1, memory: 2Gi }
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          accessModes: ["ReadWriteOnce"]
+          resources: { requests: { storage: 25Gi } }
+    serviceMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelectorNilUsesHelmValues: false
+    ruleSelectorNilUsesHelmValues: false
+
+alertmanager:
+  alertmanagerSpec:
+    replicas: 1
+    resources:
+      requests: { cpu: 25m, memory: 64Mi }
+      limits:   { cpu: 200m, memory: 256Mi }
+  config:
+    route:
+      group_by: ["alertname", "namespace", "severity"]
+      group_wait: 30s
+      group_interval: 5m
+      repeat_interval: 4h
+      receiver: "slack-default"
+      routes:
+        - matchers: ["severity=critical"]
+          receiver: "slack-critical"
+          continue: true
+    receivers:
+      - name: "slack-default"
+        slack_configs:
+          - send_resolved: true
+            channel: "#alerts"
+            api_url_file: /etc/alertmanager/slack-webhook
+      - name: "slack-critical"
+        slack_configs:
+          - send_resolved: true
+            channel: "#alerts-critical"
+            api_url_file: /etc/alertmanager/slack-webhook
+
+grafana:
+  fullnameOverride: grafana
+  adminPassword: "REPLACE_VIA_SEALED_SECRET"   # actual password from sealed secret
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+    hosts: [grafana.vettguard.com]
+    tls:
+      - secretName: grafana-tls
+        hosts: [grafana.vettguard.com]
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+  persistence:
+    enabled: true
+    size: 5Gi
+  defaultDashboardsTimezone: utc
+  additionalDataSources:
+    - name: Loki
+      type: loki
+      access: proxy
+      url: http://loki-gateway.observability.svc:80
+    - name: Tempo
+      type: tempo
+      access: proxy
+      url: http://tempo.observability.svc:3200
+  resources:
+    requests: { cpu: 100m, memory: 200Mi }
+    limits:   { cpu: 500m, memory: 512Mi }
+
+nodeExporter:
+  enabled: true
+kubeStateMetrics:
+  enabled: true
+prometheusOperator:
+  resources:
+    requests: { cpu: 50m, memory: 100Mi }
+    limits:   { cpu: 200m, memory: 200Mi }

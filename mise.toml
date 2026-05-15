@@ -1,0 +1,12 @@
+# mise runtime version pinning — https://mise.jdx.dev
+# Install: curl https://mise.run | sh, then `mise install` in repo root.
+
+[tools]
+node = "22"
+pnpm = "9"
+go = "1.23"
+python = "3.12"
+uv = "latest"
+
+[env]
+_.python.uv = ".venv"

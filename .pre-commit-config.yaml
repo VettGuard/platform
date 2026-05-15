@@ -1,0 +1,70 @@
+# Pre-commit hooks for VettGuard.
+# Install: `pipx install pre-commit && pre-commit install`
+# Run all: `pre-commit run --all-files`
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-toml
+      - id: check-merge-conflict
+      - id: check-case-conflict
+      - id: check-added-large-files
+        args: ["--maxkb=512"]
+      - id: detect-private-key
+      - id: mixed-line-ending
+        args: ["--fix=lf"]
+
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.21.2
+    hooks:
+      - id: gitleaks
+
+  - repo: local
+    hooks:
+      - id: gofmt
+        name: gofmt
+        entry: gofmt -l -w
+        language: system
+        types: [go]
+        pass_filenames: true
+
+      - id: golangci-lint
+        name: golangci-lint
+        entry: bash -c 'cd "$(dirname $1)" && golangci-lint run --fix --new-from-rev=HEAD~ ./...'
+        language: system
+        types: [go]
+        pass_filenames: true
+        require_serial: true
+
+      - id: prettier
+        name: prettier
+        entry: pnpm exec prettier --write --ignore-unknown
+        language: system
+        types_or: [javascript, jsx, ts, tsx, json, yaml, markdown, css, html]
+        pass_filenames: true
+
+      - id: eslint
+        name: eslint
+        entry: bash -c 'pnpm exec eslint --fix "$@" || true' --
+        language: system
+        types_or: [javascript, jsx, ts, tsx]
+        pass_filenames: true
+
+      - id: ruff
+        name: ruff
+        entry: bash -c 'ruff check --fix "$@" && ruff format "$@"' --
+        language: system
+        types: [python]
+        pass_filenames: true
+
+      - id: mypy
+        name: mypy
+        entry: bash -c 'cd ai/ai-gateway && mypy .'
+        language: system
+        types: [python]
+        pass_filenames: false
+        require_serial: true

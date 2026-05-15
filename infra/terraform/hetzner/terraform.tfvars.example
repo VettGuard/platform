@@ -1,0 +1,16 @@
+# Copy to terraform.tfvars and fill in. Never commit terraform.tfvars (in .gitignore).
+# OR set via env: TF_VAR_hcloud_token, TF_VAR_cloudflare_api_token, ...
+
+# hcloud_token         = "hetzner-token-here"
+# cloudflare_api_token = "cloudflare-token-here"
+# cloudflare_zone_id   = "abc123..."
+
+environment        = "staging"
+location           = "fsn1"
+control_plane_type = "ccx13"
+worker_type        = "ccx13"
+worker_count       = 2
+
+ssh_public_keys = [
+  # "ssh-ed25519 AAAA... operator@host"
+]

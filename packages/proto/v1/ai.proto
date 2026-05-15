@@ -1,0 +1,59 @@
+// AI Gateway service: Python FastAPI behind Connect-RPC, routes typed tasks to Claude.
+syntax = "proto3";
+
+package vettguard.v1;
+
+import "v1/common.proto";
+
+option go_package = "github.com/vettguard/vettguard/packages/proto/gen/go/v1;protov1";
+
+service AIGateway {
+  rpc Echo            (EchoRequest)            returns (EchoResponse);
+  rpc ClassifyDocument(ClassifyDocumentRequest)returns (ClassifyDocumentResponse);
+  // Generic task runner — foundation phase exposes a single typed entrypoint per task.
+}
+
+enum ClaudeModel {
+  CLAUDE_MODEL_UNSPECIFIED = 0;
+  CLAUDE_MODEL_HAIKU_4_5   = 1;  // claude-haiku-4-5
+  CLAUDE_MODEL_SONNET_4_6  = 2;  // claude-sonnet-4-6
+  CLAUDE_MODEL_OPUS_4_7    = 3;  // claude-opus-4-7
+}
+
+message TokenUsage {
+  int32 input_tokens             = 1;
+  int32 output_tokens            = 2;
+  int32 cache_read_input_tokens  = 3;
+  int32 cache_creation_input_tokens = 4;
+}
+
+message EchoRequest {
+  string message       = 1;
+  ClaudeModel model    = 2;
+  TenantContext ctx    = 10;
+}
+message EchoResponse {
+  string reply         = 1;
+  TokenUsage usage     = 2;
+  string trace_id      = 3;
+}
+
+enum DocumentType {
+  DOCUMENT_TYPE_UNSPECIFIED      = 0;
+  DOCUMENT_TYPE_BOL              = 1;  // bill of lading
+  DOCUMENT_TYPE_RATE_CONFIRMATION = 2;
+  DOCUMENT_TYPE_LUMPER_RECEIPT    = 3;
+  DOCUMENT_TYPE_DETENTION_PROOF   = 4;
+  DOCUMENT_TYPE_INVOICE           = 5;
+  DOCUMENT_TYPE_OTHER             = 99;
+}
+
+message ClassifyDocumentRequest {
+  string blob_url      = 1;  // signed S3/MinIO URL
+  TenantContext ctx    = 10;
+}
+message ClassifyDocumentResponse {
+  DocumentType type    = 1;
+  float confidence     = 2;
+  TokenUsage usage     = 3;
+}

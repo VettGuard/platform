@@ -1,0 +1,119 @@
+/* VettGuard design tokens — Apple HIG geometry, Stripe typography rhythm.
+   Consumed by all apps via `@import "@vettguard/ui/styles/theme.css"`.
+   Pair with Tailwind v4: tokens are CSS variables, Tailwind utilities read them. */
+
+@layer base {
+  :root {
+    /* Spacing scale (rem) */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+
+    /* Type scale */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 2rem;
+    --text-4xl: 3rem;
+
+    /* Radius */
+    --radius-sm: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-full: 9999px;
+
+    /* Motion */
+    --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --duration-micro: 150ms;
+    --duration-base: 250ms;
+    --duration-page: 600ms;
+
+    /* Font stacks */
+    --font-sans: "Inter Variable", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, "SF Mono", monospace;
+
+    /* ── Light theme ── */
+    --bg: oklch(99% 0 0);
+    --bg-elevated: oklch(100% 0 0);
+    --bg-subtle: oklch(97% 0 0);
+    --fg: oklch(15% 0 0);
+    --fg-muted: oklch(45% 0 0);
+    --fg-subtle: oklch(60% 0 0);
+    --border: oklch(92% 0 0);
+    --border-strong: oklch(85% 0 0);
+    --accent: oklch(55% 0.22 280);
+    --accent-fg: oklch(98% 0 0);
+    --accent-hover: oklch(48% 0.24 280);
+    --success: oklch(60% 0.18 145);
+    --warning: oklch(72% 0.18 70);
+    --danger: oklch(58% 0.22 25);
+    --ring: oklch(70% 0.15 280);
+
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 12px -2px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.04);
+    --shadow-lg: 0 16px 32px -8px rgb(0 0 0 / 0.12), 0 4px 8px -4px rgb(0 0 0 / 0.06);
+  }
+
+  [data-theme="dark"] {
+    --bg: oklch(12% 0.005 270);
+    --bg-elevated: oklch(16% 0.008 270);
+    --bg-subtle: oklch(20% 0.01 270);
+    --fg: oklch(96% 0 0);
+    --fg-muted: oklch(70% 0 0);
+    --fg-subtle: oklch(55% 0 0);
+    --border: oklch(25% 0.01 270);
+    --border-strong: oklch(32% 0.012 270);
+    --accent: oklch(70% 0.2 280);
+    --accent-fg: oklch(15% 0 0);
+    --accent-hover: oklch(76% 0.22 280);
+    --success: oklch(68% 0.16 145);
+    --warning: oklch(76% 0.16 70);
+    --danger: oklch(68% 0.2 25);
+    --ring: oklch(60% 0.18 280);
+
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.4);
+    --shadow-md: 0 4px 12px -2px rgb(0 0 0 / 0.6), 0 2px 4px -2px rgb(0 0 0 / 0.5);
+    --shadow-lg: 0 16px 32px -8px rgb(0 0 0 / 0.8), 0 4px 8px -4px rgb(0 0 0 / 0.6);
+  }
+
+  /* "Boom" view-transition — circular reveal from click origin.
+     Trigger via document.startViewTransition() in ThemeToggle. */
+  @media (prefers-reduced-motion: no-preference) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation: none;
+      mix-blend-mode: normal;
+    }
+    ::view-transition-old(root) {
+      z-index: 1;
+    }
+    ::view-transition-new(root) {
+      z-index: 2;
+      animation: vg-theme-reveal var(--duration-page, 600ms) var(--ease-out, ease-out);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation: none;
+    }
+  }
+
+  @keyframes vg-theme-reveal {
+    from {
+      clip-path: circle(0% at var(--vg-x, 50%) var(--vg-y, 50%));
+    }
+    to {
+      clip-path: circle(150% at var(--vg-x, 50%) var(--vg-y, 50%));
+    }
+  }
+}

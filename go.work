@@ -1,0 +1,11 @@
+go 1.23
+
+use (
+	./services/audit
+	./services/billing
+	./services/eld
+	./services/gateway
+	./services/identity
+	./services/notifier
+	./services/shared
+)

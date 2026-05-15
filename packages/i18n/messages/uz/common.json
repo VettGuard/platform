@@ -1,0 +1,40 @@
+{
+  "_status": "human-reviewed",
+  "brand": {
+    "name": "VettGuard",
+    "tagline": "AI bilan detention recovery va broker vetting"
+  },
+  "nav": {
+    "home": "Bosh sahifa",
+    "features": "Imkoniyatlar",
+    "pricing": "Narxlar",
+    "about": "Biz haqimizda",
+    "signIn": "Kirish",
+    "getStarted": "Boshlash",
+    "dashboard": "Boshqaruv paneli",
+    "signOut": "Chiqish"
+  },
+  "actions": {
+    "save": "Saqlash",
+    "cancel": "Bekor qilish",
+    "delete": "O'chirish",
+    "edit": "Tahrirlash",
+    "confirm": "Tasdiqlash",
+    "back": "Orqaga",
+    "next": "Keyingi",
+    "submit": "Yuborish",
+    "loading": "Yuklanmoqda…"
+  },
+  "states": {
+    "empty": "Hozircha hech narsa yo'q.",
+    "error": "Xatolik yuz berdi. Qaytadan urinib ko'ring.",
+    "comingSoon": "Tez orada"
+  },
+  "footer": {
+    "copyright": "© {year} VettGuard. Barcha huquqlar himoyalangan.",
+    "privacy": "Maxfiylik",
+    "terms": "Shartlar",
+    "security": "Xavfsizlik",
+    "status": "Holat"
+  }
+}

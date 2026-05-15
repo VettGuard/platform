@@ -1,0 +1,13 @@
+{
+  "extends": "@vettguard/config/tsconfig/library.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "@vettguard/ui": ["./src/index.ts"],
+      "@vettguard/ui/*": ["./src/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
+}

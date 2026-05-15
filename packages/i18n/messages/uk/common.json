@@ -1,0 +1,40 @@
+{
+  "_status": "ai-draft",
+  "brand": {
+    "name": "VettGuard",
+    "tagline": "AI-повернення detention та перевірка брокерів"
+  },
+  "nav": {
+    "home": "Головна",
+    "features": "Можливості",
+    "pricing": "Ціни",
+    "about": "Про нас",
+    "signIn": "Увійти",
+    "getStarted": "Розпочати",
+    "dashboard": "Панель",
+    "signOut": "Вийти"
+  },
+  "actions": {
+    "save": "Зберегти",
+    "cancel": "Скасувати",
+    "delete": "Видалити",
+    "edit": "Редагувати",
+    "confirm": "Підтвердити",
+    "back": "Назад",
+    "next": "Далі",
+    "submit": "Надіслати",
+    "loading": "Завантаження…"
+  },
+  "states": {
+    "empty": "Тут поки нічого немає.",
+    "error": "Щось пішло не так. Спробуйте ще раз.",
+    "comingSoon": "Незабаром"
+  },
+  "footer": {
+    "copyright": "© {year} VettGuard. Усі права захищено.",
+    "privacy": "Конфіденційність",
+    "terms": "Умови",
+    "security": "Безпека",
+    "status": "Статус"
+  }
+}

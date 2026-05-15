@@ -1,0 +1,71 @@
+# Traefik ingress — sits behind the Hetzner LB, terminates TLS via cert-manager.
+
+deployment:
+  replicas: 2
+
+# Use DaemonSet on bigger clusters; Deployment is fine at 2 workers.
+service:
+  type: LoadBalancer
+  annotations:
+    load-balancer.hetzner.cloud/name: vg-staging-lb
+    load-balancer.hetzner.cloud/uses-proxyprotocol: "true"
+    load-balancer.hetzner.cloud/use-private-ip: "true"
+  spec:
+    externalTrafficPolicy: Local
+
+ports:
+  web:
+    proxyProtocol:
+      trustedIPs:
+        - 10.0.0.0/16  # only trust LB inside our private net
+    forwardedHeaders:
+      trustedIPs:
+        - 10.0.0.0/16
+    redirectTo:
+      port: websecure
+      scheme: https
+  websecure:
+    tls:
+      enabled: true
+    proxyProtocol:
+      trustedIPs: [10.0.0.0/16]
+    forwardedHeaders:
+      trustedIPs: [10.0.0.0/16]
+
+ingressClass:
+  enabled: true
+  isDefaultClass: true
+  name: traefik
+
+logs:
+  general:
+    level: INFO
+    format: json
+  access:
+    enabled: true
+    format: json
+    filters:
+      statusCodes: ["400-599"]
+
+metrics:
+  prometheus:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+    addRoutersLabels: true
+
+resources:
+  requests: { cpu: 100m, memory: 128Mi }
+  limits:   { cpu: 1, memory: 512Mi }
+
+# Mandatory security middlewares applied via ingressRoute defaults.
+additionalArguments:
+  - "--api.dashboard=true"
+  - "--entrypoints.websecure.http.tls.options=modern@file"
+  - "--entrypoints.websecure.forwardedHeaders.insecure=false"
+
+# Default TLS options — TLS 1.3 only in production.
+tlsOptions:
+  modern:
+    minVersion: VersionTLS13
+    sniStrict: true

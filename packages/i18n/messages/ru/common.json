@@ -1,0 +1,40 @@
+{
+  "_status": "ai-draft",
+  "brand": {
+    "name": "VettGuard",
+    "tagline": "AI-возмещение detention и проверка брокеров"
+  },
+  "nav": {
+    "home": "Главная",
+    "features": "Возможности",
+    "pricing": "Цены",
+    "about": "О нас",
+    "signIn": "Войти",
+    "getStarted": "Начать",
+    "dashboard": "Панель",
+    "signOut": "Выйти"
+  },
+  "actions": {
+    "save": "Сохранить",
+    "cancel": "Отмена",
+    "delete": "Удалить",
+    "edit": "Редактировать",
+    "confirm": "Подтвердить",
+    "back": "Назад",
+    "next": "Далее",
+    "submit": "Отправить",
+    "loading": "Загрузка…"
+  },
+  "states": {
+    "empty": "Здесь пока ничего нет.",
+    "error": "Что-то пошло не так. Попробуйте снова.",
+    "comingSoon": "Скоро"
+  },
+  "footer": {
+    "copyright": "© {year} VettGuard. Все права защищены.",
+    "privacy": "Конфиденциальность",
+    "terms": "Условия",
+    "security": "Безопасность",
+    "status": "Статус"
+  }
+}

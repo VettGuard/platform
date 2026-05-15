@@ -1,0 +1,72 @@
+name: security
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "0 6 * * 1" # Mondays 06:00 UTC weekly baseline scan
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  gitleaks:
+    name: gitleaks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  trivy-fs:
+    name: trivy (filesystem)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aquasecurity/trivy-action@0.28.0
+        with:
+          scan-type: fs
+          severity: HIGH,CRITICAL
+          ignore-unfixed: true
+          format: sarif
+          output: trivy-fs.sarif
+      - uses: github/codeql-action/upload-sarif@v3
+        with: { sarif_file: trivy-fs.sarif }
+
+  gosec:
+    name: gosec
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service: [shared, gateway, identity, billing, notifier, audit, eld]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with: { go-version: "1.23" }
+      - run: go install github.com/securego/gosec/v2/cmd/gosec@v2.21.4
+      - name: scan
+        working-directory: services/${{ matrix.service }}
+        run: gosec -fmt=sarif -out=../../gosec-${{ matrix.service }}.sarif ./... || true
+      - uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: gosec-${{ matrix.service }}.sarif
+          category: gosec-${{ matrix.service }}
+
+  bandit:
+    name: bandit (Python)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install bandit[sarif]
+      - run: bandit -r ai/ai-gateway/src -f sarif -o bandit.sarif || true
+      - uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with: { sarif_file: bandit.sarif }

@@ -1,0 +1,27 @@
+# Placeholder for VettGuard application services (gateway, identity, billing,
+# notifier, audit, eld, ai-gateway). The actual Helm charts for these services
+# land in Sprint 2 under infra/k3s/helm/vettguard/. For now this Application
+# is disabled (suspend annotation) so ArgoCD does not error on a missing path.
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vettguard-services
+  namespace: argocd
+  annotations:
+    # remove this annotation in Sprint 2 once helm/vettguard/ exists
+    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-options: "Skip=true"
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/vettguard/vettguard.git
+    targetRevision: HEAD
+    path: infra/k3s/helm/vettguard
+    directory:
+      recurse: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: vettguard
+  syncPolicy:
+    # Manual sync until Sprint 2 services are real
+    syncOptions: [CreateNamespace=true]

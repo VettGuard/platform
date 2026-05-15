@@ -1,0 +1,40 @@
+{
+  "_status": "ai-draft",
+  "brand": {
+    "name": "VettGuard",
+    "tagline": "Yapay zekâ destekli detention iadesi ve broker doğrulama"
+  },
+  "nav": {
+    "home": "Ana sayfa",
+    "features": "Özellikler",
+    "pricing": "Fiyatlar",
+    "about": "Hakkımızda",
+    "signIn": "Giriş yap",
+    "getStarted": "Başla",
+    "dashboard": "Kontrol paneli",
+    "signOut": "Çıkış yap"
+  },
+  "actions": {
+    "save": "Kaydet",
+    "cancel": "İptal",
+    "delete": "Sil",
+    "edit": "Düzenle",
+    "confirm": "Onayla",
+    "back": "Geri",
+    "next": "İleri",
+    "submit": "Gönder",
+    "loading": "Yükleniyor…"
+  },
+  "states": {
+    "empty": "Henüz burada bir şey yok.",
+    "error": "Bir şeyler ters gitti. Lütfen tekrar deneyin.",
+    "comingSoon": "Yakında"
+  },
+  "footer": {
+    "copyright": "© {year} VettGuard. Tüm hakları saklıdır.",
+    "privacy": "Gizlilik",
+    "terms": "Şartlar",
+    "security": "Güvenlik",
+    "status": "Durum"
+  }
+}

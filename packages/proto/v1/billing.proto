@@ -1,0 +1,55 @@
+// Billing service: Stripe subscriptions + invoices + Connect for success fees.
+syntax = "proto3";
+
+package vettguard.v1;
+
+import "v1/common.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/vettguard/vettguard/packages/proto/gen/go/v1;protov1";
+
+service Billing {
+  rpc UpsertCustomer       (UpsertCustomerRequest)       returns (UpsertCustomerResponse);
+  rpc CreateSubscription   (CreateSubscriptionRequest)   returns (CreateSubscriptionResponse);
+  rpc CancelSubscription   (CancelSubscriptionRequest)   returns (CancelSubscriptionResponse);
+  rpc GetCustomerPortalURL (GetCustomerPortalURLRequest) returns (GetCustomerPortalURLResponse);
+
+  rpc CreateSuccessFeeInvoice (CreateSuccessFeeInvoiceRequest) returns (CreateSuccessFeeInvoiceResponse);
+  rpc HandleStripeWebhook     (StripeWebhookEvent)             returns (StripeWebhookAck);
+}
+
+enum Plan {
+  PLAN_UNSPECIFIED  = 0;
+  PLAN_VETTING_BASE = 1;  // $199/mo
+}
+
+message Subscription {
+  string id           = 1;
+  string tenant_id    = 2;
+  Plan   plan         = 3;
+  string status       = 4;  // active | past_due | canceled | trialing
+  google.protobuf.Timestamp current_period_end = 5;
+}
+
+message UpsertCustomerRequest  { string tenant_id = 1; string email = 2; string name = 3; }
+message UpsertCustomerResponse { string stripe_customer_id = 1; }
+
+message CreateSubscriptionRequest  { string tenant_id = 1; Plan plan = 2; string payment_method_id = 3; bool trial = 4; }
+message CreateSubscriptionResponse { Subscription subscription = 1; string client_secret = 2; }
+
+message CancelSubscriptionRequest  { string tenant_id = 1; bool at_period_end = 2; }
+message CancelSubscriptionResponse { Subscription subscription = 1; }
+
+message GetCustomerPortalURLRequest  { string tenant_id = 1; string return_url = 2; }
+message GetCustomerPortalURLResponse { string url = 1; }
+
+message CreateSuccessFeeInvoiceRequest {
+  string tenant_id           = 1;
+  string detention_claim_id  = 2;
+  int64  recovered_amount_cents = 3;
+  string description         = 4;
+}
+message CreateSuccessFeeInvoiceResponse { string invoice_id = 1; string hosted_url = 2; }
+
+message StripeWebhookEvent { string id = 1; string type = 2; bytes payload = 3; }
+message StripeWebhookAck   { bool processed = 1; }

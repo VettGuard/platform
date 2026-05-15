@@ -1,0 +1,144 @@
+name: vettguard-dev
+
+# Local development stack for VettGuard.
+# Bring up:  `make up`        (from repo root)
+# Tear down: `make down`
+# Reset:     `make reset`     (deletes volumes — DESTRUCTIVE)
+#
+# Apps + services run on the host (faster than rebuilding containers each save).
+# Hostnames inside the network are short (postgres, redis, …); the host reaches
+# them via the published ports.
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: vg-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: vettguard
+      POSTGRES_PASSWORD: vettguard_dev
+      POSTGRES_DB: vettguard
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C"
+    command: ["postgres", "-c", "log_min_messages=warning", "-c", "max_connections=200"]
+    ports: ["5432:5432"]
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/00-init.sql:ro
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "vettguard"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+
+  redis:
+    image: redis:7-alpine
+    container_name: vg-redis
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes", "--maxmemory", "256mb", "--maxmemory-policy", "allkeys-lru"]
+    ports: ["6379:6379"]
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 6
+
+  nats:
+    image: nats:2.10-alpine
+    container_name: vg-nats
+    restart: unless-stopped
+    command:
+      - "-js"
+      - "-sd"
+      - "/data"
+      - "-m"
+      - "8222"
+    ports:
+      - "4222:4222"   # client
+      - "8222:8222"   # monitoring
+    volumes:
+      - nats_data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O- http://localhost:8222/healthz || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 6
+
+  minio:
+    image: minio/minio:RELEASE.2024-11-07T00-52-20Z
+    container_name: vg-minio
+    restart: unless-stopped
+    command: ["server", "/data", "--console-address", ":9001"]
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:9000/minio/health/live"]
+      interval: 5s
+      timeout: 3s
+      retries: 6
+
+  minio-init:
+    image: minio/mc:RELEASE.2024-11-21T17-21-54Z
+    container_name: vg-minio-init
+    depends_on:
+      minio:
+        condition: service_healthy
+    entrypoint: >
+      /bin/sh -c "
+        mc alias set local http://minio:9000 minioadmin minioadmin &&
+        mc mb --ignore-existing local/vettguard-dev &&
+        mc mb --ignore-existing local/vettguard-docs &&
+        mc mb --ignore-existing local/vettguard-audit-archive &&
+        echo 'minio buckets ready'
+      "
+    restart: "no"
+
+  mailpit:
+    image: axllent/mailpit:v1.21
+    container_name: vg-mailpit
+    restart: unless-stopped
+    environment:
+      MP_MAX_MESSAGES: 5000
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+    ports:
+      - "1025:1025"   # SMTP
+      - "8025:8025"   # Web UI
+    volumes:
+      - mailpit_data:/data
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.62
+    container_name: vg-jaeger
+    restart: unless-stopped
+    environment:
+      COLLECTOR_OTLP_ENABLED: "true"
+    ports:
+      - "16686:16686"  # UI
+      - "4317:4317"    # OTLP gRPC
+      - "4318:4318"    # OTLP HTTP
+
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:0.115.0
+    container_name: vg-otel-collector
+    restart: unless-stopped
+    command: ["--config=/etc/otel/config.yaml"]
+    volumes:
+      - ./otel/config.yaml:/etc/otel/config.yaml:ro
+    ports:
+      - "4319:4319"  # OTLP gRPC (avoid clash with Jaeger 4317)
+    depends_on: [jaeger]
+
+volumes:
+  postgres_data:
+  redis_data:
+  nats_data:
+  minio_data:
+  mailpit_data:

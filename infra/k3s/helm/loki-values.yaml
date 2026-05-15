@@ -1,0 +1,59 @@
+# Loki — single-binary mode for small clusters (scale later to read/write split).
+
+deploymentMode: SingleBinary
+
+loki:
+  auth_enabled: false
+  schemaConfig:
+    configs:
+      - from: "2024-04-01"
+        store: tsdb
+        object_store: s3
+        schema: v13
+        index:
+          prefix: loki_index_
+          period: 24h
+  storage:
+    type: s3
+    bucketNames:
+      chunks: loki-chunks
+      ruler: loki-ruler
+      admin: loki-admin
+    s3:
+      endpoint: http://minio.minio.svc:9000
+      insecure: true
+      s3ForcePathStyle: true
+      accessKeyId: minio
+      secretAccessKey: REPLACE_VIA_SEALED_SECRET
+      region: us-east-1
+  limits_config:
+    retention_period: 168h    # 7 days; bump on prod
+    max_query_lookback: 168h
+
+singleBinary:
+  replicas: 1
+  persistence:
+    enabled: true
+    size: 10Gi
+  resources:
+    requests: { cpu: 100m, memory: 256Mi }
+    limits:   { cpu: 1, memory: 1Gi }
+
+# Promtail companion for log shipping
+chunksCache:
+  enabled: false
+resultsCache:
+  enabled: false
+
+gateway:
+  enabled: true
+  replicas: 1
+  ingress:
+    enabled: false        # internal-only; Grafana queries via service DNS
+
+monitoring:
+  selfMonitoring: { enabled: false }
+  serviceMonitor: { enabled: true }
+
+test:
+  enabled: false

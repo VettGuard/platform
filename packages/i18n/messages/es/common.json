@@ -1,0 +1,40 @@
+{
+  "_status": "ai-draft",
+  "brand": {
+    "name": "VettGuard",
+    "tagline": "Recuperación de detention y verificación de brokers con IA"
+  },
+  "nav": {
+    "home": "Inicio",
+    "features": "Funciones",
+    "pricing": "Precios",
+    "about": "Acerca de",
+    "signIn": "Iniciar sesión",
+    "getStarted": "Empezar",
+    "dashboard": "Panel",
+    "signOut": "Cerrar sesión"
+  },
+  "actions": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "confirm": "Confirmar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "submit": "Enviar",
+    "loading": "Cargando…"
+  },
+  "states": {
+    "empty": "Aún no hay nada aquí.",
+    "error": "Algo salió mal. Inténtalo de nuevo.",
+    "comingSoon": "Próximamente"
+  },
+  "footer": {
+    "copyright": "© {year} VettGuard. Todos los derechos reservados.",
+    "privacy": "Privacidad",
+    "terms": "Términos",
+    "security": "Seguridad",
+    "status": "Estado"
+  }
+}

@@ -1,0 +1,38 @@
+[project]
+name = "vettguard-workspace"
+version = "0.0.0"
+description = "VettGuard Python workspace root (managed by uv)"
+requires-python = ">=3.12"
+
+[tool.uv.workspace]
+members = ["ai/*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = [".venv", "build", "dist"]
+
+[tool.ruff.lint]
+select = [
+  "E", "F", "W",      # pycodestyle, pyflakes
+  "I",                # isort
+  "B",                # flake8-bugbear
+  "UP",               # pyupgrade
+  "RUF",              # ruff-specific
+  "ASYNC",            # async issues
+  "S",                # bandit security
+  "N",                # pep8-naming
+  "SIM",              # simplification
+]
+ignore = ["S101"]     # allow assert in tests
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["S"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+warn_return_any = true
+warn_unused_ignores = true
+disallow_untyped_defs = true
+exclude = ["build/", "dist/", ".venv/"]

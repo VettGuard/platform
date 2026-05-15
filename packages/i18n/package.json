@@ -1,0 +1,24 @@
+{
+  "name": "@vettguard/i18n",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "VettGuard i18n catalog (en/uz/ru/es/tr/uk) + next-intl config helpers",
+  "exports": {
+    ".": "./src/index.ts",
+    "./config": "./src/config.ts",
+    "./messages/*": "./messages/*"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings=0",
+    "check-keys": "node scripts/check-missing-keys.mjs",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next-intl": "^3.26.0"
+  },
+  "devDependencies": {
+    "@vettguard/config": "workspace:*",
+    "typescript": "^5.7.0"
+  }
+}
