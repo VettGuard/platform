@@ -15,7 +15,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "next-intl": "^3.26.0"
+    "next-intl": "^4.14.5"
   },
   "devDependencies": {
     "@vettguard/config": "workspace:*",
