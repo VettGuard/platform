@@ -3,7 +3,7 @@ syntax = "proto3";
 
 package vettguard.v1;
 
-option go_package = "github.com/vettguard/vettguard/packages/proto/gen/go/v1;protov1";
+option go_package = "github.com/vettguard/vettguard/packages/proto/gen/go;protov1";
 
 // TenantContext travels in every request via interceptors / metadata.
 // Internal gRPC callers fill it from JWT claims; gateway populates from session.

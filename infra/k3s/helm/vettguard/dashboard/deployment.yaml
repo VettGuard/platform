@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dashboard
+  namespace: vettguard
+  labels: { app: dashboard }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: dashboard } }
+  template:
+    metadata:
+      labels: { app: dashboard }
+    spec:
+      containers:
+        - name: dashboard
+          image: ghcr.io/vettguard/dashboard:latest
+          imagePullPolicy: Always
+          ports: [{ containerPort: 3001 }]
+          env:
+            - { name: NODE_ENV, value: "production" }
+            - { name: PORT, value: "3001" }
+            - { name: HOSTNAME, value: "0.0.0.0" }
+            - { name: NEXT_PUBLIC_GATEWAY_URL, value: "https://api.vettguard.com" }
+          envFrom:
+            - secretRef: { name: dashboard-env, optional: true }
+          readinessProbe:
+            httpGet: { path: /, port: 3001 }
+            initialDelaySeconds: 10
+            periodSeconds: 15
+          resources:
+            requests: { cpu: 100m, memory: 128Mi }
+            limits:   { cpu: 500m, memory: 384Mi }

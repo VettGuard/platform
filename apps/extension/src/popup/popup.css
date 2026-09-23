@@ -1,63 +1,76 @@
+/* VettGuard extension popup — VG design-reference tokens, ported from
+   apps/landing globals.css. Light/dark switched by prefers-color-scheme
+   (no manual toggle in popup — follows the OS / Chrome theme). */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
 :root {
   color-scheme: light dark;
-  --bg: #ffffff;
-  --fg: #0f0f10;
-  --muted: #6e6e72;
-  --accent: oklch(55% 0.22 280);
-  --accent-hover: oklch(48% 0.24 280);
-  --border: #e5e5e7;
+  --vg-bg: #ffffff;
+  --vg-surface: #ffffff;
+  --vg-surface-alt: #f6f7f9;
+  --vg-surface-elev: #eff1f4;
+  --vg-text: #0a0e14;
+  --vg-text-dim: #3c4250;
+  --vg-text-mute: #8b92a0;
+  --vg-border: rgba(10, 14, 20, 0.07);
+  --vg-border-strong: rgba(10, 14, 20, 0.14);
+  --vg-divider: rgba(10, 14, 20, 0.05);
+  --vg-glass: rgba(255, 255, 255, 0.72);
+  --vg-gradient: none;
+  --vg-chrome-tabs: #dcd7cc;
+  --vg-chrome-url: #e8e5de;
+  --vg-orange: #ff4d0d;
+  --vg-orange-deep: #d63a05;
+  --vg-orange-soft: #ffe5d6;
+  --vg-orange-tint: #fff4ed;
+  --vg-success: #0a8d5a;
+  --vg-success-soft: #ddf1e6;
+  --vg-danger: #c9341b;
+  --vg-danger-soft: #fbe2dc;
+  --vg-warn: #a56a0f;
+  --vg-warn-soft: #f8ebc8;
+  --vg-info: #2e5dc8;
+  --vg-info-soft: #dee7fa;
+  --vg-btn-primary-bg: #0a0e14;
+  --vg-btn-primary-fg: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0f0f10;
-    --fg: #f5f5f7;
-    --muted: #98989a;
-    --accent: oklch(70% 0.2 280);
-    --accent-hover: oklch(76% 0.22 280);
-    --border: #2a2a2c;
+    --vg-bg: #0a0e14;
+    --vg-surface: #12161f;
+    --vg-surface-alt: #0f131b;
+    --vg-surface-elev: #1a1f2a;
+    --vg-text: #f0f2f5;
+    --vg-text-dim: #a5acba;
+    --vg-text-mute: #6b7280;
+    --vg-border: rgba(255, 255, 255, 0.08);
+    --vg-border-strong: rgba(255, 255, 255, 0.16);
+    --vg-divider: rgba(255, 255, 255, 0.05);
+    --vg-glass: rgba(10, 14, 20, 0.72);
+    --vg-chrome-tabs: #1a1f2a;
+    --vg-chrome-url: #14181f;
+    --vg-orange-soft: rgba(255, 77, 13, 0.18);
+    --vg-orange-tint: rgba(255, 77, 13, 0.10);
+    --vg-success-soft: rgba(10, 141, 90, 0.20);
+    --vg-danger-soft: rgba(201, 52, 27, 0.22);
+    --vg-warn-soft: rgba(165, 106, 15, 0.22);
+    --vg-info-soft: rgba(46, 93, 200, 0.22);
+    --vg-btn-primary-bg: #f0f2f5;
+    --vg-btn-primary-fg: #0a0e14;
   }
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 body {
   margin: 0;
-  width: 340px;
-  background: var(--bg);
-  color: var(--fg);
-  font-family: -apple-system, "Inter", "Segoe UI", system-ui, sans-serif;
-  font-size: 14px;
-}
-.popup {
-  padding: 20px;
-}
-.popup h1 {
-  margin: 0 0 4px;
-  font-size: 18px;
-  font-weight: 600;
-}
-.popup p {
-  margin: 0;
-  color: var(--muted);
-}
-.popup button {
-  display: block;
-  width: 100%;
-  margin-top: 20px;
-  padding: 10px 14px;
-  background: var(--accent);
-  color: #fff;
-  border: 0;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-}
-.popup button:hover { background: var(--accent-hover); }
-.popup .status {
-  margin-top: 16px;
-  padding: 10px;
-  background: rgba(127, 127, 127, 0.08);
-  border-radius: 8px;
-  font-size: 12px;
-  color: var(--muted);
+  width: 380px;
+  background: var(--vg-bg);
+  color: var(--vg-text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
 }

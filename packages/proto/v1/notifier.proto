@@ -3,9 +3,9 @@ syntax = "proto3";
 
 package vettguard.v1;
 
-import "v1/common.proto";
+import "common.proto";
 
-option go_package = "github.com/vettguard/vettguard/packages/proto/gen/go/v1;protov1";
+option go_package = "github.com/vettguard/vettguard/packages/proto/gen/go;protov1";
 
 service Notifier {
   rpc SendEmail (SendEmailRequest) returns (SendEmailResponse);

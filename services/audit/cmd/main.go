@@ -7,18 +7,28 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/jackc/pgx/v5/pgxpool"
+
+	"github.com/vettguard/vettguard/packages/proto/gen/go/protov1connect"
+	"github.com/vettguard/vettguard/services/audit/internal/handler"
 	"github.com/vettguard/vettguard/services/shared/pkg/config"
 	"github.com/vettguard/vettguard/services/shared/pkg/logger"
 	"github.com/vettguard/vettguard/services/shared/pkg/server"
 	"github.com/vettguard/vettguard/services/shared/pkg/tracing"
 )
 
+type Config struct {
+	config.Base
+
+	DatabaseURL string `envconfig:"DATABASE_URL" required:"true"`
+}
+
 func main() {
 	if v := os.Getenv("SERVICE_NAME"); v == "" {
 		_ = os.Setenv("SERVICE_NAME", "audit")
 	}
 
-	var cfg config.Base
+	var cfg Config
 	if err := config.Load("", &cfg); err != nil {
 		panic(err)
 	}
@@ -35,7 +45,16 @@ func main() {
 	}
 	defer func() { _ = shutdownTrace(context.Background()) }()
 
+	pool, err := pgxpool.New(ctx, cfg.DatabaseURL)
+	if err != nil {
+		log.Fatal().Err(err).Msg("pgxpool connect failed")
+	}
+	defer pool.Close()
+
+	auditHandler := &handler.Audit{Pool: pool}
 	s := server.New(cfg.ServiceName, cfg.HTTPPort, log)
+	path, h := protov1connect.NewAuditHandler(auditHandler)
+	s.Router.Mount(path, h)
 
 	s.Router.Get("/v1/audit/info", func(w http.ResponseWriter, _ *http.Request) {
 		w.Header().Set("Content-Type", "application/json")

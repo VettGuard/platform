@@ -1,8 +1,11 @@
-go 1.23
+go 1.25.7
 
 use (
+	./packages/proto/gen/go
 	./services/audit
 	./services/billing
+	./services/brokers
+	./services/claims
 	./services/eld
 	./services/gateway
 	./services/identity

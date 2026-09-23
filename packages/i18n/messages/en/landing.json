@@ -1,85 +1,884 @@
 {
   "_status": "canonical",
-  "hero": {
-    "eyebrow": "AI-native trucking back-office",
-    "title": "Stop losing money to detention. Stop trusting bad brokers.",
-    "subtitle": "VettGuard runs detention claims and broker vetting on autopilot. One click, every load board. You approve — Claude does the rest.",
-    "ctaPrimary": "Start free trial",
-    "ctaSecondary": "See how it works"
+  "nav": {
+    "extension": "Extension",
+    "howItWorks": "How it works",
+    "pricing": "Pricing",
+    "carriers": "Carriers",
+    "blog": "Blog",
+    "signIn": "Sign in",
+    "joinWaitlist": "Join waitlist",
+    "toggleTheme": "Toggle theme",
+    "language": "Language"
   },
-  "metrics": {
-    "title": "What dispatchers recover with VettGuard",
-    "items": {
-      "recovered": {
-        "value": "$1.2M+",
-        "label": "Detention recovered, 2026 YTD"
-      },
-      "vetted": {
-        "value": "47,000+",
-        "label": "Brokers continuously scored"
-      },
-      "saved": {
-        "value": "9 hrs/wk",
-        "label": "Manual paperwork avoided per dispatcher"
-      }
+  "hero": {
+    "pill": "AI dispatch copilot · for DAT and Truckstop",
+    "headlineLead": "The dispatcher's",
+    "headlineItalic": "copilot",
+    "headlineRest": "that vets brokers and recovers detention.",
+    "subtitle": "A Chrome extension that lives inside DAT. One click to score a broker. One click to file detention. Our AI does the paperwork.",
+    "ctaPrimary": "Add to Chrome — it's free",
+    "ctaSecondary": "Watch 60-sec demo",
+    "socialProof": "1,240+ carriers · works alongside DAT, Truckstop, 123Loadboard",
+    "demo": {
+      "loadBoardCount": "// load board · 247 results",
+      "originHeader": "Origin",
+      "destinationHeader": "Destination",
+      "rateHeader": "Rate ↓",
+      "live": "Live",
+      "selectedLabel": "Selected",
+      "avoidTitle": "Avoid this load",
+      "avoidSub": "Pays in 62 days · 3 missed",
+      "insurance": "Insurance",
+      "insuranceValue": "Lapsed",
+      "bondClaims": "Bond claims",
+      "bondClaimsValue": "2 in 12mo",
+      "carrierReviews": "Carrier reviews",
+      "carrierReviewsValue": "1.8/5 (84)",
+      "aiHint": "AI: 84% of carriers avoided this in the last 30 days.",
+      "recoveredLabel": "Recovered · MTD",
+      "trendUp": "↑ 18.4%",
+      "trackButton": "Track for detention",
+      "liveBadge": "Live · auto-recovered",
+      "yearToDate": "year to date · 1,240 carriers"
     }
   },
-  "features": {
-    "title": "Built for one-click dispatching",
+  "trustBar": {
+    "livesInside": "Lives inside ↓"
+  },
+  "benefits": {
+    "eyebrow": "Why VettGuard",
+    "title": "Built for dispatchers, not paperwork.",
     "items": {
-      "extension": {
-        "title": "Lives inside DAT, Truckstop, 123Loadboard",
-        "body": "Vet a broker, file a detention claim, generate a rate-con response — without leaving the load board you already use."
+      "vetting": {
+        "eyebrow": "Vetting",
+        "title": "AI scores every broker before you click book.",
+        "body": "Score chips appear inline on DAT and Truckstop. Trained on 4.2M loads and payment outcomes from the carrier network.",
+        "stat": "0.4s",
+        "statLbl": "avg score time"
       },
       "detention": {
-        "title": "Detention recovery on autopilot",
-        "body": "Motive and Samsara ELD data proves dwell time. Claude drafts the claim packet. You click send. We take 18% only when you get paid."
+        "eyebrow": "Detention",
+        "title": "Claims file themselves the moment dwell crosses 2h.",
+        "body": "We watch your ELD, write the claim, attach the BOL, email the broker. You just see the deposit hit your bank.",
+        "stat": "94%",
+        "statLbl": "recovered without dispute"
       },
-      "vetting": {
-        "title": "Continuous broker monitoring",
-        "body": "FMCSA authority, bond, complaint history, payment patterns — re-scored monthly. Watchlist alerts the moment a broker turns risky."
-      },
-      "security": {
-        "title": "Bank-grade security",
-        "body": "End-to-end encryption, row-level tenant isolation, full audit log. Your carrier data never leaks."
+      "native": {
+        "eyebrow": "Native",
+        "title": "No new login. No CSV. No new TMS.",
+        "body": "Install the Chrome extension once. Sign in with the load-board account you already have. Done in 60 seconds.",
+        "stat": "60s",
+        "statLbl": "time to live"
       }
     }
+  },
+  "showcase": {
+    "eyebrow": "The extension",
+    "title": "Three moments. Zero new tools to learn.",
+    "step": "Step",
+    "moments": {
+      "chips": {
+        "title": "Score chips appear inline.",
+        "body": "Every broker row on DAT gets a green/amber/red score the moment the page loads."
+      },
+      "hover": {
+        "title": "Hover for the why.",
+        "body": "The AI explains the score — payment speed, bond claims, disputes, carrier feedback."
+      },
+      "claim": {
+        "title": "One click to auto-detention.",
+        "body": "After you book, the extension watches the load. Detention claim drafts itself at hour 2."
+      }
+    },
+    "hover": {
+      "summary": "AI risk summary",
+      "scoreLine": "Avoid · 41/100",
+      "body": "BlueWave has 2 active bond claims and pays 62 days on average. 84% of carriers in your network skipped this in the last 30 days.",
+      "paySpeed": "Pay speed",
+      "bondClaims": "Bond claims",
+      "disputes": "Disputes"
+    },
+    "claim": {
+      "arrivalLabel": "10:42 AM · arrival",
+      "arrivalBody": "Truck #23 geofence-in at Houston DC",
+      "thresholdLabel": "12:42 PM · 2h elapsed",
+      "thresholdBody": "Detention threshold passed",
+      "draftedLabel": "4:08 PM · auto-drafted",
+      "draftedBody": "$487.50 detention claim ready",
+      "draftedAttachments": "BOL + ELD attached · approve in 1 tap",
+      "approve": "Approve & send"
+    }
+  },
+  "howItWorks": {
+    "eyebrow": "60-second setup",
+    "title": "No IT. No new software.",
+    "subtitle": "If you can install a Chrome extension and sign into DAT, you're done.",
+    "steps": [
+      {
+        "title": "Install the Chrome extension.",
+        "body": "Free on the Chrome Web Store. Works on Edge and Brave too."
+      },
+      {
+        "title": "Sign into DAT or Truckstop like normal.",
+        "body": "The extension reads load rows on the page — nothing more."
+      },
+      {
+        "title": "AI starts vetting and recovering.",
+        "body": "Within 5 seconds you'll see your first score chip on the board."
+      }
+    ]
   },
   "pricing": {
-    "title": "Honest pricing",
-    "subtitle": "Pay for the outcome. Cancel anytime.",
-    "plans": {
-      "vetting": {
-        "name": "Broker Vetting",
-        "price": "$199",
-        "cadence": "/ month",
-        "description": "Unlimited broker checks + continuous monitoring + watchlist alerts.",
-        "cta": "Start 14-day trial"
+    "eyebrow": "Pricing",
+    "titleLead": "Free to start. Only pay when we",
+    "titleItalic": "recover",
+    "titleRest": "for you.",
+    "subtitle": "Both plans share the same 18% success fee on detention recovered. Pro removes every limit and unlocks the full network.",
+    "free": {
+      "name": "Free",
+      "badge": "For trying it out",
+      "desc": "Detention recovery on us. Vetting with daily caps.",
+      "price": "$0",
+      "per": "/ month",
+      "plus18": "+ 18% on recovered detention",
+      "guarantee": "$0 if we don't recover",
+      "cta": "Add to Chrome — free",
+      "features": [
+        [
+          "AI score chips on DAT + Truckstop",
+          "Up to 5 broker vets per day"
+        ],
+        [
+          "Detention auto-claim drafting",
+          "Up to 10 claims / month"
+        ],
+        [
+          "Carrier network access",
+          "Read-only · top-line signals"
+        ],
+        [
+          "Email support",
+          "48h response"
+        ],
+        [
+          "1 user · 1 connected load-board account",
+          "No team seats"
+        ]
+      ]
+    },
+    "pro": {
+      "name": "Pro",
+      "badge": "Most popular",
+      "desc": "Same success fee, every limit removed.",
+      "price": "$199",
+      "per": "/ month",
+      "plus18": "+ 18% on recovered detention",
+      "trial": "14-day free trial",
+      "cta": "Start 14-day free trial",
+      "features": [
+        [
+          "Unlimited broker vetting",
+          "No daily caps · ever"
+        ],
+        [
+          "Unlimited auto-claims",
+          "Every detention captured"
+        ],
+        [
+          "Full carrier network data",
+          "1,240 fleets · live pay-speed signals"
+        ],
+        [
+          "Custom AI risk thresholds",
+          "Block / warn / approve at booking"
+        ],
+        [
+          "FMCSA + insurance + bond monitoring",
+          "Real-time alerts"
+        ],
+        [
+          "Team seats + role-based access",
+          "Unlimited users"
+        ],
+        [
+          "Priority support · 24h SLA",
+          "Shared Slack channel"
+        ]
+      ]
+    },
+    "explainer": {
+      "title": "How the 18% success fee works",
+      "body": "We file, follow up, and chase payment. When the broker pays detention, we deduct 18% automatically — never an invoice.",
+      "math": "Recover $1,000 → you keep $820. We collect $0 if no recovery.",
+      "cta": "See math"
+    },
+    "fleet": "Fleet (50+ trucks)?",
+    "talkToSales": "Talk to sales",
+    "fleetSuffix": "for volume rates and SSO."
+  },
+  "footerCta": {
+    "titleLead": "Your next bad broker costs",
+    "titleItalic": "more than this",
+    "titleRest": ".",
+    "subtitle": "Install in 60 seconds. Cancel anytime. No credit card.",
+    "ctaPrimary": "Add to Chrome",
+    "ctaSecondary": "Book a call"
+  },
+  "footer": {
+    "tagline": "The AI copilot for dispatchers. Built by ex-carriers tired of writing off detention.",
+    "columns": {
+      "product": {
+        "title": "Product",
+        "links": [
+          "Chrome extension",
+          "AI vetting",
+          "Auto detention",
+          "Integrations",
+          "Changelog"
+        ]
       },
-      "detention": {
-        "name": "Detention Recovery",
-        "price": "18%",
-        "cadence": "success fee",
-        "description": "We only get paid when we recover detention for you. No subscription, no setup fee.",
-        "cta": "See how it works"
+      "company": {
+        "title": "Company",
+        "links": [
+          "About",
+          "Careers",
+          "Press",
+          "Customers",
+          "Contact"
+        ]
+      },
+      "resources": {
+        "title": "Resources",
+        "links": [
+          "Blog",
+          "Carrier guide",
+          "Help center",
+          "API docs",
+          "Status",
+          "Security"
+        ]
+      },
+      "legal": {
+        "title": "Legal",
+        "links": [
+          "Terms",
+          "Privacy",
+          "DPA",
+          "SOC 2",
+          "Subprocessors"
+        ]
       }
+    },
+    "copyright": "© 2026 VettGuard, Inc.",
+    "compliance": "SOC 2 Type II · GDPR · Built in Tashkent + Chicago"
+  },
+  "waitlist": {
+    "placeholder": "you@yourcarrier.com",
+    "cta": "Join waitlist",
+    "submitting": "Joining…",
+    "success": "We'll email when your spot opens.",
+    "ariaEmail": "Email address"
+  },
+  "mobile": {
+    "menu": "Open menu",
+    "hero": {
+      "pill": "AI for DAT + Truckstop",
+      "headlineLead": "The dispatcher's",
+      "headlineItalic": "copilot",
+      "headlineRest": "for brokers + detention.",
+      "subtitle": "A Chrome extension that scores brokers and files detention claims automatically. 18% on what we recover.",
+      "ctaPrimary": "Join waitlist",
+      "ctaSecondary": "Watch 60-sec demo",
+      "social": "1,240+ carriers running it",
+      "recoveredLabel": "Live · auto-recovered ytd",
+      "recoveredSub": "Across 1,240 carriers · DAT, Truckstop, 123Loadboard."
+    },
+    "social": {
+      "livesInside": "Lives inside ↓"
+    },
+    "extension": {
+      "eyebrow": "The extension",
+      "title": "Score chips appear inline on every load.",
+      "subtitle": "The moment DAT loads, every broker row gets an A–F grade and explanation.",
+      "boardLabel": "DAT load board · 247 results",
+      "aiVerdict": "AI verdict",
+      "aiBold": "Avoid this load.",
+      "aiBody": "2 bond claims · pays in 62 days · 84% of carriers skipped in March.",
+      "benefits": [
+        {
+          "t": "Real-time AI broker scoring",
+          "d": "Trained on 4.2M loads from the carrier network."
+        },
+        {
+          "t": "Auto-detention claims",
+          "d": "AI files at hour 2 with BOL + ELD attached."
+        },
+        {
+          "t": "18% success fee",
+          "d": "You only pay when we recover."
+        }
+      ]
+    },
+    "pricing": {
+      "eyebrow": "Pricing",
+      "titleLead": "Pay only when we",
+      "titleItalic": "recover",
+      "titleRest": ".",
+      "subtitle": "Both plans · 18% success fee. Pro removes the limits.",
+      "freeName": "Free",
+      "freeBadge": "Trial",
+      "freePrice": "$0",
+      "perMo": "/ mo",
+      "freePlus": "+ 18% on recovered detention",
+      "freeCta": "Add to Chrome",
+      "freeFeatures": [
+        "Up to 5 broker vets / day",
+        "Up to 10 claims / mo",
+        "Read-only network access",
+        "1 user"
+      ],
+      "proName": "Pro",
+      "proBadge": "Most popular",
+      "proPrice": "$199",
+      "proPlus": "+ 18% · 14-day free trial",
+      "proCta": "Start free trial",
+      "proFeatures": [
+        "Unlimited broker vetting",
+        "Unlimited auto-claims",
+        "Full network · real-time signals",
+        "Custom AI guardrails",
+        "Team seats + SSO add-on",
+        "Priority support · 24h SLA"
+      ]
+    },
+    "testimonial": {
+      "eyebrow": "What carriers say",
+      "quote": "We recovered $84k in detention in our first quarter — money that used to disappear into write-offs.",
+      "author": "Marisol Tate",
+      "role": "VP Ops · Northridge Freight · 180 trucks",
+      "stat": "$84k",
+      "statLbl": "recovered Q1"
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "Questions, answered.",
+      "items": [
+        {
+          "q": "How does the 18% success fee work?",
+          "a": "When a broker pays detention, the recovered amount lands in your bank or factoring account. We auto-deduct 18% at payout. No invoice. $0 if no recovery."
+        },
+        {
+          "q": "Do I need to switch TMS?",
+          "a": "No. VettGuard is a Chrome extension that lives on DAT, Truckstop, 123Loadboard — the boards you already use. We connect via OAuth."
+        },
+        {
+          "q": "How does the AI score brokers?",
+          "a": "FMCSA filings + Experian credit + factoring telemetry + anonymous pay cadence from 1,240 carriers. Re-trained weekly, scores update every 6h."
+        },
+        {
+          "q": "What if a broker disputes a claim?",
+          "a": "Our ops team handles every dispute — included in the 18%. 94% of claims are paid without dispute thanks to GPS/eBOL evidence."
+        }
+      ]
+    },
+    "cta": {
+      "titleLead": "Your next bad broker costs",
+      "titleItalic": "more than this",
+      "titleRest": ".",
+      "subtitle": "Install in 60 seconds. Cancel anytime. No card up front.",
+      "button": "Join waitlist"
+    },
+    "footer": {
+      "tagline": "AI copilot for dispatchers. Built by ex-carriers tired of writing off detention.",
+      "columns": {
+        "product": {
+          "title": "Product",
+          "links": [
+            "Extension",
+            "Vetting",
+            "Detention",
+            "Pricing"
+          ]
+        },
+        "company": {
+          "title": "Company",
+          "links": [
+            "About",
+            "Careers",
+            "Press",
+            "Contact"
+          ]
+        },
+        "resources": {
+          "title": "Resources",
+          "links": [
+            "Help",
+            "API",
+            "Status",
+            "Security"
+          ]
+        },
+        "legal": {
+          "title": "Legal",
+          "links": [
+            "Terms",
+            "Privacy",
+            "SOC 2",
+            "DPA"
+          ]
+        }
+      },
+      "copyright": "© 2026 VettGuard, Inc. · SOC 2 Type II"
+    },
+    "close": "Close",
+    "faqLabel": "FAQ"
+  },
+  "extras": {
+    "press": {
+      "eyebrow": "Featured in",
+      "outlets": [
+        "FreightWaves",
+        "TechCrunch",
+        "Forbes",
+        "Trucking Dive",
+        "Overdrive",
+        "CCJ"
+      ],
+      "quotes": [
+        {
+          "quote": "The first carrier-side tool that treats brokers like Stripe treats merchants — with credit scores, not promises.",
+          "source": "FreightWaves",
+          "date": "March 2026"
+        },
+        {
+          "quote": "VettGuard is doing for dispatchers what Plaid did for fintech — wiring up rails that already exist.",
+          "source": "TechCrunch",
+          "date": "February 2026"
+        },
+        {
+          "quote": "The 18% success fee aligns incentives perfectly. Carriers love it. Brokers… not so much.",
+          "source": "Forbes",
+          "date": "January 2026"
+        }
+      ],
+      "backingLead": "Backed by Y Combinator, A.Capital, and 22 trucking-industry operators.",
+      "backingSub": "S25 batch · seed led by A.Capital · angel checks from ex-CHRobinson, ex-Loadsmart, ex-Convoy.",
+      "readMore": "Read announcement"
+    },
+    "demoVideo": {
+      "eyebrow": "See it in action",
+      "titleLead": "90 seconds. From",
+      "titleItalic": "install",
+      "titleRest": "to first recovery.",
+      "subtitle": "Akmal from Cascade Transport walks through his actual day on DAT with the extension running.",
+      "badgeLeft": "VettGuard · product demo",
+      "duration": "1:32",
+      "elapsed": "0:00 / 1:32",
+      "chapters": [
+        [
+          "0:00",
+          "Install"
+        ],
+        [
+          "0:18",
+          "First broker score"
+        ],
+        [
+          "0:46",
+          "Auto-claim fires"
+        ],
+        [
+          "1:12",
+          "Payment lands"
+        ]
+      ],
+      "playLabel": "Play demo video"
+    },
+    "roi": {
+      "eyebrow": "ROI calculator",
+      "titleLead": "How much are you",
+      "titleItalic": "leaving",
+      "titleRest": "on the dock?",
+      "subtitle": "Carriers write off 71% of detention because the paperwork isn't worth a dispatcher's time. Plug in your fleet and see what's been slipping through.",
+      "estLabel": "Your estimated annual recovery",
+      "youKeep": "You keep · 82%",
+      "ourFee": "VettGuard · 18%",
+      "cta": "Start recovering — free",
+      "inputsEyebrow": "Inputs",
+      "inputsTitle": "Tell us about your fleet",
+      "lblTrucks": "Trucks in your fleet",
+      "lblHours": "Avg. detention hours per claim",
+      "lblRate": "Detention rate per hour",
+      "lblEvents": "Detention events per truck per month",
+      "perClaim": "Per claim",
+      "perMonth": "Per month",
+      "perTruck": "Per truck · mo"
+    },
+    "comparison": {
+      "eyebrow": "Why not the alternatives",
+      "titleLead": "Built for",
+      "titleItalic": "today's",
+      "titleRest": "dispatchers.",
+      "subtitle": "Spreadsheets break. RMIS is built for brokers, not carriers. Carrier411 is read-only. VettGuard is the only AI-native tool that lives where you book.",
+      "recommended": "Recommended",
+      "cols": [
+        "VettGuard",
+        "Manual / dispatcher",
+        "RMIS",
+        "Carrier411"
+      ],
+      "rows": [
+        [
+          "Real-time AI broker scoring",
+          "yes",
+          "no",
+          "no",
+          "partial"
+        ],
+        [
+          "Inline on DAT + Truckstop",
+          "yes",
+          "no",
+          "no",
+          "no"
+        ],
+        [
+          "Detention claim auto-filing",
+          "yes",
+          "no",
+          "no",
+          "no"
+        ],
+        [
+          "Updated every 6 hours",
+          "yes",
+          "no",
+          "partial",
+          "no"
+        ],
+        [
+          "Carrier network signals",
+          "yes",
+          "no",
+          "no",
+          "yes"
+        ],
+        [
+          "No new TMS or login",
+          "yes",
+          "no",
+          "no",
+          "no"
+        ],
+        [
+          "Time to first value",
+          "60 sec",
+          "days",
+          "2 weeks",
+          "days"
+        ],
+        [
+          "Pricing model",
+          "18% success fee",
+          "unpaid hours",
+          "$2-5k/mo",
+          "$500/mo"
+        ]
+      ],
+      "partialLabel": "partial"
+    },
+    "testimonials": {
+      "eyebrow": "Customers",
+      "titleLead": "Carriers don't talk in",
+      "titleItalic": "maybes",
+      "titleRest": ".",
+      "subtitle": "Three quarters in. 1,240 fleets running it. Every dollar tracked.",
+      "items": [
+        {
+          "q": "We recovered $84k in detention in our first quarter. The score chips killed three broker relationships we should have killed years ago.",
+          "name": "Marisol Tate",
+          "role": "VP Operations · Northridge Freight",
+          "fleet": "180 trucks",
+          "stat": "$84k",
+          "statLbl": "recovered Q1"
+        },
+        {
+          "q": "Our dispatchers stopped chasing detention paperwork day one. VettGuard files it before they even know there's a delay.",
+          "name": "Devon Ashford",
+          "role": "Dispatch Manager · Cascade Transport",
+          "fleet": "62 trucks",
+          "stat": "0 hrs",
+          "statLbl": "dispatcher work"
+        },
+        {
+          "q": "I run 4 trucks. The MC# search has saved me twice this year — both brokers eventually went out of business with carriers unpaid.",
+          "name": "Reza Khaliq",
+          "role": "Owner-operator · Khaliq Hauling",
+          "fleet": "4 trucks",
+          "stat": "2x",
+          "statLbl": "avoided bad payers"
+        }
+      ]
+    },
+    "faqDesktop": {
+      "eyebrow": "FAQ",
+      "title": "Questions, answered.",
+      "subtitle": "Still wondering something? Our team replies in under 30 minutes during business hours.",
+      "emailUs": "Email us",
+      "bookCall": "Book a call",
+      "items": [
+        {
+          "q": "How is the AI score calculated?",
+          "a": "We combine FMCSA filings, Experian commercial credit, factoring system telemetry, and anonymous payment cadence reported by 1,240 carriers in the network. The model is retrained weekly and updates broker scores every 6 hours."
+        },
+        {
+          "q": "Do I have to switch TMS or change my workflow?",
+          "a": "No. VettGuard is a Chrome extension that lives on DAT, Truckstop, 123Loadboard, and other boards you already use. We connect via OAuth and add a guardrail layer at booking — your dispatcher's flow doesn't change."
+        },
+        {
+          "q": "What if a broker disputes a detention claim?",
+          "a": "Our claim packets include GPS arrival/departure pings, eBOL signatures with timestamps, and the rate confirmation's detention terms. 94% are paid without dispute. For the remaining 6%, our ops team handles the back-and-forth — included in the 18% fee."
+        },
+        {
+          "q": "How does the 18% success fee actually work?",
+          "a": "When a broker pays detention, the recovered amount is deposited to your bank or factoring account. We deduct 18% automatically at payout — never an invoice. If we don't recover, you owe nothing."
+        },
+        {
+          "q": "Is the carrier-reported payment data anonymized?",
+          "a": "Yes. Carriers contribute their broker payment data to the network anonymously. No individual carrier's data is ever exposed to a broker, and brokers have no visibility into who scored them how."
+        },
+        {
+          "q": "How long is onboarding?",
+          "a": "Owner-operators are live in under 60 seconds — install the extension, sign into DAT, done. Mid-size fleets connect their ELD and factoring in another 5 minutes. Enterprise fleets (50+ trucks) get a dedicated implementation manager."
+        },
+        {
+          "q": "What is the contract structure?",
+          "a": "Free plan and Pro are both month-to-month. Cancel anytime, no termination fee. Fleet plans (50+ trucks) are typically annual with quarterly business reviews and custom rates."
+        },
+        {
+          "q": "Where is my data stored? Are you SOC 2 compliant?",
+          "a": "Yes — SOC 2 Type II certified. Data is stored encrypted at rest (AES-256) in US-East. We sign DPAs and BAAs on request. Full security overview at vettguard.com/security."
+        }
+      ]
     }
   },
-  "faq": {
-    "title": "Common questions",
-    "items": {
-      "eld": {
-        "q": "Which ELDs do you support?",
-        "a": "Motive and Samsara at launch — together about 70% of US carriers. Geotab, Verizon Connect, KeepTruckin Lite, and others on the roadmap."
+  "pricingPage": {
+    "hero": {
+      "pill": "18% success fee · only when paid",
+      "titleLead": "Pricing that scales",
+      "titleBreak": "with what we",
+      "titleItalic": "recover",
+      "titleRest": ".",
+      "subtitle": "Both plans share the same 18% success fee on detention. Pro removes every limit and unlocks the full carrier network."
+    },
+    "free": {
+      "name": "Free",
+      "badge": "For trying it out",
+      "desc": "Detention recovery on us. Vetting with daily caps.",
+      "price": "$0",
+      "per": "/ month",
+      "plus18": "+ 18% on recovered detention · $0 if no recovery",
+      "cta": "Add to Chrome — free"
+    },
+    "pro": {
+      "name": "Pro",
+      "badge": "Most popular",
+      "desc": "Same success fee. Every limit removed.",
+      "price": "$199",
+      "per": "/ month",
+      "plus18": "+ 18% on recovered detention · 14-day free trial",
+      "cta": "Start 14-day free trial"
+    },
+    "compare": {
+      "title": "Compare plans",
+      "proSub": "$199 / mo + 18%"
+    },
+    "sections": {
+      "vetting": "AI vetting",
+      "detention": "Detention recovery",
+      "workspace": "Workspace"
+    },
+    "features": [
+      {
+        "section": "vetting"
       },
-      "loadboards": {
-        "q": "Which load boards does the Chrome extension cover?",
-        "a": "DAT, Truckstop, and 123Loadboard at launch. We are adding Sylectus, Direct Freight, RXO, Uber Freight, and others every month."
+      {
+        "name": "Broker vetting on DAT + Truckstop",
+        "free": "inline scores",
+        "pro": "inline scores"
       },
-      "fees": {
-        "q": "How do you collect the 18% detention fee?",
-        "a": "When the broker pays you, we send a single Stripe invoice for 18% of the recovered amount. You pay only after you get paid."
+      {
+        "name": "Daily vetting cap",
+        "free": "5 / day",
+        "pro": "unlimited"
+      },
+      {
+        "name": "Network signals (peer-reported pay data)",
+        "free": "read-only · top-line",
+        "pro": "full · realtime"
+      },
+      {
+        "name": "FMCSA + insurance + bond monitoring",
+        "free": "weekly digest",
+        "pro": "real-time alerts"
+      },
+      {
+        "name": "Custom AI risk thresholds",
+        "free": false,
+        "pro": true
+      },
+      {
+        "section": "detention"
+      },
+      {
+        "name": "Auto-claim drafting",
+        "free": "up to 10 / mo",
+        "pro": "unlimited"
+      },
+      {
+        "name": "AI-attached evidence (BOL + ELD + rate-con)",
+        "free": true,
+        "pro": true
+      },
+      {
+        "name": "Auto-file & follow-up",
+        "free": false,
+        "pro": true
+      },
+      {
+        "name": "Dispute handling by VettGuard ops",
+        "free": false,
+        "pro": true
+      },
+      {
+        "name": "Success fee · only when recovered",
+        "free": "18%",
+        "pro": "18%"
+      },
+      {
+        "section": "workspace"
+      },
+      {
+        "name": "Team seats",
+        "free": "1 user",
+        "pro": "unlimited"
+      },
+      {
+        "name": "Role-based access (RBAC)",
+        "free": false,
+        "pro": true
+      },
+      {
+        "name": "SSO / SAML",
+        "free": false,
+        "pro": "add-on · Fleet"
+      },
+      {
+        "name": "API + webhooks",
+        "free": false,
+        "pro": true
+      },
+      {
+        "name": "Priority support · 24h SLA",
+        "free": false,
+        "pro": true
+      },
+      {
+        "name": "Shared Slack channel (25+ trucks)",
+        "free": false,
+        "pro": true
       }
+    ]
+  },
+  "aboutPage": {
+    "hero": {
+      "pill": "Built in Tashkent + Chicago",
+      "titleLead": "The team that built",
+      "titleItalic": "VettGuard",
+      "titleRest": "ran the trucks too.",
+      "subtitle": "Diyor's dad lost a $4,200 detention claim in 2019 because the paperwork wasn't worth chasing. We built VettGuard so he'd never lose another one. So nobody would."
+    },
+    "stats": [
+      [
+        "1,240",
+        "carriers running"
+      ],
+      [
+        "$8.4M",
+        "recovered ytd"
+      ],
+      [
+        "94%",
+        "claim approval rate"
+      ],
+      [
+        "11d",
+        "median payout"
+      ]
+    ],
+    "team": {
+      "eyebrow": "Team",
+      "title": "Three founders. One story."
+    },
+    "founders": [
+      {
+        "name": "Diyor Rakhimov",
+        "role": "Co-founder, CEO",
+        "bio": "Ex-Loadsmart. Ran detention recovery for 14 years.",
+        "initials": "DR",
+        "color": "#F4D6C2"
+      },
+      {
+        "name": "Aziz Karimov",
+        "role": "Co-founder, CTO",
+        "bio": "Ex-Stripe ML platform. Built a Bayesian risk engine for SMB lending.",
+        "initials": "AK",
+        "color": "#D9E0CC"
+      },
+      {
+        "name": "Sevara Mukhamedova",
+        "role": "Head of Ops",
+        "bio": "Ex-CH Robinson dispatch. 1,200 carriers in her rolodex.",
+        "initials": "SM",
+        "color": "#E4D3DA"
+      }
+    ],
+    "values": {
+      "eyebrow": "What we believe",
+      "title": "Four principles."
+    },
+    "principles": [
+      {
+        "icon": "shield",
+        "t": "Carriers first",
+        "d": "Every product decision starts with: would my dad — who owned a 4-truck fleet — want this?"
+      },
+      {
+        "icon": "bolt",
+        "t": "AI does the boring work",
+        "d": "Dispatchers chase trucks, not paperwork. We automate the paper, never the relationships."
+      },
+      {
+        "icon": "dollar",
+        "t": "Aligned incentives",
+        "d": "Success fees only. We make money when carriers make money. Otherwise we lose."
+      },
+      {
+        "icon": "sparkle",
+        "t": "Bias for shipping",
+        "d": "Two-week roadmaps. Customers vote with usage. Nothing precious gets shipped."
+      }
+    ],
+    "backed": {
+      "eyebrow": "Backed by",
+      "items": [
+        "Y Combinator",
+        "A.Capital",
+        "FreightLane Ventures",
+        "Pioneer Fund",
+        "+ 22 operator angels"
+      ]
     }
   }
 }

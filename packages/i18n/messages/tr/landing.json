@@ -1,85 +1,884 @@
 {
-  "_status": "ai-draft",
-  "hero": {
-    "eyebrow": "Yapay zekâ destekli trucking back-office",
-    "title": "Detention'dan para kaybetmeyi bırak. Kötü broker'lara güvenmeyi bırak.",
-    "subtitle": "VettGuard detention talepleri ve broker doğrulamayı otomatik pilotta yürütür. Tek tık, her load board. Sen onaylarsın — gerisini Claude yapar.",
-    "ctaPrimary": "Ücretsiz dene",
-    "ctaSecondary": "Nasıl çalışır"
+  "_status": "draft",
+  "nav": {
+    "extension": "Eklenti",
+    "howItWorks": "Nasıl çalışır",
+    "pricing": "Fiyatlar",
+    "carriers": "Taşıyıcılar",
+    "blog": "Blog",
+    "signIn": "Giriş",
+    "joinWaitlist": "Listeye katıl",
+    "toggleTheme": "Temayı değiştir",
+    "language": "Dil"
   },
-  "metrics": {
-    "title": "Dispatcher'ların VettGuard ile geri kazandığı",
-    "items": {
-      "recovered": {
-        "value": "$1.2M+",
-        "label": "2026'da geri alınan detention"
-      },
-      "vetted": {
-        "value": "47,000+",
-        "label": "Sürekli izlenen broker"
-      },
-      "saved": {
-        "value": "9 saat/hafta",
-        "label": "Dispatcher başına kazanılan zaman"
-      }
+  "hero": {
+    "pill": "AI dispeçer copilot · DAT ve Truckstop için",
+    "headlineLead": "Dispeçerin",
+    "headlineItalic": "copilot'u",
+    "headlineRest": "— brokerleri puanlar, detention'ı geri alır.",
+    "subtitle": "DAT içinde çalışan Chrome eklentisi. Tek tıkla broker puanı. Tek tıkla detention talebi. Evrak işini AI yapar.",
+    "ctaPrimary": "Chrome'a ekle — ücretsiz",
+    "ctaSecondary": "60 sn demo izle",
+    "socialProof": "1.240+ taşıyıcı · DAT, Truckstop, 123Loadboard ile birlikte çalışır",
+    "demo": {
+      "loadBoardCount": "// load board · 247 sonuç",
+      "originHeader": "Kaynak",
+      "destinationHeader": "Hedef",
+      "rateHeader": "Ücret ↓",
+      "live": "Live",
+      "selectedLabel": "Seçili",
+      "avoidTitle": "Bu yükü atla",
+      "avoidSub": "62 günde öder · 3 atlanmış",
+      "insurance": "Sigorta",
+      "insuranceValue": "Süresi dolmuş",
+      "bondClaims": "Bond talepleri",
+      "bondClaimsValue": "12 ayda 2",
+      "carrierReviews": "Taşıyıcı yorumları",
+      "carrierReviewsValue": "1,8/5 (84)",
+      "aiHint": "AI: son 30 günde taşıyıcıların %84'ü atladı.",
+      "recoveredLabel": "Geri alınan · ay başı",
+      "trendUp": "↑ %18,4",
+      "trackButton": "Detention için takip et",
+      "liveBadge": "Live · otomatik geri alındı",
+      "yearToDate": "yıl başından · 1.240 taşıyıcı"
     }
   },
-  "features": {
-    "title": "Tek tık dispatching için tasarlandı",
+  "trustBar": {
+    "livesInside": "İçinde çalışır ↓"
+  },
+  "benefits": {
+    "eyebrow": "Neden VettGuard",
+    "title": "Dispeçerler için, evrak için değil.",
     "items": {
-      "extension": {
-        "title": "DAT, Truckstop, 123Loadboard içinde yaşar",
-        "body": "Broker doğrula, detention talebi gönder, rate-con yanıtı oluştur — kullandığın load board'dan çıkmadan."
+      "vetting": {
+        "eyebrow": "Doğrulama",
+        "title": "AI her brokeri sen rezerve etmeden puanlar.",
+        "body": "DAT ve Truckstop satırlarında puan çipleri görünür. 4,2M yük ve ödeme sonucu üzerinde eğitildi.",
+        "stat": "0,4s",
+        "statLbl": "ort. puanlama süresi"
       },
       "detention": {
-        "title": "Detention recovery otomatik pilotta",
-        "body": "Motive ve Samsara ELD verileri bekleme süresini ispatlar. Claude evrak paketini hazırlar. Sen gönder dersin. Sadece ödeme alındığında %18 alırız."
+        "eyebrow": "Detention",
+        "title": "Bekleme 2 saati geçer geçmez talepler kendi kendine açılır.",
+        "body": "ELD'yi izleriz, talebi yazarız, BOL'yi ekleriz, brokere göndeririz. Sen sadece para hesaba düştüğünü görürsün.",
+        "stat": "%94",
+        "statLbl": "uyuşmazlıksız tahsil"
       },
-      "vetting": {
-        "title": "Sürekli broker izleme",
-        "body": "FMCSA yetkisi, bond, şikâyet geçmişi, ödeme örüntüleri — her ay yeniden puanlanır. Broker riskli hale gelince watchlist seni uyarır."
-      },
-      "security": {
-        "title": "Banka seviyesinde güvenlik",
-        "body": "Uçtan uca şifreleme, satır seviyesinde tenant izolasyonu, tam denetim kaydı. Carrier verilerin asla sızmaz."
+      "native": {
+        "eyebrow": "Yerel",
+        "title": "Yeni giriş yok. CSV yok. Yeni TMS yok.",
+        "body": "Chrome eklentisini bir kez kur. Mevcut load-board hesabınla gir. 60 saniyede hazır.",
+        "stat": "60s",
+        "statLbl": "yayın süresi"
       }
     }
+  },
+  "showcase": {
+    "eyebrow": "Eklenti",
+    "title": "Üç an. Sıfır yeni araç.",
+    "step": "Adım",
+    "moments": {
+      "chips": {
+        "title": "Puan çipleri satır içinde.",
+        "body": "Her broker satırı sayfa yüklenir yüklenmez yeşil/sarı/kırmızı puan alır."
+      },
+      "hover": {
+        "title": "Neden? — Fareyi getir.",
+        "body": "AI puanı açıklar — ödeme hızı, bond, uyuşmazlıklar, taşıyıcı yorumları."
+      },
+      "claim": {
+        "title": "Tek tıkla otomatik detention.",
+        "body": "Rezervasyondan sonra eklenti yükü izler. Talep 2. saatte kendiliğinden yazılır."
+      }
+    },
+    "hover": {
+      "summary": "AI risk özeti",
+      "scoreLine": "Atla · 41/100",
+      "body": "BlueWave'in 2 aktif bond talebi var ve ortalama 62 günde ödüyor. Son 30 günde ağındaki taşıyıcıların %84'ü atladı.",
+      "paySpeed": "Ödeme hızı",
+      "bondClaims": "Bond talepleri",
+      "disputes": "Uyuşmazlıklar"
+    },
+    "claim": {
+      "arrivalLabel": "10:42 · varış",
+      "arrivalBody": "Kamyon #23 — Houston DC'de geofence-in",
+      "thresholdLabel": "12:42 · 2 saat geçti",
+      "thresholdBody": "Detention eşiği aşıldı",
+      "draftedLabel": "16:08 · otomatik yazıldı",
+      "draftedBody": "$487,50 — talep hazır",
+      "draftedAttachments": "BOL + ELD eklendi · 1 dokunuşla onayla",
+      "approve": "Onayla ve gönder"
+    }
+  },
+  "howItWorks": {
+    "eyebrow": "60 saniyelik kurulum",
+    "title": "BT yok. Yeni yazılım yok.",
+    "subtitle": "Chrome eklentisi kurabiliyorsan ve DAT'a girebiliyorsan hazırsın.",
+    "steps": [
+      {
+        "title": "Chrome eklentisini kur.",
+        "body": "Chrome Web Store'da ücretsiz. Edge ve Brave'de de çalışır."
+      },
+      {
+        "title": "DAT veya Truckstop'a normal gir.",
+        "body": "Eklenti sadece sayfadaki yük satırlarını okur — başka bir şey değil."
+      },
+      {
+        "title": "AI puanlamaya ve geri almaya başlar.",
+        "body": "5 saniye içinde ilk puan çipini görürsün."
+      }
+    ]
   },
   "pricing": {
-    "title": "Dürüst fiyatlandırma",
-    "subtitle": "Sonuca öde. İstediğinde iptal et.",
-    "plans": {
-      "vetting": {
-        "name": "Broker Vetting",
-        "price": "$199",
-        "cadence": "/ ay",
-        "description": "Sınırsız broker kontrolü + sürekli izleme + watchlist uyarıları.",
-        "cta": "14 gün ücretsiz"
+    "eyebrow": "Fiyatlar",
+    "titleLead": "Başlamak ücretsiz. Sadece biz",
+    "titleItalic": "geri aldığımızda",
+    "titleRest": "ödersin.",
+    "subtitle": "Her iki plan da geri alınan detention'ın %18'i başarı ücretini paylaşır. Pro tüm limitleri kaldırır.",
+    "free": {
+      "name": "Ücretsiz",
+      "badge": "Denemek için",
+      "desc": "Detention geri alma bizden. Günlük sınırlı doğrulama.",
+      "price": "$0",
+      "per": "/ ay",
+      "plus18": "+ geri alınan detention'ın %18'i",
+      "guarantee": "Geri alamazsak $0",
+      "cta": "Chrome'a ekle — ücretsiz",
+      "features": [
+        [
+          "DAT + Truckstop AI puan çipleri",
+          "Günde 5 broker doğrulaması"
+        ],
+        [
+          "Otomatik detention taslağı",
+          "Aylık 10 talep"
+        ],
+        [
+          "Taşıyıcı ağına erişim",
+          "Sadece okuma · temel sinyaller"
+        ],
+        [
+          "E-posta desteği",
+          "48 sa yanıt"
+        ],
+        [
+          "1 kullanıcı · 1 load-board hesabı",
+          "Takım koltuğu yok"
+        ]
+      ]
+    },
+    "pro": {
+      "name": "Pro",
+      "badge": "En popüler",
+      "desc": "Aynı başarı ücreti, tüm limitler kaldırıldı.",
+      "price": "$199",
+      "per": "/ ay",
+      "plus18": "+ geri alınan detention'ın %18'i",
+      "trial": "14 gün ücretsiz",
+      "cta": "14 günlük denemeyi başlat",
+      "features": [
+        [
+          "Sınırsız broker doğrulaması",
+          "Günlük limit yok — asla"
+        ],
+        [
+          "Sınırsız otomatik talep",
+          "Her detention yakalandı"
+        ],
+        [
+          "Tam taşıyıcı ağı verisi",
+          "1.240 filo · canlı ödeme sinyalleri"
+        ],
+        [
+          "Özel AI risk eşikleri",
+          "Rezervasyonda blokla/uyar/onayla"
+        ],
+        [
+          "FMCSA + sigorta + bond izleme",
+          "Gerçek zamanlı uyarılar"
+        ],
+        [
+          "Takım koltukları + RBAC",
+          "Sınırsız kullanıcı"
+        ],
+        [
+          "Öncelikli destek · 24 sa SLA",
+          "Ortak Slack kanalı"
+        ]
+      ]
+    },
+    "explainer": {
+      "title": "%18 başarı ücreti nasıl çalışır",
+      "body": "Açarız, takip ederiz, ödemeyi kovalarız. Broker detention'ı ödediğinde otomatik %18 keseriz — asla fatura yok.",
+      "math": "$1.000 geri alındı → sen $820 alırsın. Geri alınmazsa biz $0 alırız.",
+      "cta": "Matematiği gör"
+    },
+    "fleet": "Filo (50+ kamyon)?",
+    "talkToSales": "Satışla iletişim",
+    "fleetSuffix": "— hacim fiyatları ve SSO."
+  },
+  "footerCta": {
+    "titleLead": "Bir sonraki kötü broker",
+    "titleItalic": "bundan daha pahalıya",
+    "titleRest": "mal olur.",
+    "subtitle": "60 saniyede kurulur. İstediğin zaman iptal et. Kart yok.",
+    "ctaPrimary": "Chrome'a ekle",
+    "ctaSecondary": "Görüşme ayarla"
+  },
+  "footer": {
+    "tagline": "Dispeçerin AI copilot'u. Detention silmeyi bırakmak isteyen eski taşıyıcılar tarafından yapıldı.",
+    "columns": {
+      "product": {
+        "title": "Ürün",
+        "links": [
+          "Chrome eklentisi",
+          "AI doğrulama",
+          "Otomatik detention",
+          "Entegrasyonlar",
+          "Changelog"
+        ]
       },
-      "detention": {
-        "name": "Detention Recovery",
-        "price": "%18",
-        "cadence": "başarı ücreti",
-        "description": "Sadece senin için detention geri kazandığımızda ödeme alırız. Abonelik yok, kurulum ücreti yok.",
-        "cta": "Nasıl çalışır"
+      "company": {
+        "title": "Şirket",
+        "links": [
+          "Hakkında",
+          "Kariyer",
+          "Basın",
+          "Müşteriler",
+          "İletişim"
+        ]
+      },
+      "resources": {
+        "title": "Kaynaklar",
+        "links": [
+          "Blog",
+          "Taşıyıcı kılavuzu",
+          "Yardım",
+          "API dokümanı",
+          "Status",
+          "Güvenlik"
+        ]
+      },
+      "legal": {
+        "title": "Hukuki",
+        "links": [
+          "Şartlar",
+          "Gizlilik",
+          "DPA",
+          "SOC 2",
+          "Alt işleyenler"
+        ]
       }
+    },
+    "copyright": "© 2026 VettGuard, Inc.",
+    "compliance": "SOC 2 Type II · GDPR · Tashkent + Chicago'da yapıldı"
+  },
+  "waitlist": {
+    "placeholder": "sen@firman.com",
+    "cta": "Listeye katıl",
+    "submitting": "Kaydediliyor…",
+    "success": "Yerin açılınca e-posta atarız.",
+    "ariaEmail": "E-posta adresi"
+  },
+  "mobile": {
+    "menu": "Menüyü aç",
+    "hero": {
+      "pill": "DAT + Truckstop için AI",
+      "headlineLead": "Dispeçerin",
+      "headlineItalic": "copilot'u",
+      "headlineRest": "— brokerler + detention.",
+      "subtitle": "Brokerleri puanlayan ve detention taleplerini otomatik yollayan Chrome eklentisi. Geri aldığımızın %18'i.",
+      "ctaPrimary": "Listeye katıl",
+      "ctaSecondary": "60 sn demo izle",
+      "social": "1.240+ taşıyıcı kullanıyor",
+      "recoveredLabel": "Live · yıl başından otomatik kurtarılan",
+      "recoveredSub": "1.240 taşıyıcıdan · DAT, Truckstop, 123Loadboard."
+    },
+    "social": {
+      "livesInside": "İçinde çalışır ↓"
+    },
+    "extension": {
+      "eyebrow": "Eklenti",
+      "title": "Her yükte satır içi puan çipleri.",
+      "subtitle": "DAT yüklenir yüklenmez her broker satırı A–F notu ve açıklama alır.",
+      "boardLabel": "DAT load board · 247 sonuç",
+      "aiVerdict": "AI kararı",
+      "aiBold": "Bu yükü atla.",
+      "aiBody": "2 bond talebi · 62 günde öder · Mart'ta taşıyıcıların %84'ü atladı.",
+      "benefits": [
+        {
+          "t": "Gerçek zamanlı AI broker puanlama",
+          "d": "Taşıyıcı ağındaki 4,2M yükle eğitildi."
+        },
+        {
+          "t": "Otomatik detention talepleri",
+          "d": "AI 2. saatte BOL + ELD ekleyerek yollar."
+        },
+        {
+          "t": "%18 başarı ücreti",
+          "d": "Sadece biz geri aldığımızda ödersiniz."
+        }
+      ]
+    },
+    "pricing": {
+      "eyebrow": "Fiyatlar",
+      "titleLead": "Sadece biz",
+      "titleItalic": "geri aldığımızda",
+      "titleRest": " ödeyin.",
+      "subtitle": "Her iki plan · %18 başarı ücreti. Pro limitleri kaldırır.",
+      "freeName": "Free",
+      "freeBadge": "Deneme",
+      "freePrice": "$0",
+      "perMo": "/ ay",
+      "freePlus": "+ kurtarılan detention'dan %18",
+      "freeCta": "Chrome'a ekle",
+      "freeFeatures": [
+        "Günde 5 broker vet'e kadar",
+        "Ayda 10 talebe kadar",
+        "Ağa salt-okunur erişim",
+        "1 kullanıcı"
+      ],
+      "proName": "Pro",
+      "proBadge": "En popüler",
+      "proPrice": "$199",
+      "proPlus": "+ %18 · 14 gün ücretsiz deneme",
+      "proCta": "Ücretsiz denemeyi başlat",
+      "proFeatures": [
+        "Sınırsız broker vetting",
+        "Sınırsız otomatik talep",
+        "Tam ağ · gerçek zamanlı sinyal",
+        "Özel AI guardrail",
+        "Team seats + SSO eklentisi",
+        "Öncelikli destek · 24s SLA"
+      ]
+    },
+    "testimonial": {
+      "eyebrow": "Taşıyıcılar ne diyor",
+      "quote": "İlk çeyrekte $84k detention geri aldık — eskiden write-off'lara giden para.",
+      "author": "Marisol Tate",
+      "role": "VP Ops · Northridge Freight · 180 kamyon",
+      "stat": "$84k",
+      "statLbl": "Q1'de geri alındı"
+    },
+    "faq": {
+      "eyebrow": "SSS",
+      "title": "Sorular, cevaplar.",
+      "items": [
+        {
+          "q": "%18 başarı ücreti nasıl çalışır?",
+          "a": "Broker detention'ı ödediğinde, tutar bankanıza veya factoring hesabınıza geçer. Ödeme sırasında %18'i otomatik düşeriz. Fatura yok. Geri alım olmazsa $0."
+        },
+        {
+          "q": "TMS değiştirmem gerekir mi?",
+          "a": "Hayır. VettGuard, DAT, Truckstop, 123Loadboard üzerinde çalışan bir Chrome eklentisidir. OAuth ile bağlanırız."
+        },
+        {
+          "q": "AI brokerleri nasıl puanlar?",
+          "a": "FMCSA + Experian credit + factoring telemetri + 1.240 taşıyıcıdan anonim pay cadence. Haftalık yeniden eğitilir, puanlar 6 saatte bir güncellenir."
+        },
+        {
+          "q": "Broker bir talebe itiraz ederse?",
+          "a": "Ops ekibimiz her dispute'u yönetir — %18'e dahil. GPS/eBOL kanıtları sayesinde taleplerin %94'ü itirazsız ödenir."
+        }
+      ]
+    },
+    "cta": {
+      "titleLead": "Bir sonraki kötü brokeriniz",
+      "titleItalic": "bundan pahalıya patlar",
+      "titleRest": ".",
+      "subtitle": "60 saniyede kurulur. İstediğiniz zaman iptal. Kart gerekmez.",
+      "button": "Listeye katıl"
+    },
+    "footer": {
+      "tagline": "Dispeçerler için AI copilot. Detention'ı write-off yapmaktan bıkmış eski taşıyıcılar tarafından yapıldı.",
+      "columns": {
+        "product": {
+          "title": "Ürün",
+          "links": [
+            "Eklenti",
+            "Vetting",
+            "Detention",
+            "Fiyatlar"
+          ]
+        },
+        "company": {
+          "title": "Şirket",
+          "links": [
+            "Hakkında",
+            "Kariyer",
+            "Basın",
+            "İletişim"
+          ]
+        },
+        "resources": {
+          "title": "Kaynaklar",
+          "links": [
+            "Yardım",
+            "API",
+            "Durum",
+            "Güvenlik"
+          ]
+        },
+        "legal": {
+          "title": "Yasal",
+          "links": [
+            "Şartlar",
+            "Gizlilik",
+            "SOC 2",
+            "DPA"
+          ]
+        }
+      },
+      "copyright": "© 2026 VettGuard, Inc. · SOC 2 Type II"
+    },
+    "close": "Kapat",
+    "faqLabel": "SSS"
+  },
+  "extras": {
+    "press": {
+      "eyebrow": "Basında",
+      "outlets": [
+        "FreightWaves",
+        "TechCrunch",
+        "Forbes",
+        "Trucking Dive",
+        "Overdrive",
+        "CCJ"
+      ],
+      "quotes": [
+        {
+          "quote": "The first carrier-side tool that treats brokers like Stripe treats merchants — with credit scores, not promises.",
+          "source": "FreightWaves",
+          "date": "March 2026"
+        },
+        {
+          "quote": "VettGuard is doing for dispatchers what Plaid did for fintech — wiring up rails that already exist.",
+          "source": "TechCrunch",
+          "date": "February 2026"
+        },
+        {
+          "quote": "The 18% success fee aligns incentives perfectly. Carriers love it. Brokers… not so much.",
+          "source": "Forbes",
+          "date": "January 2026"
+        }
+      ],
+      "backingLead": "Backed by Y Combinator, A.Capital, and 22 trucking-industry operators.",
+      "backingSub": "S25 batch · seed led by A.Capital · angel checks from ex-CHRobinson, ex-Loadsmart, ex-Convoy.",
+      "readMore": "Duyuruyu oku"
+    },
+    "demoVideo": {
+      "eyebrow": "Çalışırken izle",
+      "titleLead": "90 saniye.",
+      "titleItalic": "Kurulum'dan",
+      "titleRest": "ilk kurtarmaya.",
+      "subtitle": "Cascade Transport'tan Akmal, eklenti açıkken DAT'ta gerçek bir gününü gösterir.",
+      "badgeLeft": "VettGuard · ürün demosu",
+      "duration": "1:32",
+      "elapsed": "0:00 / 1:32",
+      "chapters": [
+        [
+          "0:00",
+          "Install"
+        ],
+        [
+          "0:18",
+          "First broker score"
+        ],
+        [
+          "0:46",
+          "Auto-claim fires"
+        ],
+        [
+          "1:12",
+          "Payment lands"
+        ]
+      ],
+      "playLabel": "Demo videoyu oynat"
+    },
+    "roi": {
+      "eyebrow": "ROI hesaplayıcısı",
+      "titleLead": "Dock'ta ne kadar",
+      "titleItalic": "bırakıyorsunuz",
+      "titleRest": "?",
+      "subtitle": "Taşıyıcılar detention'ın %71'ini siler — evrak işi dispeçer zamanına değmez. Filonuzu girin, neyin kaçtığını görün.",
+      "estLabel": "Tahmini yıllık kurtarma",
+      "youKeep": "Size · %82",
+      "ourFee": "VettGuard · %18",
+      "cta": "Ücretsiz kurtarmaya başla",
+      "inputsEyebrow": "Girdiler",
+      "inputsTitle": "Filonuzu anlatın",
+      "lblTrucks": "Filodaki kamyon",
+      "lblHours": "Talep başına ortalama detention saati",
+      "lblRate": "Saatlik detention ücreti",
+      "lblEvents": "Kamyon başına aylık detention",
+      "perClaim": "Talep başına",
+      "perMonth": "Ay başına",
+      "perTruck": "Kamyon · ay"
+    },
+    "comparison": {
+      "eyebrow": "Alternatifler neden değil",
+      "titleLead": "Bugünün",
+      "titleItalic": "dispeçerleri",
+      "titleRest": "için.",
+      "subtitle": "Tablolar kırılır. RMIS broker için. Carrier411 salt-okunur. VettGuard, rezerve ettiğiniz yerde yaşayan tek AI-native araç.",
+      "recommended": "Önerilen",
+      "cols": [
+        "VettGuard",
+        "Manual / dispatcher",
+        "RMIS",
+        "Carrier411"
+      ],
+      "rows": [
+        [
+          "Real-time AI broker scoring",
+          "yes",
+          "no",
+          "no",
+          "partial"
+        ],
+        [
+          "Inline on DAT + Truckstop",
+          "yes",
+          "no",
+          "no",
+          "no"
+        ],
+        [
+          "Detention claim auto-filing",
+          "yes",
+          "no",
+          "no",
+          "no"
+        ],
+        [
+          "Updated every 6 hours",
+          "yes",
+          "no",
+          "partial",
+          "no"
+        ],
+        [
+          "Carrier network signals",
+          "yes",
+          "no",
+          "no",
+          "yes"
+        ],
+        [
+          "No new TMS or login",
+          "yes",
+          "no",
+          "no",
+          "no"
+        ],
+        [
+          "Time to first value",
+          "60 sec",
+          "days",
+          "2 weeks",
+          "days"
+        ],
+        [
+          "Pricing model",
+          "18% success fee",
+          "unpaid hours",
+          "$2-5k/mo",
+          "$500/mo"
+        ]
+      ],
+      "partialLabel": "kısmen"
+    },
+    "testimonials": {
+      "eyebrow": "Müşteriler",
+      "titleLead": "Taşıyıcılar",
+      "titleItalic": "belki",
+      "titleRest": " demez.",
+      "subtitle": "Üç çeyrek geçti. 1.240 filo kullanıyor. Her dolar izlendi.",
+      "items": [
+        {
+          "q": "We recovered $84k in detention in our first quarter. The score chips killed three broker relationships we should have killed years ago.",
+          "name": "Marisol Tate",
+          "role": "VP Operations · Northridge Freight",
+          "fleet": "180 trucks",
+          "stat": "$84k",
+          "statLbl": "recovered Q1"
+        },
+        {
+          "q": "Our dispatchers stopped chasing detention paperwork day one. VettGuard files it before they even know there's a delay.",
+          "name": "Devon Ashford",
+          "role": "Dispatch Manager · Cascade Transport",
+          "fleet": "62 trucks",
+          "stat": "0 hrs",
+          "statLbl": "dispatcher work"
+        },
+        {
+          "q": "I run 4 trucks. The MC# search has saved me twice this year — both brokers eventually went out of business with carriers unpaid.",
+          "name": "Reza Khaliq",
+          "role": "Owner-operator · Khaliq Hauling",
+          "fleet": "4 trucks",
+          "stat": "2x",
+          "statLbl": "avoided bad payers"
+        }
+      ]
+    },
+    "faqDesktop": {
+      "eyebrow": "SSS",
+      "title": "Sorular, cevaplar.",
+      "subtitle": "Hâlâ aklınızda soru mu var? Ekibimiz mesai saatlerinde 30 dakika içinde yanıtlar.",
+      "emailUs": "E-posta gönder",
+      "bookCall": "Görüşme planla",
+      "items": [
+        {
+          "q": "How is the AI score calculated?",
+          "a": "We combine FMCSA filings, Experian commercial credit, factoring system telemetry, and anonymous payment cadence reported by 1,240 carriers in the network. The model is retrained weekly and updates broker scores every 6 hours."
+        },
+        {
+          "q": "Do I have to switch TMS or change my workflow?",
+          "a": "No. VettGuard is a Chrome extension that lives on DAT, Truckstop, 123Loadboard, and other boards you already use. We connect via OAuth and add a guardrail layer at booking — your dispatcher's flow doesn't change."
+        },
+        {
+          "q": "What if a broker disputes a detention claim?",
+          "a": "Our claim packets include GPS arrival/departure pings, eBOL signatures with timestamps, and the rate confirmation's detention terms. 94% are paid without dispute. For the remaining 6%, our ops team handles the back-and-forth — included in the 18% fee."
+        },
+        {
+          "q": "How does the 18% success fee actually work?",
+          "a": "When a broker pays detention, the recovered amount is deposited to your bank or factoring account. We deduct 18% automatically at payout — never an invoice. If we don't recover, you owe nothing."
+        },
+        {
+          "q": "Is the carrier-reported payment data anonymized?",
+          "a": "Yes. Carriers contribute their broker payment data to the network anonymously. No individual carrier's data is ever exposed to a broker, and brokers have no visibility into who scored them how."
+        },
+        {
+          "q": "How long is onboarding?",
+          "a": "Owner-operators are live in under 60 seconds — install the extension, sign into DAT, done. Mid-size fleets connect their ELD and factoring in another 5 minutes. Enterprise fleets (50+ trucks) get a dedicated implementation manager."
+        },
+        {
+          "q": "What is the contract structure?",
+          "a": "Free plan and Pro are both month-to-month. Cancel anytime, no termination fee. Fleet plans (50+ trucks) are typically annual with quarterly business reviews and custom rates."
+        },
+        {
+          "q": "Where is my data stored? Are you SOC 2 compliant?",
+          "a": "Yes — SOC 2 Type II certified. Data is stored encrypted at rest (AES-256) in US-East. We sign DPAs and BAAs on request. Full security overview at vettguard.com/security."
+        }
+      ]
     }
   },
-  "faq": {
-    "title": "Sık sorulan sorular",
-    "items": {
-      "eld": {
-        "q": "Hangi ELD'leri destekliyorsunuz?",
-        "a": "Lansmanda Motive ve Samsara — birlikte ABD carrier'larının ~%70'i. Geotab, Verizon Connect, KeepTruckin Lite yol haritasında."
+  "pricingPage": {
+    "hero": {
+      "pill": "%18 başarı ücreti · sadece ödendiğinde",
+      "titleLead": "Geri",
+      "titleBreak": "aldığımıza göre",
+      "titleItalic": "fiyatlanır",
+      "titleRest": ".",
+      "subtitle": "Her iki plan da detention üzerinde %18 başarı ücretine sahip. Pro tüm limitleri kaldırır ve tam taşıyıcı ağına erişim verir."
+    },
+    "free": {
+      "name": "Free",
+      "badge": "Denemek için",
+      "desc": "Detention bizden. Günlük limitli vetting.",
+      "price": "$0",
+      "per": "/ ay",
+      "plus18": "+ kurtarılan detention'dan %18 · kurtarma yoksa $0",
+      "cta": "Chrome'a ekle — ücretsiz"
+    },
+    "pro": {
+      "name": "Pro",
+      "badge": "En popüler",
+      "desc": "Aynı başarı ücreti. Tüm limitler kalkar.",
+      "price": "$199",
+      "per": "/ ay",
+      "plus18": "+ kurtarılan detention'dan %18 · 14 gün ücretsiz deneme",
+      "cta": "14 günlük ücretsiz denemeyi başlat"
+    },
+    "compare": {
+      "title": "Planları karşılaştır",
+      "proSub": "$199 / ay + %18"
+    },
+    "sections": {
+      "vetting": "AI vetting",
+      "detention": "Detention kurtarma",
+      "workspace": "Çalışma alanı"
+    },
+    "features": [
+      {
+        "section": "vetting"
       },
-      "loadboards": {
-        "q": "Chrome eklentisi hangi load board'ları kapsar?",
-        "a": "Lansmanda DAT, Truckstop, 123Loadboard. Her ay Sylectus, Direct Freight, RXO, Uber Freight ve diğerleri ekleniyor."
+      {
+        "name": "Broker vetting on DAT + Truckstop",
+        "free": "inline scores",
+        "pro": "inline scores"
       },
-      "fees": {
-        "q": "%18 detention ücretini nasıl tahsil ediyorsunuz?",
-        "a": "Broker sana ödedikten sonra Stripe üzerinden tek fatura keseriz — geri alınan tutarın %18'i. Ödeme aldıktan sonra ödersin."
+      {
+        "name": "Daily vetting cap",
+        "free": "5 / day",
+        "pro": "unlimited"
+      },
+      {
+        "name": "Network signals (peer-reported pay data)",
+        "free": "read-only · top-line",
+        "pro": "full · realtime"
+      },
+      {
+        "name": "FMCSA + insurance + bond monitoring",
+        "free": "weekly digest",
+        "pro": "real-time alerts"
+      },
+      {
+        "name": "Custom AI risk thresholds",
+        "free": false,
+        "pro": true
+      },
+      {
+        "section": "detention"
+      },
+      {
+        "name": "Auto-claim drafting",
+        "free": "up to 10 / mo",
+        "pro": "unlimited"
+      },
+      {
+        "name": "AI-attached evidence (BOL + ELD + rate-con)",
+        "free": true,
+        "pro": true
+      },
+      {
+        "name": "Auto-file & follow-up",
+        "free": false,
+        "pro": true
+      },
+      {
+        "name": "Dispute handling by VettGuard ops",
+        "free": false,
+        "pro": true
+      },
+      {
+        "name": "Success fee · only when recovered",
+        "free": "18%",
+        "pro": "18%"
+      },
+      {
+        "section": "workspace"
+      },
+      {
+        "name": "Team seats",
+        "free": "1 user",
+        "pro": "unlimited"
+      },
+      {
+        "name": "Role-based access (RBAC)",
+        "free": false,
+        "pro": true
+      },
+      {
+        "name": "SSO / SAML",
+        "free": false,
+        "pro": "add-on · Fleet"
+      },
+      {
+        "name": "API + webhooks",
+        "free": false,
+        "pro": true
+      },
+      {
+        "name": "Priority support · 24h SLA",
+        "free": false,
+        "pro": true
+      },
+      {
+        "name": "Shared Slack channel (25+ trucks)",
+        "free": false,
+        "pro": true
       }
+    ]
+  },
+  "aboutPage": {
+    "hero": {
+      "pill": "Taşkent ve Chicago'da yapıldı",
+      "titleLead": "VettGuard'ı kuran ekip",
+      "titleItalic": "kamyonları da",
+      "titleRest": "sürdü.",
+      "subtitle": "Diyor'un babası 2019'da $4.200'lük bir detention talebini kaybetti — evrak işi peşinden gitmeye değmezdi. VettGuard'ı bir daha kaybetmemesi için kurduk. Kimse kaybetmesin diye."
+    },
+    "stats": [
+      [
+        "1,240",
+        "carriers running"
+      ],
+      [
+        "$8.4M",
+        "recovered ytd"
+      ],
+      [
+        "94%",
+        "claim approval rate"
+      ],
+      [
+        "11d",
+        "median payout"
+      ]
+    ],
+    "team": {
+      "eyebrow": "Ekip",
+      "title": "Üç kurucu. Tek hikâye."
+    },
+    "founders": [
+      {
+        "name": "Diyor Rakhimov",
+        "role": "Co-founder, CEO",
+        "bio": "Ex-Loadsmart. Ran detention recovery for 14 years.",
+        "initials": "DR",
+        "color": "#F4D6C2"
+      },
+      {
+        "name": "Aziz Karimov",
+        "role": "Co-founder, CTO",
+        "bio": "Ex-Stripe ML platform. Built a Bayesian risk engine for SMB lending.",
+        "initials": "AK",
+        "color": "#D9E0CC"
+      },
+      {
+        "name": "Sevara Mukhamedova",
+        "role": "Head of Ops",
+        "bio": "Ex-CH Robinson dispatch. 1,200 carriers in her rolodex.",
+        "initials": "SM",
+        "color": "#E4D3DA"
+      }
+    ],
+    "values": {
+      "eyebrow": "Neye inanıyoruz",
+      "title": "Dört ilke."
+    },
+    "principles": [
+      {
+        "icon": "shield",
+        "t": "Carriers first",
+        "d": "Every product decision starts with: would my dad — who owned a 4-truck fleet — want this?"
+      },
+      {
+        "icon": "bolt",
+        "t": "AI does the boring work",
+        "d": "Dispatchers chase trucks, not paperwork. We automate the paper, never the relationships."
+      },
+      {
+        "icon": "dollar",
+        "t": "Aligned incentives",
+        "d": "Success fees only. We make money when carriers make money. Otherwise we lose."
+      },
+      {
+        "icon": "sparkle",
+        "t": "Bias for shipping",
+        "d": "Two-week roadmaps. Customers vote with usage. Nothing precious gets shipped."
+      }
+    ],
+    "backed": {
+      "eyebrow": "Yatırımcılar",
+      "items": [
+        "Y Combinator",
+        "A.Capital",
+        "FreightLane Ventures",
+        "Pioneer Fund",
+        "+ 22 operator angels"
+      ]
     }
   }
 }

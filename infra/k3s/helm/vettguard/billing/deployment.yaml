@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: billing
+  namespace: vettguard
+  labels: { app: billing }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: billing } }
+  template:
+    metadata:
+      labels: { app: billing }
+    spec:
+      containers:
+        - name: billing
+          image: ghcr.io/vettguard/billing:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8082
+          env:
+            - { name: HTTP_PORT,   value: "8082" }
+            - { name: ENVIRONMENT, value: "staging" }
+            - { name: LOG_LEVEL,   value: "info" }
+            - { name: OTEL_EXPORTER_OTLP_ENDPOINT, value: "http://otel-collector.observability:4317" }
+            - name: DATABASE_URL
+              valueFrom: { secretKeyRef: { name: billing-env, key: DATABASE_URL } }
+          envFrom:
+            - secretRef: { name: billing-env, optional: true }
+          readinessProbe:
+            httpGet: { path: /v1/billing/info, port: 8082 }
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            requests: { cpu: 50m,  memory: 64Mi }
+            limits:   { cpu: 500m, memory: 256Mi }

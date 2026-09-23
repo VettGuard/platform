@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway
+  namespace: vettguard
+  labels: { app: gateway }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: gateway } }
+  template:
+    metadata:
+      labels: { app: gateway }
+    spec:
+      containers:
+        - name: gateway
+          image: ghcr.io/vettguard/gateway:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - { name: HTTP_PORT,   value: "8080" }
+            - { name: ENVIRONMENT, value: "staging" }
+            - { name: LOG_LEVEL,   value: "info" }
+            - { name: OTEL_EXPORTER_OTLP_ENDPOINT, value: "http://otel-collector.observability:4317" }
+          envFrom:
+            - secretRef: { name: gateway-env, optional: true }
+          readinessProbe:
+            httpGet: { path: /v1/health, port: 8080 }
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            requests: { cpu: 50m,  memory: 64Mi }
+            limits:   { cpu: 500m, memory: 256Mi }

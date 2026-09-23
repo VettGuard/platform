@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: audit
+  namespace: vettguard
+  labels: { app: audit }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: audit } }
+  template:
+    metadata:
+      labels: { app: audit }
+    spec:
+      containers:
+        - name: audit
+          image: ghcr.io/vettguard/audit:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8084
+          env:
+            - { name: HTTP_PORT,   value: "8084" }
+            - { name: ENVIRONMENT, value: "staging" }
+            - { name: LOG_LEVEL,   value: "info" }
+            - { name: OTEL_EXPORTER_OTLP_ENDPOINT, value: "http://otel-collector.observability:4317" }
+            - name: DATABASE_URL
+              valueFrom: { secretKeyRef: { name: audit-env, key: DATABASE_URL } }
+          envFrom:
+            - secretRef: { name: audit-env, optional: true }
+          readinessProbe:
+            httpGet: { path: /v1/audit/info, port: 8084 }
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            requests: { cpu: 50m,  memory: 64Mi }
+            limits:   { cpu: 500m, memory: 256Mi }

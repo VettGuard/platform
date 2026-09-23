@@ -1,35 +1,291 @@
 @import "tailwindcss";
-@import "@vettguard/ui/styles/theme.css";
+
+/* ──────────────────────────────────────────────────────────────────────
+   VettGuard landing tokens — orange-led, Apple/Stripe-ish neutrals.
+   Light + dark themes are switched by `data-theme` attribute on <html>,
+   controlled by next-themes. All inline styles in dsl.tsx read these
+   variables via the `T` object, so flipping the attribute re-tints the
+   whole page (no rerender required).
+   ────────────────────────────────────────────────────────────────────── */
 
 @layer base {
+  :root,
+  [data-theme="light"] {
+    /* Surfaces — cool, Apple/Stripe-ish neutrals */
+    --vg-bg: #ffffff;
+    --vg-surface: #ffffff;
+    --vg-surface-alt: #f6f7f9;
+    --vg-surface-elev: #eff1f4;
+
+    /* Text — inky, slightly cool */
+    --vg-text: #0a0e14;
+    --vg-text-dim: #3c4250;
+    --vg-text-mute: #8b92a0;
+
+    /* Borders — hairlines on light */
+    --vg-border: rgba(10, 14, 20, 0.07);
+    --vg-border-strong: rgba(10, 14, 20, 0.14);
+    --vg-divider: rgba(10, 14, 20, 0.05);
+
+    /* Glass surfaces for sticky nav */
+    --vg-glass: rgba(255, 255, 255, 0.72);
+
+    /* Brand mesh — used as hero/section background accent */
+    --vg-gradient:
+      radial-gradient(at 18% 12%, #ffe5d6 0px, transparent 50%),
+      radial-gradient(at 82% 8%, #e5e0ff 0px, transparent 45%),
+      radial-gradient(at 50% 90%, #ffefd1 0px, transparent 55%),
+      radial-gradient(at 95% 80%, #ffd9c2 0px, transparent 40%);
+
+    /* Chrome-window mockup chrome */
+    --vg-chrome-tabs: #dcd7cc;
+    --vg-chrome-url: #e8e5de;
+
+    /* Site canvas behind the page */
+    --vg-site-canvas: #f0eee9;
+
+    /* Primary button — always-inverse-of-surface (dark bg on light theme).
+       Flipped under [data-theme="dark"] so the CTA always pops. */
+    --vg-btn-primary-bg: #0a0e14;
+    --vg-btn-primary-fg: #ffffff;
+  }
+
+  [data-theme="dark"] {
+    --vg-bg: #0a0e14;
+    --vg-surface: #12161f;
+    --vg-surface-alt: #0f131b;
+    --vg-surface-elev: #1a1f2a;
+
+    --vg-text: #f0f2f5;
+    --vg-text-dim: #a5acba;
+    --vg-text-mute: #6b7280;
+
+    --vg-border: rgba(255, 255, 255, 0.08);
+    --vg-border-strong: rgba(255, 255, 255, 0.16);
+    --vg-divider: rgba(255, 255, 255, 0.05);
+
+    --vg-glass: rgba(10, 14, 20, 0.72);
+
+    --vg-gradient:
+      radial-gradient(at 18% 12%, rgba(255, 77, 13, 0.20) 0px, transparent 50%),
+      radial-gradient(at 82% 8%, rgba(120, 90, 255, 0.16) 0px, transparent 45%),
+      radial-gradient(at 50% 90%, rgba(255, 150, 80, 0.12) 0px, transparent 55%),
+      radial-gradient(at 95% 80%, rgba(255, 77, 13, 0.10) 0px, transparent 40%);
+
+    --vg-chrome-tabs: #1a1f2a;
+    --vg-chrome-url: #14181f;
+
+    --vg-site-canvas: #06080c;
+
+    --vg-btn-primary-bg: #f0f2f5;
+    --vg-btn-primary-fg: #0a0e14;
+  }
+
+  /* Brand orange + semantic — invariant across themes */
+  :root {
+    --vg-orange: #ff4d0d;
+    --vg-orange-deep: #d63a05;
+    --vg-orange-soft: #ffe5d6;
+    --vg-orange-tint: #fff4ed;
+
+    --vg-success: #0a8d5a;
+    --vg-success-soft: #ddf1e6;
+    --vg-danger: #c9341b;
+    --vg-danger-soft: #fbe2dc;
+    --vg-warn: #a56a0f;
+    --vg-warn-soft: #f8ebc8;
+    --vg-info: #2e5dc8;
+    --vg-info-soft: #dee7fa;
+
+    --vg-font-sans:
+      "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
+    --vg-font-italic: "Instrument Serif", Georgia, serif;
+    --vg-font-mono:
+      "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+
+  /* Dark-mode tints for pills + soft fills — readable on dark surfaces */
+  [data-theme="dark"] {
+    --vg-orange-soft: rgba(255, 77, 13, 0.18);
+    --vg-orange-tint: rgba(255, 77, 13, 0.10);
+    --vg-success-soft: rgba(10, 141, 90, 0.20);
+    --vg-danger-soft: rgba(201, 52, 27, 0.22);
+    --vg-warn-soft: rgba(165, 106, 15, 0.22);
+    --vg-info-soft: rgba(46, 93, 200, 0.22);
+  }
+
+  html {
+    /* Smooth anchor scrolling for nav links. Offset clears the 72 px
+       sticky nav so section headings aren't tucked under it. */
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+
   html,
   body {
-    background: var(--bg);
-    color: var(--fg);
-    font-family: var(--font-sans);
+    margin: 0;
+    background: var(--vg-site-canvas);
+    color: var(--vg-text);
+    font-family: var(--vg-font-sans);
+    font-feature-settings: "cv11", "ss01";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 200ms ease, color 200ms ease;
   }
 
-  body {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  /* ── View-transitions "boom" animation for theme toggle ──
+     Triggered by document.startViewTransition() in ThemeToggle.
+     Circular reveal from click origin (--vg-x / --vg-y custom props). */
+  @media (prefers-reduced-motion: no-preference) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation: none;
+      mix-blend-mode: normal;
+    }
+    ::view-transition-old(root) {
+      z-index: 1;
+    }
+    ::view-transition-new(root) {
+      z-index: 2;
+      animation: vg-theme-reveal 600ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation: none;
+    }
+  }
+
+  @keyframes vg-theme-reveal {
+    from {
+      clip-path: circle(0% at var(--vg-x, 50%) var(--vg-y, 50%));
+    }
+    to {
+      clip-path: circle(150% at var(--vg-x, 50%) var(--vg-y, 50%));
+    }
+  }
+
+  /* Accessible focus rings — keyboard-only */
+  :focus-visible {
+    outline: 2px solid var(--vg-orange);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  /* ── Responsive composition swap ─────────────────────────────────
+     Both desktop and mobile compositions render server-side; CSS
+     hides one or the other. Keeps SSR markup stable, no hydration
+     mismatch, no FOUC. */
+  .vg-desktop-only { display: block; }
+  .vg-mobile-only { display: none; }
+  /* Tablets portrait (iPad Mini 768, iPad 820, iPad Pro 11" 834) get the
+     mobile composition — the 1440-designed desktop layout cramps below
+     ~1100 px. Above 1024 px we trust the desktop layout to flex. */
+  @media (max-width: 1023px) {
+    .vg-desktop-only { display: none; }
+    .vg-mobile-only { display: block; }
+  }
+
+  /* ── Scroll-reveal — opacity + translateY fade-in once visible ──
+     Toggled by IntersectionObserver in <Reveal>. */
+  .vg-reveal {
+    opacity: 0;
+    transform: translateY(18px);
     transition:
-      background-color var(--duration-base) var(--ease-out),
-      color var(--duration-base) var(--ease-out);
+      opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
   }
-}
+  .vg-reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  /* Stagger children if .vg-reveal-stagger is on the parent */
+  .vg-reveal-stagger > .vg-reveal:nth-child(1) { transition-delay: 0ms; }
+  .vg-reveal-stagger > .vg-reveal:nth-child(2) { transition-delay: 80ms; }
+  .vg-reveal-stagger > .vg-reveal:nth-child(3) { transition-delay: 160ms; }
+  .vg-reveal-stagger > .vg-reveal:nth-child(4) { transition-delay: 240ms; }
 
-@theme inline {
-  --color-bg: var(--bg);
-  --color-bg-elevated: var(--bg-elevated);
-  --color-bg-subtle: var(--bg-subtle);
-  --color-fg: var(--fg);
-  --color-fg-muted: var(--fg-muted);
-  --color-fg-subtle: var(--fg-subtle);
-  --color-border: var(--border);
-  --color-border-strong: var(--border-strong);
-  --color-accent: var(--accent);
-  --color-accent-fg: var(--accent-fg);
-  --color-success: var(--success);
-  --color-warning: var(--warning);
-  --color-danger: var(--danger);
+  /* ── Hero entry — pill + headline + body float up on first paint ── */
+  @keyframes vg-fade-up {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: none; }
+  }
+  .vg-enter {
+    animation: vg-fade-up 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .vg-enter-1 { animation-delay: 40ms; }
+  .vg-enter-2 { animation-delay: 140ms; }
+  .vg-enter-3 { animation-delay: 240ms; }
+  .vg-enter-4 { animation-delay: 340ms; }
+
+  /* ── Mobile hamburger drawer ─────────────────────────────────────
+     Backdrop fades; panel slides down from the top. body.vg-no-scroll
+     prevents page scroll while the drawer is open. */
+  .vg-drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 14, 20, 0.45);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 220ms cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 40;
+  }
+  .vg-drawer-backdrop.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .vg-drawer-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateY(-12px);
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 220ms cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 50;
+  }
+  .vg-drawer-panel.is-open {
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  body.vg-no-scroll {
+    overflow: hidden;
+    /* iOS Safari momentum-scroll fix: lock at current position. */
+    touch-action: none;
+  }
+
+  /* ── FAQ accordion height — grid-template-rows trick for smoothness ── */
+  .vg-collapse {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 280ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .vg-collapse.is-open { grid-template-rows: 1fr; }
+  .vg-collapse > div { overflow: hidden; }
+
+  /* Reduced motion — neutralize all of the above */
+  @media (prefers-reduced-motion: reduce) {
+    .vg-reveal { opacity: 1; transform: none; transition: none; }
+    .vg-enter { animation: none; }
+    .vg-collapse { transition: none; }
+    html { scroll-behavior: auto; }
+  }
 }

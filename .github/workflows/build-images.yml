@@ -1,0 +1,75 @@
+# Build + push container images to ghcr.io on every push to main.
+#
+# Strategy: one matrix job per image so failures isolate and the parallelism
+# uses all 10 GH runner slots. Tags are `latest` + the 7-char commit SHA;
+# ArgoCD's selfHeal redeploys from `latest`. (Image Updater for SHA-based
+# pinning is a Phase 4 add when we want deterministic rollouts.)
+#
+# Login uses the workflow's GITHUB_TOKEN — no PAT to rotate. ghcr.io
+# packages inherit repo visibility (private until the repo flips public).
+
+name: build-images
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+concurrency:
+  group: build-images-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: build · ${{ matrix.image.name }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        image:
+          # Go services — root build context, service Dockerfile.
+          - { name: identity,   dockerfile: services/identity/Dockerfile,   context: . }
+          - { name: gateway,    dockerfile: services/gateway/Dockerfile,    context: . }
+          - { name: brokers,    dockerfile: services/brokers/Dockerfile,    context: . }
+          - { name: claims,     dockerfile: services/claims/Dockerfile,     context: . }
+          - { name: billing,    dockerfile: services/billing/Dockerfile,    context: . }
+          - { name: notifier,   dockerfile: services/notifier/Dockerfile,   context: . }
+          - { name: audit,      dockerfile: services/audit/Dockerfile,      context: . }
+          - { name: eld,        dockerfile: services/eld/Dockerfile,        context: . }
+          # Python AI gateway — Dockerfile expects monorepo-root context
+          # so it can COPY ai/ai-gateway/{pyproject.toml,src} as relative
+          # paths.
+          - { name: ai-gateway, dockerfile: ai/ai-gateway/Dockerfile,       context: . }
+          # Next.js apps — monorepo root context for pnpm workspace resolution.
+          - { name: landing,    dockerfile: apps/landing/Dockerfile,        context: . }
+          - { name: dashboard,  dockerfile: apps/dashboard/Dockerfile,      context: . }
+          - { name: admin,      dockerfile: apps/admin/Dockerfile,          context: . }
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to ghcr.io
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build & push
+        uses: docker/build-push-action@v6
+        with:
+          context: ${{ matrix.image.context }}
+          file: ${{ matrix.image.dockerfile }}
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/${{ matrix.image.name }}:latest
+            ghcr.io/${{ github.repository_owner }}/${{ matrix.image.name }}:${{ github.sha }}
+          cache-from: type=gha,scope=${{ matrix.image.name }}
+          cache-to:   type=gha,scope=${{ matrix.image.name }},mode=max
+          provenance: false

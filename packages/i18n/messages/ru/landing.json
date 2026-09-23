@@ -1,85 +1,884 @@
 {
-  "_status": "ai-draft",
-  "hero": {
-    "eyebrow": "AI-native бэк-офис для траков",
-    "title": "Хватит терять деньги на detention. Хватит верить плохим брокерам.",
-    "subtitle": "VettGuard ведёт detention-кейсы и проверку брокеров на автопилоте. Один клик — на любом лоудборде. Вы подтверждаете, Claude делает остальное.",
-    "ctaPrimary": "Попробовать бесплатно",
-    "ctaSecondary": "Как это работает"
+  "_status": "draft",
+  "nav": {
+    "extension": "Расширение",
+    "howItWorks": "Как это работает",
+    "pricing": "Цены",
+    "carriers": "Перевозчики",
+    "blog": "Блог",
+    "signIn": "Войти",
+    "joinWaitlist": "В лист ожидания",
+    "toggleTheme": "Переключить тему",
+    "language": "Язык"
   },
-  "metrics": {
-    "title": "Что диспетчеры возвращают с VettGuard",
-    "items": {
-      "recovered": {
-        "value": "$1.2M+",
-        "label": "Возвращено detention в 2026"
-      },
-      "vetted": {
-        "value": "47,000+",
-        "label": "Брокеров на постоянном мониторинге"
-      },
-      "saved": {
-        "value": "9 ч/нед",
-        "label": "Сэкономленных часов на бумагах"
-      }
+  "hero": {
+    "pill": "AI-помощник диспетчера · для DAT и Truckstop",
+    "headlineLead": "Помощник",
+    "headlineItalic": "copilot",
+    "headlineRest": "диспетчера — оценивает брокеров и возвращает detention.",
+    "subtitle": "Расширение Chrome, работающее внутри DAT. Один клик — рейтинг брокера. Один клик — претензия на detention. Бумажную работу делает AI.",
+    "ctaPrimary": "Добавить в Chrome — бесплатно",
+    "ctaSecondary": "Посмотреть демо · 60 сек",
+    "socialProof": "1 240+ перевозчиков · работает с DAT, Truckstop, 123Loadboard",
+    "demo": {
+      "loadBoardCount": "// load board · 247 результатов",
+      "originHeader": "Откуда",
+      "destinationHeader": "Куда",
+      "rateHeader": "Ставка ↓",
+      "live": "Live",
+      "selectedLabel": "Выбрано",
+      "avoidTitle": "Пропустите этот груз",
+      "avoidSub": "Платит за 62 дня · 3 пропущенных",
+      "insurance": "Страховка",
+      "insuranceValue": "Истекла",
+      "bondClaims": "Bond-претензии",
+      "bondClaimsValue": "2 за 12 мес",
+      "carrierReviews": "Отзывы перевозчиков",
+      "carrierReviewsValue": "1,8/5 (84)",
+      "aiHint": "AI: 84% перевозчиков пропустили это за последние 30 дней.",
+      "recoveredLabel": "Возвращено · с начала месяца",
+      "trendUp": "↑ 18,4%",
+      "trackButton": "Отслеживать для detention",
+      "liveBadge": "Live · авто-возврат",
+      "yearToDate": "с начала года · 1 240 перевозчиков"
     }
   },
-  "features": {
-    "title": "Создано для one-click диспетчинга",
+  "trustBar": {
+    "livesInside": "Работает внутри ↓"
+  },
+  "benefits": {
+    "eyebrow": "Почему VettGuard",
+    "title": "Для диспетчеров, а не для бумаг.",
     "items": {
-      "extension": {
-        "title": "Работает внутри DAT, Truckstop, 123Loadboard",
-        "body": "Проверка брокера, detention-кейс, ответ на rate con — не покидая привычного лоудборда."
+      "vetting": {
+        "eyebrow": "Оценка",
+        "title": "AI оценивает каждого брокера до того, как вы нажмёте «забронировать».",
+        "body": "Чипы с рейтингом появляются прямо в строках DAT и Truckstop. Обучено на 4,2 млн грузов и реальных платежах.",
+        "stat": "0.4с",
+        "statLbl": "среднее время оценки"
       },
       "detention": {
-        "title": "Detention recovery на автопилоте",
-        "body": "Данные ELD Motive и Samsara доказывают время простоя. Claude формирует пакет документов. Вы жмёте отправить. Берём 18% только когда вам платят."
+        "eyebrow": "Detention",
+        "title": "Претензии оформляются сами, как только простой переходит 2 ч.",
+        "body": "Мы следим за ELD, пишем претензию, прикрепляем BOL, отправляем брокеру. Вы видите только зачисление на счёт.",
+        "stat": "94%",
+        "statLbl": "возвращено без спора"
       },
-      "vetting": {
-        "title": "Постоянный мониторинг брокеров",
-        "body": "FMCSA, bond, жалобы, платёжная история — переоценка ежемесячно. Watchlist предупредит сразу, как только брокер станет рискованным."
-      },
-      "security": {
-        "title": "Безопасность банковского уровня",
-        "body": "Сквозное шифрование, изоляция арендатора на уровне строк, полный аудит. Данные перевозчика не утекают."
+      "native": {
+        "eyebrow": "Без новой системы",
+        "title": "Никаких новых логинов. Никаких CSV. Никакой новой TMS.",
+        "body": "Установите расширение один раз. Войдите своим логином от load-board. Готово за 60 секунд.",
+        "stat": "60с",
+        "statLbl": "время до запуска"
       }
     }
+  },
+  "showcase": {
+    "eyebrow": "Расширение",
+    "title": "Три момента. Ни одного нового инструмента.",
+    "step": "Шаг",
+    "moments": {
+      "chips": {
+        "title": "Чипы рейтинга в строках.",
+        "body": "Каждая строка брокера на DAT получает зелёный/жёлтый/красный рейтинг сразу при загрузке."
+      },
+      "hover": {
+        "title": "Наведите — увидите почему.",
+        "body": "AI объясняет рейтинг — скорость оплаты, bond-претензии, споры, отзывы перевозчиков."
+      },
+      "claim": {
+        "title": "Один клик — авто-detention.",
+        "body": "После брони расширение следит за грузом. Претензия пишется сама на 2-м часу."
+      }
+    },
+    "hover": {
+      "summary": "AI-резюме риска",
+      "scoreLine": "Пропустить · 41/100",
+      "body": "У BlueWave 2 активные bond-претензии, средний срок оплаты — 62 дня. 84% перевозчиков вашей сети пропустили это за 30 дней.",
+      "paySpeed": "Скорость оплаты",
+      "bondClaims": "Bond-претензии",
+      "disputes": "Споры"
+    },
+    "claim": {
+      "arrivalLabel": "10:42 · прибытие",
+      "arrivalBody": "Машина #23 — geofence-in на Houston DC",
+      "thresholdLabel": "12:42 · прошло 2 ч",
+      "thresholdBody": "Порог detention пройден",
+      "draftedLabel": "16:08 · авто-черновик",
+      "draftedBody": "$487.50 — претензия готова",
+      "draftedAttachments": "BOL + ELD прикреплены · подтвердите в 1 касание",
+      "approve": "Подтвердить и отправить"
+    }
+  },
+  "howItWorks": {
+    "eyebrow": "Запуск за 60 секунд",
+    "title": "Без IT. Без новых программ.",
+    "subtitle": "Если умеете ставить расширение Chrome и входить в DAT — вы готовы.",
+    "steps": [
+      {
+        "title": "Установите расширение Chrome.",
+        "body": "Бесплатно в Chrome Web Store. Работает в Edge и Brave."
+      },
+      {
+        "title": "Войдите в DAT или Truckstop как обычно.",
+        "body": "Расширение читает строки грузов на странице — и ничего больше."
+      },
+      {
+        "title": "AI начинает оценку и возврат.",
+        "body": "Через 5 секунд увидите первый чип на доске."
+      }
+    ]
   },
   "pricing": {
-    "title": "Честные цены",
-    "subtitle": "Платите за результат. Отменяйте в любой момент.",
-    "plans": {
-      "vetting": {
-        "name": "Broker Vetting",
-        "price": "$199",
-        "cadence": "/ месяц",
-        "description": "Безлимит проверок + постоянный мониторинг + уведомления.",
-        "cta": "14 дней бесплатно"
+    "eyebrow": "Цены",
+    "titleLead": "Бесплатно. Платите, только когда мы",
+    "titleItalic": "вернули",
+    "titleRest": "вам деньги.",
+    "subtitle": "Обе подписки используют одинаковую комиссию 18% от возвращённого detention. Pro снимает все лимиты и открывает всю сеть.",
+    "free": {
+      "name": "Free",
+      "badge": "Для пробы",
+      "desc": "Detention-возврат за наш счёт. Оценка с дневными лимитами.",
+      "price": "$0",
+      "per": "/ мес",
+      "plus18": "+ 18% от возвращённого detention",
+      "guarantee": "$0, если не вернули",
+      "cta": "Добавить в Chrome — бесплатно",
+      "features": [
+        [
+          "AI-чипы рейтинга на DAT + Truckstop",
+          "До 5 оценок брокеров в день"
+        ],
+        [
+          "Авто-черновик claim'а detention",
+          "До 10 претензий / мес"
+        ],
+        [
+          "Доступ к сети перевозчиков",
+          "Только чтение · базовые сигналы"
+        ],
+        [
+          "Поддержка по email",
+          "Ответ за 48 ч"
+        ],
+        [
+          "1 пользователь · 1 load-board аккаунт",
+          "Без командных мест"
+        ]
+      ]
+    },
+    "pro": {
+      "name": "Pro",
+      "badge": "Самый популярный",
+      "desc": "Та же комиссия, все лимиты сняты.",
+      "price": "$199",
+      "per": "/ мес",
+      "plus18": "+ 18% от возвращённого detention",
+      "trial": "14 дней бесплатно",
+      "cta": "Начать 14-дневный пробный",
+      "features": [
+        [
+          "Без лимитов на оценку брокеров",
+          "Дневных лимитов нет — никогда"
+        ],
+        [
+          "Без лимитов на авто-claim'ы",
+          "Каждый detention учтён"
+        ],
+        [
+          "Полные данные сети перевозчиков",
+          "1 240 парков · live-сигналы оплаты"
+        ],
+        [
+          "Свои AI-пороги риска",
+          "Блок/предупреждение/одобрение при брони"
+        ],
+        [
+          "Мониторинг FMCSA + страховки + bond",
+          "Уведомления в реальном времени"
+        ],
+        [
+          "Командные места + RBAC",
+          "Безлимит пользователей"
+        ],
+        [
+          "Приоритетная поддержка · 24 ч SLA",
+          "Общий канал Slack"
+        ]
+      ]
+    },
+    "explainer": {
+      "title": "Как работает комиссия 18%",
+      "body": "Мы оформляем, добиваемся, преследуем платёж. Когда брокер платит detention, мы автоматически удерживаем 18% — без счёта-фактуры.",
+      "math": "Вернули $1 000 → вам $820. Не вернули — мы получили $0.",
+      "cta": "Посмотреть расчёт"
+    },
+    "fleet": "Парк (50+ машин)?",
+    "talkToSales": "Связаться с продажами",
+    "fleetSuffix": "— объёмные цены и SSO."
+  },
+  "footerCta": {
+    "titleLead": "Следующий плохой брокер обойдётся",
+    "titleItalic": "дороже этого",
+    "titleRest": ".",
+    "subtitle": "Установка за 60 секунд. Отмена в любой момент. Без карты.",
+    "ctaPrimary": "Добавить в Chrome",
+    "ctaSecondary": "Заказать звонок"
+  },
+  "footer": {
+    "tagline": "AI-помощник диспетчера. Сделано бывшими перевозчиками, которым надоело списывать detention.",
+    "columns": {
+      "product": {
+        "title": "Продукт",
+        "links": [
+          "Расширение Chrome",
+          "AI-оценка",
+          "Авто-detention",
+          "Интеграции",
+          "Changelog"
+        ]
       },
-      "detention": {
-        "name": "Detention Recovery",
-        "price": "18%",
-        "cadence": "success fee",
-        "description": "Мы получаем только когда возвращаем деньги вам. Без подписки и setup fee.",
-        "cta": "Как это работает"
+      "company": {
+        "title": "Компания",
+        "links": [
+          "О нас",
+          "Карьера",
+          "Пресса",
+          "Клиенты",
+          "Контакты"
+        ]
+      },
+      "resources": {
+        "title": "Ресурсы",
+        "links": [
+          "Блог",
+          "Гид перевозчика",
+          "Помощь",
+          "API-документация",
+          "Status",
+          "Безопасность"
+        ]
+      },
+      "legal": {
+        "title": "Правовое",
+        "links": [
+          "Условия",
+          "Приватность",
+          "DPA",
+          "SOC 2",
+          "Субпроцессоры"
+        ]
       }
+    },
+    "copyright": "© 2026 VettGuard, Inc.",
+    "compliance": "SOC 2 Type II · GDPR · Сделано в Ташкенте и Чикаго"
+  },
+  "waitlist": {
+    "placeholder": "вы@ваш-перевозчик.com",
+    "cta": "В лист ожидания",
+    "submitting": "Записываем…",
+    "success": "Напишем, когда откроется место.",
+    "ariaEmail": "Email-адрес"
+  },
+  "mobile": {
+    "menu": "Открыть меню",
+    "hero": {
+      "pill": "AI для DAT + Truckstop",
+      "headlineLead": "Второй пилот",
+      "headlineItalic": "диспетчера",
+      "headlineRest": "— брокеры + detention.",
+      "subtitle": "Chrome-расширение, которое оценивает брокеров и автоматически подаёт detention-претензии. 18% от возвращённого.",
+      "ctaPrimary": "В лист ожидания",
+      "ctaSecondary": "Посмотреть 60-сек демо",
+      "social": "1 240+ перевозчиков уже используют",
+      "recoveredLabel": "Live · авто-возврат с начала года",
+      "recoveredSub": "От 1 240 перевозчиков · DAT, Truckstop, 123Loadboard."
+    },
+    "social": {
+      "livesInside": "Работает внутри ↓"
+    },
+    "extension": {
+      "eyebrow": "Расширение",
+      "title": "Score-чипы появляются прямо в строках.",
+      "subtitle": "Как только DAT загружается, каждая строка брокера получает оценку A–F с объяснением.",
+      "boardLabel": "DAT load board · 247 результатов",
+      "aiVerdict": "Вердикт AI",
+      "aiBold": "Пропустите этот груз.",
+      "aiBody": "2 bond-претензии · платит за 62 дня · 84% перевозчиков пропустили в марте.",
+      "benefits": [
+        {
+          "t": "AI-оценка брокеров в реальном времени",
+          "d": "Обучен на 4,2 млн грузов из сети перевозчиков."
+        },
+        {
+          "t": "Авто-detention претензии",
+          "d": "AI оформляет на 2-м часе с BOL + ELD."
+        },
+        {
+          "t": "18% success fee",
+          "d": "Платите только когда мы возвращаем."
+        }
+      ]
+    },
+    "pricing": {
+      "eyebrow": "Цены",
+      "titleLead": "Платите только когда мы",
+      "titleItalic": "возвращаем",
+      "titleRest": ".",
+      "subtitle": "Оба плана · 18% success fee. Pro снимает все лимиты.",
+      "freeName": "Free",
+      "freeBadge": "Триал",
+      "freePrice": "$0",
+      "perMo": "/ мес",
+      "freePlus": "+ 18% от возвращённого detention",
+      "freeCta": "Добавить в Chrome",
+      "freeFeatures": [
+        "До 5 проверок брокеров в день",
+        "До 10 претензий в месяц",
+        "Read-only доступ к сети",
+        "1 пользователь"
+      ],
+      "proName": "Pro",
+      "proBadge": "Популярный",
+      "proPrice": "$199",
+      "proPlus": "+ 18% · 14 дней бесплатно",
+      "proCta": "Начать бесплатный триал",
+      "proFeatures": [
+        "Безлимитный vetting брокеров",
+        "Безлимитные авто-претензии",
+        "Полная сеть · real-time сигналы",
+        "Свои AI-правила",
+        "Team seats + SSO add-on",
+        "Приоритетная поддержка · 24ч SLA"
+      ]
+    },
+    "testimonial": {
+      "eyebrow": "Что говорят перевозчики",
+      "quote": "Мы вернули $84k detention за первый квартал — деньги, которые раньше уходили в write-offs.",
+      "author": "Marisol Tate",
+      "role": "VP Ops · Northridge Freight · 180 грузовиков",
+      "stat": "$84k",
+      "statLbl": "возвращено в Q1"
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "Вопросы и ответы.",
+      "items": [
+        {
+          "q": "Как работает 18% success fee?",
+          "a": "Когда брокер платит detention, сумма приходит на ваш счёт или к фактору. Мы автоматически удерживаем 18% при выплате. Без счетов. $0 если возврата нет."
+        },
+        {
+          "q": "Нужно ли менять TMS?",
+          "a": "Нет. VettGuard — Chrome-расширение, работающее на DAT, Truckstop, 123Loadboard. Подключаемся через OAuth."
+        },
+        {
+          "q": "Как AI оценивает брокеров?",
+          "a": "FMCSA + Experian credit + factoring-телеметрия + анонимный pay cadence от 1 240 перевозчиков. Переобучается еженедельно, score'ы обновляются каждые 6 часов."
+        },
+        {
+          "q": "Что если брокер оспорит претензию?",
+          "a": "Наша ops-команда ведёт каждый dispute — включено в 18%. 94% претензий оплачиваются без споров благодаря GPS/eBOL."
+        }
+      ]
+    },
+    "cta": {
+      "titleLead": "Следующий плохой брокер обойдётся",
+      "titleItalic": "дороже этого",
+      "titleRest": ".",
+      "subtitle": "Установка за 60 секунд. Отмена в любой момент. Без карты.",
+      "button": "В лист ожидания"
+    },
+    "footer": {
+      "tagline": "AI-копилот для диспетчеров. Сделано бывшими перевозчиками, уставшими списывать detention.",
+      "columns": {
+        "product": {
+          "title": "Продукт",
+          "links": [
+            "Расширение",
+            "Vetting",
+            "Detention",
+            "Цены"
+          ]
+        },
+        "company": {
+          "title": "Компания",
+          "links": [
+            "О нас",
+            "Карьера",
+            "Пресса",
+            "Контакты"
+          ]
+        },
+        "resources": {
+          "title": "Ресурсы",
+          "links": [
+            "Помощь",
+            "API",
+            "Статус",
+            "Безопасность"
+          ]
+        },
+        "legal": {
+          "title": "Юридическое",
+          "links": [
+            "Условия",
+            "Приватность",
+            "SOC 2",
+            "DPA"
+          ]
+        }
+      },
+      "copyright": "© 2026 VettGuard, Inc. · SOC 2 Type II"
+    },
+    "close": "Закрыть",
+    "faqLabel": "FAQ"
+  },
+  "extras": {
+    "press": {
+      "eyebrow": "Пресса о нас",
+      "outlets": [
+        "FreightWaves",
+        "TechCrunch",
+        "Forbes",
+        "Trucking Dive",
+        "Overdrive",
+        "CCJ"
+      ],
+      "quotes": [
+        {
+          "quote": "The first carrier-side tool that treats brokers like Stripe treats merchants — with credit scores, not promises.",
+          "source": "FreightWaves",
+          "date": "March 2026"
+        },
+        {
+          "quote": "VettGuard is doing for dispatchers what Plaid did for fintech — wiring up rails that already exist.",
+          "source": "TechCrunch",
+          "date": "February 2026"
+        },
+        {
+          "quote": "The 18% success fee aligns incentives perfectly. Carriers love it. Brokers… not so much.",
+          "source": "Forbes",
+          "date": "January 2026"
+        }
+      ],
+      "backingLead": "Backed by Y Combinator, A.Capital, and 22 trucking-industry operators.",
+      "backingSub": "S25 batch · seed led by A.Capital · angel checks from ex-CHRobinson, ex-Loadsmart, ex-Convoy.",
+      "readMore": "Читать анонс"
+    },
+    "demoVideo": {
+      "eyebrow": "Смотреть в действии",
+      "titleLead": "90 секунд. От",
+      "titleItalic": "установки",
+      "titleRest": "до первой выплаты.",
+      "subtitle": "Акмаль из Cascade Transport показывает реальный день на DAT с включённым расширением.",
+      "badgeLeft": "VettGuard · демо продукта",
+      "duration": "1:32",
+      "elapsed": "0:00 / 1:32",
+      "chapters": [
+        [
+          "0:00",
+          "Install"
+        ],
+        [
+          "0:18",
+          "First broker score"
+        ],
+        [
+          "0:46",
+          "Auto-claim fires"
+        ],
+        [
+          "1:12",
+          "Payment lands"
+        ]
+      ],
+      "playLabel": "Воспроизвести демо"
+    },
+    "roi": {
+      "eyebrow": "ROI-калькулятор",
+      "titleLead": "Сколько вы",
+      "titleItalic": "оставляете",
+      "titleRest": "на доке?",
+      "subtitle": "Перевозчики списывают 71% detention — оформление не стоит времени диспетчера. Введите парк и узнайте, что утекает.",
+      "estLabel": "Ожидаемый годовой возврат",
+      "youKeep": "Вам · 82%",
+      "ourFee": "VettGuard · 18%",
+      "cta": "Начать возвращать — бесплатно",
+      "inputsEyebrow": "Параметры",
+      "inputsTitle": "Расскажите о парке",
+      "lblTrucks": "Грузовиков в парке",
+      "lblHours": "Средние часы detention на претензию",
+      "lblRate": "Ставка detention за час",
+      "lblEvents": "Событий на грузовик в месяц",
+      "perClaim": "За претензию",
+      "perMonth": "В месяц",
+      "perTruck": "На грузовик · мес"
+    },
+    "comparison": {
+      "eyebrow": "Чем не альтернативы",
+      "titleLead": "Для",
+      "titleItalic": "сегодняшних",
+      "titleRest": "диспетчеров.",
+      "subtitle": "Таблицы ломаются. RMIS сделан для брокеров. Carrier411 — read-only. VettGuard — единственный AI-native инструмент, живущий там, где вы бронируете.",
+      "recommended": "Рекомендуем",
+      "cols": [
+        "VettGuard",
+        "Manual / dispatcher",
+        "RMIS",
+        "Carrier411"
+      ],
+      "rows": [
+        [
+          "Real-time AI broker scoring",
+          "yes",
+          "no",
+          "no",
+          "partial"
+        ],
+        [
+          "Inline on DAT + Truckstop",
+          "yes",
+          "no",
+          "no",
+          "no"
+        ],
+        [
+          "Detention claim auto-filing",
+          "yes",
+          "no",
+          "no",
+          "no"
+        ],
+        [
+          "Updated every 6 hours",
+          "yes",
+          "no",
+          "partial",
+          "no"
+        ],
+        [
+          "Carrier network signals",
+          "yes",
+          "no",
+          "no",
+          "yes"
+        ],
+        [
+          "No new TMS or login",
+          "yes",
+          "no",
+          "no",
+          "no"
+        ],
+        [
+          "Time to first value",
+          "60 sec",
+          "days",
+          "2 weeks",
+          "days"
+        ],
+        [
+          "Pricing model",
+          "18% success fee",
+          "unpaid hours",
+          "$2-5k/mo",
+          "$500/mo"
+        ]
+      ],
+      "partialLabel": "частично"
+    },
+    "testimonials": {
+      "eyebrow": "Клиенты",
+      "titleLead": "Перевозчики не говорят",
+      "titleItalic": "может быть",
+      "titleRest": ".",
+      "subtitle": "Три квартала. 1 240 парков. Каждый доллар учтён.",
+      "items": [
+        {
+          "q": "We recovered $84k in detention in our first quarter. The score chips killed three broker relationships we should have killed years ago.",
+          "name": "Marisol Tate",
+          "role": "VP Operations · Northridge Freight",
+          "fleet": "180 trucks",
+          "stat": "$84k",
+          "statLbl": "recovered Q1"
+        },
+        {
+          "q": "Our dispatchers stopped chasing detention paperwork day one. VettGuard files it before they even know there's a delay.",
+          "name": "Devon Ashford",
+          "role": "Dispatch Manager · Cascade Transport",
+          "fleet": "62 trucks",
+          "stat": "0 hrs",
+          "statLbl": "dispatcher work"
+        },
+        {
+          "q": "I run 4 trucks. The MC# search has saved me twice this year — both brokers eventually went out of business with carriers unpaid.",
+          "name": "Reza Khaliq",
+          "role": "Owner-operator · Khaliq Hauling",
+          "fleet": "4 trucks",
+          "stat": "2x",
+          "statLbl": "avoided bad payers"
+        }
+      ]
+    },
+    "faqDesktop": {
+      "eyebrow": "FAQ",
+      "title": "Вопросы и ответы.",
+      "subtitle": "Остались вопросы? Команда отвечает за 30 минут в рабочее время.",
+      "emailUs": "Написать",
+      "bookCall": "Записаться на звонок",
+      "items": [
+        {
+          "q": "How is the AI score calculated?",
+          "a": "We combine FMCSA filings, Experian commercial credit, factoring system telemetry, and anonymous payment cadence reported by 1,240 carriers in the network. The model is retrained weekly and updates broker scores every 6 hours."
+        },
+        {
+          "q": "Do I have to switch TMS or change my workflow?",
+          "a": "No. VettGuard is a Chrome extension that lives on DAT, Truckstop, 123Loadboard, and other boards you already use. We connect via OAuth and add a guardrail layer at booking — your dispatcher's flow doesn't change."
+        },
+        {
+          "q": "What if a broker disputes a detention claim?",
+          "a": "Our claim packets include GPS arrival/departure pings, eBOL signatures with timestamps, and the rate confirmation's detention terms. 94% are paid without dispute. For the remaining 6%, our ops team handles the back-and-forth — included in the 18% fee."
+        },
+        {
+          "q": "How does the 18% success fee actually work?",
+          "a": "When a broker pays detention, the recovered amount is deposited to your bank or factoring account. We deduct 18% automatically at payout — never an invoice. If we don't recover, you owe nothing."
+        },
+        {
+          "q": "Is the carrier-reported payment data anonymized?",
+          "a": "Yes. Carriers contribute their broker payment data to the network anonymously. No individual carrier's data is ever exposed to a broker, and brokers have no visibility into who scored them how."
+        },
+        {
+          "q": "How long is onboarding?",
+          "a": "Owner-operators are live in under 60 seconds — install the extension, sign into DAT, done. Mid-size fleets connect their ELD and factoring in another 5 minutes. Enterprise fleets (50+ trucks) get a dedicated implementation manager."
+        },
+        {
+          "q": "What is the contract structure?",
+          "a": "Free plan and Pro are both month-to-month. Cancel anytime, no termination fee. Fleet plans (50+ trucks) are typically annual with quarterly business reviews and custom rates."
+        },
+        {
+          "q": "Where is my data stored? Are you SOC 2 compliant?",
+          "a": "Yes — SOC 2 Type II certified. Data is stored encrypted at rest (AES-256) in US-East. We sign DPAs and BAAs on request. Full security overview at vettguard.com/security."
+        }
+      ]
     }
   },
-  "faq": {
-    "title": "Частые вопросы",
-    "items": {
-      "eld": {
-        "q": "Какие ELD поддерживаете?",
-        "a": "На старте — Motive и Samsara, вместе около 70% перевозчиков США. Geotab, Verizon Connect, KeepTruckin Lite в плане."
+  "pricingPage": {
+    "hero": {
+      "pill": "18% success fee · только при выплате",
+      "titleLead": "Цена, масштабируемая",
+      "titleBreak": "тем, что мы",
+      "titleItalic": "возвращаем",
+      "titleRest": ".",
+      "subtitle": "Оба плана — 18% success fee на detention. Pro снимает все лимиты и открывает полную сеть перевозчиков."
+    },
+    "free": {
+      "name": "Free",
+      "badge": "На пробу",
+      "desc": "Возврат detention за наш счёт. Vetting с дневными лимитами.",
+      "price": "$0",
+      "per": "/ мес",
+      "plus18": "+ 18% от возвращённого · $0 если возврата нет",
+      "cta": "Добавить в Chrome — бесплатно"
+    },
+    "pro": {
+      "name": "Pro",
+      "badge": "Популярный",
+      "desc": "Тот же success fee. Все лимиты сняты.",
+      "price": "$199",
+      "per": "/ мес",
+      "plus18": "+ 18% от возвращённого · 14 дней бесплатно",
+      "cta": "Начать 14-дневный триал"
+    },
+    "compare": {
+      "title": "Сравнить планы",
+      "proSub": "$199 / мес + 18%"
+    },
+    "sections": {
+      "vetting": "AI vetting",
+      "detention": "Возврат detention",
+      "workspace": "Рабочее пространство"
+    },
+    "features": [
+      {
+        "section": "vetting"
       },
-      "loadboards": {
-        "q": "Какие лоудборды покрывает расширение?",
-        "a": "На старте — DAT, Truckstop, 123Loadboard. Каждый месяц добавляем Sylectus, Direct Freight, RXO, Uber Freight и другие."
+      {
+        "name": "Broker vetting on DAT + Truckstop",
+        "free": "inline scores",
+        "pro": "inline scores"
       },
-      "fees": {
-        "q": "Как собираете 18% за detention?",
-        "a": "Когда брокер заплатил вам — выставляем один счёт через Stripe на 18% от возвращённой суммы. Платите только после оплаты."
+      {
+        "name": "Daily vetting cap",
+        "free": "5 / day",
+        "pro": "unlimited"
+      },
+      {
+        "name": "Network signals (peer-reported pay data)",
+        "free": "read-only · top-line",
+        "pro": "full · realtime"
+      },
+      {
+        "name": "FMCSA + insurance + bond monitoring",
+        "free": "weekly digest",
+        "pro": "real-time alerts"
+      },
+      {
+        "name": "Custom AI risk thresholds",
+        "free": false,
+        "pro": true
+      },
+      {
+        "section": "detention"
+      },
+      {
+        "name": "Auto-claim drafting",
+        "free": "up to 10 / mo",
+        "pro": "unlimited"
+      },
+      {
+        "name": "AI-attached evidence (BOL + ELD + rate-con)",
+        "free": true,
+        "pro": true
+      },
+      {
+        "name": "Auto-file & follow-up",
+        "free": false,
+        "pro": true
+      },
+      {
+        "name": "Dispute handling by VettGuard ops",
+        "free": false,
+        "pro": true
+      },
+      {
+        "name": "Success fee · only when recovered",
+        "free": "18%",
+        "pro": "18%"
+      },
+      {
+        "section": "workspace"
+      },
+      {
+        "name": "Team seats",
+        "free": "1 user",
+        "pro": "unlimited"
+      },
+      {
+        "name": "Role-based access (RBAC)",
+        "free": false,
+        "pro": true
+      },
+      {
+        "name": "SSO / SAML",
+        "free": false,
+        "pro": "add-on · Fleet"
+      },
+      {
+        "name": "API + webhooks",
+        "free": false,
+        "pro": true
+      },
+      {
+        "name": "Priority support · 24h SLA",
+        "free": false,
+        "pro": true
+      },
+      {
+        "name": "Shared Slack channel (25+ trucks)",
+        "free": false,
+        "pro": true
       }
+    ]
+  },
+  "aboutPage": {
+    "hero": {
+      "pill": "Сделано в Ташкенте и Чикаго",
+      "titleLead": "Команда, построившая",
+      "titleItalic": "VettGuard,",
+      "titleRest": "тоже водила грузовики.",
+      "subtitle": "Отец Диёра потерял $4 200 detention-претензию в 2019 — оформление не стоило преследования. Мы построили VettGuard, чтобы он больше никогда не терял. Никто не терял."
+    },
+    "stats": [
+      [
+        "1,240",
+        "carriers running"
+      ],
+      [
+        "$8.4M",
+        "recovered ytd"
+      ],
+      [
+        "94%",
+        "claim approval rate"
+      ],
+      [
+        "11d",
+        "median payout"
+      ]
+    ],
+    "team": {
+      "eyebrow": "Команда",
+      "title": "Трое основателей. Одна история."
+    },
+    "founders": [
+      {
+        "name": "Diyor Rakhimov",
+        "role": "Co-founder, CEO",
+        "bio": "Ex-Loadsmart. Ran detention recovery for 14 years.",
+        "initials": "DR",
+        "color": "#F4D6C2"
+      },
+      {
+        "name": "Aziz Karimov",
+        "role": "Co-founder, CTO",
+        "bio": "Ex-Stripe ML platform. Built a Bayesian risk engine for SMB lending.",
+        "initials": "AK",
+        "color": "#D9E0CC"
+      },
+      {
+        "name": "Sevara Mukhamedova",
+        "role": "Head of Ops",
+        "bio": "Ex-CH Robinson dispatch. 1,200 carriers in her rolodex.",
+        "initials": "SM",
+        "color": "#E4D3DA"
+      }
+    ],
+    "values": {
+      "eyebrow": "Во что мы верим",
+      "title": "Четыре принципа."
+    },
+    "principles": [
+      {
+        "icon": "shield",
+        "t": "Carriers first",
+        "d": "Every product decision starts with: would my dad — who owned a 4-truck fleet — want this?"
+      },
+      {
+        "icon": "bolt",
+        "t": "AI does the boring work",
+        "d": "Dispatchers chase trucks, not paperwork. We automate the paper, never the relationships."
+      },
+      {
+        "icon": "dollar",
+        "t": "Aligned incentives",
+        "d": "Success fees only. We make money when carriers make money. Otherwise we lose."
+      },
+      {
+        "icon": "sparkle",
+        "t": "Bias for shipping",
+        "d": "Two-week roadmaps. Customers vote with usage. Nothing precious gets shipped."
+      }
+    ],
+    "backed": {
+      "eyebrow": "Инвесторы",
+      "items": [
+        "Y Combinator",
+        "A.Capital",
+        "FreightLane Ventures",
+        "Pioneer Fund",
+        "+ 22 operator angels"
+      ]
     }
   }
 }

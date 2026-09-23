@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: claims
+  namespace: vettguard
+  labels: { app: claims }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: claims } }
+  template:
+    metadata:
+      labels: { app: claims }
+    spec:
+      containers:
+        - name: claims
+          image: ghcr.io/vettguard/claims:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8087
+          env:
+            - { name: HTTP_PORT,   value: "8087" }
+            - { name: ENVIRONMENT, value: "staging" }
+            - { name: LOG_LEVEL,   value: "info" }
+            - { name: OTEL_EXPORTER_OTLP_ENDPOINT, value: "http://otel-collector.observability:4317" }
+            # Cluster-internal calls. When the claim flips to paid we
+            # call billing.CreateSuccessFeeInvoice; Draft calls AI
+            # gateway's /v1/ai/draft-claim. Both target the in-cluster
+            # ClusterIP service name, not the public api.* host.
+            - { name: BILLING_SERVICE_URL, value: "http://billing.vettguard.svc.cluster.local:8082" }
+            - { name: AI_GATEWAY_URL,      value: "http://ai-gateway.vettguard.svc.cluster.local:8090" }
+            - name: DATABASE_URL
+              valueFrom: { secretKeyRef: { name: claims-env, key: DATABASE_URL } }
+          envFrom:
+            - secretRef: { name: claims-env, optional: true }
+          readinessProbe:
+            httpGet: { path: /v1/claims/info, port: 8087 }
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            requests: { cpu: 50m,  memory: 64Mi }
+            limits:   { cpu: 500m, memory: 256Mi }

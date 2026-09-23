@@ -1,0 +1,51 @@
+# Keep image build context small + avoid leaking dev state.
+#
+# Without this, `COPY . .` in the Next.js Dockerfiles would drag in
+# host-side node_modules, .next caches, sealed-secret unsealed files,
+# and Go vendor dirs — fat images and potential credential leaks.
+
+# Node
+**/node_modules
+**/.next
+**/.turbo
+**/coverage
+**/dist
+**/.cache
+**/.vite
+
+# Go
+**/vendor
+**/bin
+**/*.test
+**/__debug_bin*
+
+# Python
+**/__pycache__
+**/.venv
+**/*.pyc
+**/.pytest_cache
+**/.ruff_cache
+**/.mypy_cache
+
+# Editor / OS
+.idea
+.vscode
+**/.DS_Store
+**/Thumbs.db
+
+# Git
+.git
+.gitignore
+.github
+
+# Local secrets — never bake into images
+**/.env
+**/.env.local
+**/.env.*.local
+infra/k3s/_secrets/*.yaml
+!infra/k3s/_secrets/*.sealed.yaml
+
+# Misc
+**/README.md
+docs/
+ops/runbooks/

@@ -1,4 +1,4 @@
-// notifier — Postmark email + Twilio SMS + in-app notifications.
+// notifier — transactional email (Postmark) + SMS (Twilio later) + webhooks.
 package main
 
 import (
@@ -7,6 +7,11 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/jackc/pgx/v5/pgxpool"
+
+	"github.com/vettguard/vettguard/packages/proto/gen/go/protov1connect"
+	"github.com/vettguard/vettguard/services/notifier/internal/handler"
+	"github.com/vettguard/vettguard/services/notifier/internal/postmark"
 	"github.com/vettguard/vettguard/services/shared/pkg/config"
 	"github.com/vettguard/vettguard/services/shared/pkg/logger"
 	"github.com/vettguard/vettguard/services/shared/pkg/server"
@@ -16,17 +21,15 @@ import (
 type Config struct {
 	config.Base
 
-	PostmarkServerToken string `envconfig:"POSTMARK_SERVER_TOKEN"`
-	PostmarkFromAddress string `envconfig:"POSTMARK_FROM_ADDRESS" default:"noreply@vettguard.com"`
-	TwilioAccountSID    string `envconfig:"TWILIO_ACCOUNT_SID"`
-	TwilioAuthToken     string `envconfig:"TWILIO_AUTH_TOKEN"`
+	DatabaseURL         string `envconfig:"DATABASE_URL" required:"true"`
+	PostmarkServerToken string `envconfig:"POSTMARK_SERVER_TOKEN" required:"true"`
+	PostmarkFromAddress string `envconfig:"POSTMARK_FROM_ADDRESS" default:"VettGuard <noreply@vettguard.com>"`
 }
 
 func main() {
 	if v := os.Getenv("SERVICE_NAME"); v == "" {
 		_ = os.Setenv("SERVICE_NAME", "notifier")
 	}
-
 	var cfg Config
 	if err := config.Load("", &cfg); err != nil {
 		panic(err)
@@ -44,7 +47,19 @@ func main() {
 	}
 	defer func() { _ = shutdownTrace(context.Background()) }()
 
+	pool, err := pgxpool.New(ctx, cfg.DatabaseURL)
+	if err != nil {
+		log.Fatal().Err(err).Msg("pgxpool connect failed")
+	}
+	defer pool.Close()
+
+	pm := postmark.New(cfg.PostmarkServerToken, cfg.PostmarkFromAddress)
+	notifierHandler := &handler.Notifier{Pool: pool, Postmark: pm, Log: log}
+
 	s := server.New(cfg.ServiceName, cfg.HTTPPort, log)
+	path, h := protov1connect.NewNotifierHandler(notifierHandler)
+	s.Router.Mount(path, h)
+	s.Router.Post("/v1/notifier/postmark/webhook", notifierHandler.PostmarkWebhookHTTP)
 
 	s.Router.Get("/v1/notifier/info", func(w http.ResponseWriter, _ *http.Request) {
 		w.Header().Set("Content-Type", "application/json")

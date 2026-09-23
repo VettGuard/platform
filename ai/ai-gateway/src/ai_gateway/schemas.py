@@ -57,3 +57,63 @@ class ClassifyDocumentResponse(BaseModel):
     type: DocumentType
     confidence: float = Field(ge=0.0, le=1.0)
     usage: TokenUsage
+
+
+# ── Broker scoring ─────────────────────────────────────────────────
+
+
+class BrokerStatus(str, Enum):
+    PREFERRED = "preferred"
+    ACTIVE = "active"
+    WATCH = "watch"
+    BLOCKED = "blocked"
+
+
+class ScoreBrokerRequest(BaseModel):
+    """Score one broker. Signals are optional — when empty the model is
+    instructed to admit uncertainty rather than hallucinate."""
+
+    mc: str = Field(min_length=3, max_length=20)
+    name: str = ""
+    city: str = ""
+    # Free-form signals the caller assembled from FMCSA / Experian /
+    # network data. Phase 3 moves this to a structured shape; for now
+    # the brokers service just forwards anything it has.
+    signals: str = ""
+    model: ClaudeModel = ClaudeModel.HAIKU_4_5
+    ctx: TenantContext
+
+
+class ScoreBrokerResponse(BaseModel):
+    score: int = Field(ge=0, le=100)
+    verdict: str
+    status: BrokerStatus
+    pay_days: int = Field(ge=0, le=365)
+    reasons: list[str] = Field(default_factory=list)
+    confidence: float = Field(ge=0.0, le=1.0)
+    usage: TokenUsage
+
+
+# ── Detention-claim drafting ────────────────────────────────────────
+
+
+class DraftClaimRequest(BaseModel):
+    """Draft a detention invoice email. The claims service builds this
+    payload from a `claims` row."""
+
+    broker_mc: str = Field(min_length=3, max_length=20)
+    broker_name: str = ""
+    load_ref: str = ""
+    dwell_hours: float = Field(ge=0.0, le=168.0)
+    claim_amount_cents: int = Field(ge=0)
+    # Optional free-form context the caller can prepend — e.g. the rate
+    # confirmation's exact detention terms, the BOL signature time, etc.
+    signals: str = ""
+    model: ClaudeModel = ClaudeModel.HAIKU_4_5
+    ctx: TenantContext
+
+
+class DraftClaimResponse(BaseModel):
+    subject: str
+    body: str
+    usage: TokenUsage

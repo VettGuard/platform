@@ -7,6 +7,11 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/jackc/pgx/v5/pgxpool"
+
+	"github.com/vettguard/vettguard/packages/proto/gen/go/protov1connect"
+	"github.com/vettguard/vettguard/services/billing/internal/handler"
+	"github.com/vettguard/vettguard/services/billing/internal/stripeapi"
 	"github.com/vettguard/vettguard/services/shared/pkg/config"
 	"github.com/vettguard/vettguard/services/shared/pkg/logger"
 	"github.com/vettguard/vettguard/services/shared/pkg/server"
@@ -16,6 +21,7 @@ import (
 type Config struct {
 	config.Base
 
+	DatabaseURL          string `envconfig:"DATABASE_URL" required:"true"`
 	StripeSecretKey      string `envconfig:"STRIPE_SECRET_KEY" required:"true"`
 	StripeWebhookSecret  string `envconfig:"STRIPE_WEBHOOK_SECRET" required:"true"`
 	StripeVettingPriceID string `envconfig:"STRIPE_VETTING_PRICE_ID"`
@@ -43,7 +49,24 @@ func main() {
 	}
 	defer func() { _ = shutdownTrace(context.Background()) }()
 
+	pool, err := pgxpool.New(ctx, cfg.DatabaseURL)
+	if err != nil {
+		log.Fatal().Err(err).Msg("pgxpool connect failed")
+	}
+	defer pool.Close()
+
+	stripe := stripeapi.New(cfg.StripeSecretKey, cfg.StripeVettingPriceID)
+	billingHandler := &handler.Billing{
+		Pool:          pool,
+		Stripe:        stripe,
+		WebhookSecret: cfg.StripeWebhookSecret,
+		Log:           log,
+	}
+
 	s := server.New(cfg.ServiceName, cfg.HTTPPort, log)
+	path, h := protov1connect.NewBillingHandler(billingHandler)
+	s.Router.Mount(path, h)
+	s.Router.Post("/v1/billing/stripe/webhook", billingHandler.StripeWebhookHTTP)
 
 	s.Router.Get("/v1/billing/info", func(w http.ResponseWriter, _ *http.Request) {
 		w.Header().Set("Content-Type", "application/json")

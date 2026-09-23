@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: brokers
+  namespace: vettguard
+spec:
+  selector: { app: brokers }
+  ports:
+    - port: 8086
+      targetPort: 8086

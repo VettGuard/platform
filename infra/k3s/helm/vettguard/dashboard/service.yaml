@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dashboard
+  namespace: vettguard
+spec:
+  selector: { app: dashboard }
+  ports: [{ port: 3001, targetPort: 3001 }]

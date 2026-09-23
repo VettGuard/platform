@@ -4,6 +4,7 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts")
 
 /** @type {import("next").NextConfig} */
 const config = {
+  output: "standalone",
   reactStrictMode: true,
   transpilePackages: ["@vettguard/ui", "@vettguard/i18n", "@vettguard/sdk"],
   poweredByHeader: false,

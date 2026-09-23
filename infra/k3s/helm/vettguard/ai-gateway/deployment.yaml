@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-gateway
+  namespace: vettguard
+  labels: { app: ai-gateway }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: ai-gateway } }
+  template:
+    metadata:
+      labels: { app: ai-gateway }
+    spec:
+      containers:
+        - name: ai-gateway
+          image: ghcr.io/vettguard/ai-gateway:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8090
+          env:
+            - { name: HTTP_PORT,   value: "8090" }
+            - { name: ENVIRONMENT, value: "staging" }
+          envFrom:
+            - secretRef: { name: ai-gateway-env, optional: true }
+          readinessProbe:
+            httpGet: { path: /readyz, port: 8090 }
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            requests: { cpu: 100m, memory: 128Mi }
+            limits:   { cpu: 1,    memory: 512Mi }

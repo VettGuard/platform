@@ -7,7 +7,7 @@
   "exports": {
     ".": "./src/index.ts",
     "./config": "./src/config.ts",
-    "./messages/*": "./messages/*"
+    "./messages/*.json": "./messages/*.json"
   },
   "scripts": {
     "lint": "eslint . --max-warnings=0",

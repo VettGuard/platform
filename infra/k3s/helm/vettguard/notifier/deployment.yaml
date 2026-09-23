@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notifier
+  namespace: vettguard
+  labels: { app: notifier }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: notifier } }
+  template:
+    metadata:
+      labels: { app: notifier }
+    spec:
+      containers:
+        - name: notifier
+          image: ghcr.io/vettguard/notifier:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8083
+          env:
+            - { name: HTTP_PORT,   value: "8083" }
+            - { name: ENVIRONMENT, value: "staging" }
+            - { name: LOG_LEVEL,   value: "info" }
+            - { name: OTEL_EXPORTER_OTLP_ENDPOINT, value: "http://otel-collector.observability:4317" }
+          envFrom:
+            - secretRef: { name: notifier-env, optional: true }
+          readinessProbe:
+            httpGet: { path: /v1/notifier/info, port: 8083 }
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            requests: { cpu: 50m,  memory: 64Mi }
+            limits:   { cpu: 500m, memory: 256Mi }

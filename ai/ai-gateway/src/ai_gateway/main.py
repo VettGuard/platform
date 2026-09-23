@@ -9,7 +9,7 @@ from fastapi import FastAPI
 
 from .config import get_settings
 from .logging import configure_logging, get_logger
-from .routes import classify, echo, health
+from .routes import classify, draft_claim, echo, health, metrics as metrics_route, score_broker
 
 
 @asynccontextmanager
@@ -32,6 +32,9 @@ def create_app() -> FastAPI:
     app.include_router(health.router)
     app.include_router(echo.router)
     app.include_router(classify.router)
+    app.include_router(score_broker.router)
+    app.include_router(draft_claim.router)
+    app.include_router(metrics_route.router)
     return app
 
 

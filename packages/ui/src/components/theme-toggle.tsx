@@ -5,7 +5,9 @@ import { Moon, Sun } from "lucide-react"
 import { useCallback, useEffect, useState } from "react"
 import { cn } from "../lib/cn"
 
-interface ViewTransitionDoc extends Document {
+// Narrowed shape we actually use. TS-DOM now ships its own
+// startViewTransition typing, so we just access the global via `unknown`.
+type ViewTransitionDoc = Document & {
   startViewTransition?: (cb: () => void) => { finished: Promise<void> }
 }
 
