@@ -23,7 +23,7 @@ jobs:
     name: JS/TS (lint · type-check · test · build)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v4
         with: { version: "${{ env.PNPM_VERSION }}" }
       - uses: actions/setup-node@v4
@@ -42,7 +42,7 @@ jobs:
     name: i18n key drift
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: actions/setup-node@v4
         with: { node-version: "${{ env.NODE_VERSION }}" }
       - run: node packages/i18n/scripts/check-missing-keys.mjs
@@ -55,7 +55,7 @@ jobs:
       matrix:
         service: [shared, gateway, identity, billing, notifier, audit, eld]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: actions/setup-go@v5
         with:
           go-version: "${{ env.GO_VERSION }}"
@@ -81,7 +81,7 @@ jobs:
     name: Python ai-gateway (ruff · mypy · pytest)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: astral-sh/setup-uv@v3
         with:
           enable-cache: true
@@ -107,7 +107,7 @@ jobs:
     name: Protobuf (buf lint · breaking)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with: { fetch-depth: 0 }
       - uses: bufbuild/buf-setup-action@v1
       - run: buf lint
