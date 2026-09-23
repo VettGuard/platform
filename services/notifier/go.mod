@@ -3,7 +3,7 @@ module github.com/vettguard/vettguard/services/notifier
 go 1.25.7
 
 require (
-	connectrpc.com/connect v1.19.2
+	connectrpc.com/connect v1.21.0
 	github.com/google/uuid v1.6.0
 	github.com/jackc/pgx/v5 v5.9.2
 	github.com/pressly/goose/v3 v3.27.1
