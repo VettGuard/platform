@@ -13,14 +13,14 @@
   "dependencies": {
     "@vettguard/sdk": "workspace:*",
     "@vettguard/ui": "workspace:*",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
   },
   "devDependencies": {
     "@crxjs/vite-plugin": "^2.0.0-beta.30",
     "@types/chrome": "^0.0.287",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "@vettguard/config": "workspace:*",
     "@vitejs/plugin-react": "^4.3.4",
     "typescript": "^5.7.0",
