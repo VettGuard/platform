@@ -5,7 +5,7 @@ go 1.25.7
 require (
 	connectrpc.com/connect v1.19.2
 	github.com/google/uuid v1.6.0
-	github.com/jackc/pgx/v5 v5.9.2
+	github.com/jackc/pgx/v5 v5.11.0
 	github.com/pressly/goose/v3 v3.27.1
 	github.com/rs/zerolog v1.33.0
 	github.com/vettguard/vettguard/packages/proto/gen/go v0.0.0-00010101000000-000000000000
