@@ -1,6 +1,6 @@
 # GOWORK=off bypasses the workspace file so the image only needs the
 # directories this service's go.mod `replace` targets.
-FROM golang:1.25-alpine AS builder
+FROM golang:1.27-alpine AS builder
 ENV GOWORK=off
 WORKDIR /workspace
 COPY packages/proto/gen/go/ packages/proto/gen/go/
