@@ -1,11 +1,11 @@
 module github.com/vettguard/vettguard/services/gateway
 
-go 1.25.0
+go 1.26.0
 
 require (
 	github.com/go-chi/chi/v5 v5.2.0
 	github.com/go-chi/cors v1.2.2
-	github.com/redis/go-redis/v9 v9.19.0
+	github.com/redis/go-redis/v9 v9.23.0
 	github.com/rs/zerolog v1.33.0
 	github.com/vettguard/vettguard/services/shared v0.0.0
 )
@@ -28,9 +28,9 @@ require (
 	go.opentelemetry.io/otel/sdk v1.39.0 // indirect
 	go.opentelemetry.io/otel/trace v1.43.0 // indirect
 	go.opentelemetry.io/proto/otlp v1.7.1 // indirect
-	go.uber.org/atomic v1.11.0 // indirect
+	go.uber.org/atomic v1.12.0 // indirect
 	golang.org/x/net v0.53.0 // indirect
-	golang.org/x/sys v0.44.0 // indirect
+	golang.org/x/sys v0.48.0 // indirect
 	golang.org/x/text v0.37.0 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20260120221211-b8f7ae30c516 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20260420184626-e10c466a9529 // indirect
